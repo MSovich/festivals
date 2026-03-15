@@ -1026,7 +1026,6 @@ nav .container {
         left: 20px;
     }
     
-    /* Кнопка троеточия – такой же стиль, как у кнопок справа */
     .social-toggle {
         background: linear-gradient(135deg, #c9a03d, #b38b2f) !important;
         color: #0b1c34 !important;
@@ -1050,10 +1049,9 @@ nav .container {
     .social-buttons {
         width: 48px;
         height: 48px;
-        transform: translate(18px, -5px); /* Поднято максимально близко */
+        transform: translate(18px, 15px); /* Опущено ниже (было 10px, стало 15px) */
     }
     
-    /* Соцкнопки теперь такого же размера, как кнопка троеточия и расположены максимально близко */
     .social-btn {
         width: 40px !important;
         height: 40px !important;
@@ -1062,23 +1060,22 @@ nav .container {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
     }
 
-    /* Переопределяем позиции для максимально плотного расположения */
     .social-btn.telegram {
         top: 0;
         left: 0;
-        transform: translate(-15%, -40%); /* Максимально близко к центру */
+        transform: translate(-15%, -40%);
     }
     
     .social-btn.vk {
         top: 0;
         right: 0;
-        transform: translate(15%, -40%); /* Максимально близко к центру */
+        transform: translate(15%, -40%);
     }
     
     .social-btn.tiktok {
         bottom: 0;
         right: 0;
-        transform: translate(15%, 25%); /* Максимально близко к центру */
+        transform: translate(15%, 25%);
     }
 
     /* Причины */
