@@ -791,50 +791,51 @@ nav .container {
     text-align: center;
 }
 
-/* ========== ПЛАНШЕТНАЯ АДАПТАЦИЯ (768px - 1024px) ========== */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* ========== ПЛАНШЕТНАЯ АДАПТАЦИЯ (768px - 1200px) ========== */
+@media (min-width: 768px) and (max-width: 1200px) {
+    /* Контейнер */
     .container {
         padding: 0 32px;
     }
     
-    /* Усиленная навигация для планшетов */
-    nav .container {
+    /* Навигация */
+    body nav .container {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
     }
     
-    nav .nav-links {
+    body nav .logo {
+        font-size: 1.6rem !important;
+        margin-right: 10px !important;
+    }
+    
+    body nav .nav-links {
         display: flex !important;
-        gap: 5px !important;
+        gap: 8px !important;
         margin-left: auto !important;
-        padding-left: 40px !important;
+        padding-left: 20px !important;
         flex-wrap: nowrap !important;
     }
     
-    nav .nav-links li {
+    body nav .nav-links li {
         margin: 0 !important;
         padding: 0 !important;
     }
     
-    nav .nav-links a {
-        font-size: 0.75rem !important;
-        padding: 4px 4px !important;
+    body nav .nav-links a {
+        font-size: 0.85rem !important;
+        padding: 5px 6px !important;
         white-space: nowrap !important;
     }
     
-    nav .btn-nav {
-        padding: 4px 8px !important;
-        font-size: 0.75rem !important;
+    body nav .btn-nav {
+        padding: 5px 12px !important;
+        font-size: 0.85rem !important;
         margin-left: 5px !important;
     }
     
-    nav .logo {
-        font-size: 1.4rem !important;
-        margin-right: 5px !important;
-    }
-    
-    /* Остальные стили для планшетов без изменений */
+    /* Остальные стили для планшетов */
     .hero h1 {
         font-size: 3.2rem;
     }
@@ -909,7 +910,6 @@ nav .container {
     .section {
         padding: 60px 0;
     }
-    /* Кнопки на планшетах остаются уменьшенными (50px) */
 }
 
 /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ (до 768px) ========== */
