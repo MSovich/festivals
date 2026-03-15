@@ -152,9 +152,9 @@
     <div class="top-bar">
         <div class="container">
             <div class="contact-info">
-                <span><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</span>
-                <span><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</span>
-                <span><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</span>
+                <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
+                <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="mailto:edinstvorossii2010@mail.ru" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</a></span>
             </div>
             <button class="callback-btn" onclick="openModal()"><i class="fas fa-phone"></i> Перезвоните мне</button>
         </div>
@@ -603,29 +603,28 @@
             </div>
         </section>
 
-        <!-- Контакты организаторов -->
+        <!-- Контакты организаторов (исправлено: ссылки на телефоны) -->
         <section class="section">
             <div class="container">
                 <div class="section-title">
                     <h2>Контакты организаторов</h2>
                 </div>
                 <div class="contact-grid">
-                    <div><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52, +7 (903) 762-22-29, +7 (499) 909-07-70</div>
-                    <div><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</div>
+                    <div><i class="fas fa-phone-alt"></i> <a href="tel:+79895687852" style="color: white; text-decoration: none;">+7 (989) 568-78-52</a>, <a href="tel:+79037622229" style="color: white; text-decoration: none;">+7 (903) 762-22-29</a>, <a href="tel:+74999090770" style="color: white; text-decoration: none;">+7 (499) 909-07-70</a></div>
+                    <div><i class="fas fa-envelope"></i> <a href="mailto:edinstvorossii2010@mail.ru" style="color: white; text-decoration: none;">edinstvorossii2010@mail.ru</a></div>
                     <div><i class="fas fa-building"></i> Фонд «Возрождение», ИНН 7716197223</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Подвал -->
     <footer class="footer">
         <div class="container">
-            <!-- Контакты для мобильной версии (появятся только на экранах до 768px) -->
+            <!-- Контакты для мобильной версии (исправлено) -->
             <div class="footer-contacts-mobile">
-	            <span><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</span>
-                <span><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</span>
-                <span><i class="fas fa-envelope"></i> edinstvoro@mail.ru</span>
+                <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
+                <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="mailto:edinstvoro@mail.ru" style="color: #c9a03d; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvoro@mail.ru</a></span>
             </div>
             <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
         </div>
@@ -645,7 +644,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" -->
+    <!-- Модальное окно "Перезвоните мне" (исправлено) -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -657,8 +656,8 @@
             <div class="modal-phones">
                 <div class="modal-phones-title">Позвоните нам, если не хотите ждать</div>
                 <div class="modal-phones-numbers">
-                    <p><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</p>
-                    <p><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</p>
+                    <p><a href="tel:+79895687852" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></p>
+                    <p><a href="tel:+79037622229" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></p>
                 </div>
             </div>
             <div class="modal-form">
@@ -704,9 +703,59 @@
             }
         });
     </script>
-
-    <!-- Скрипт для адаптивной карусели жюри -->
     <script>
+        // Скрипт для карусели жюри (бесконечная)
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('juryTrack');
+            const slides = document.querySelectorAll('.jury-carousel-slide');
+            const prevBtn = document.getElementById('juryPrev');
+            const nextBtn = document.getElementById('juryNext');
+            const dotsContainer = document.getElementById('juryDots');
+            if (!track || slides.length === 0) return;
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            
+            // Создаём точки
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('jury-carousel-dot');
+                dot.dataset.index = i;
+                dot.addEventListener('click', function() {
+                    goToSlide(parseInt(this.dataset.index));
+                });
+                dotsContainer.appendChild(dot);
+            }
+            const dots = document.querySelectorAll('.jury-carousel-dot');
+            
+            function goToSlide(index) {
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                currentIndex = index;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateDots();
+            }
+            
+            function updateDots() {
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) dot.classList.add('active');
+                    else dot.classList.remove('active');
+                });
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                goToSlide(currentIndex + 1);
+            });
+            
+            goToSlide(0);
+        });
+    </script>
+    <script>
+        // Скрипт для адаптивной карусели жюри (мобильная версия)
         (function() {
             const track = document.getElementById('juryTrack');
             const prevBtn = document.getElementById('juryPrev');
@@ -717,35 +766,29 @@
             let slides = [];
             let dots = [];
             let isMobile = window.innerWidth <= 768;
-            let originalHTML = track ? track.innerHTML : ''; // сохраняем исходную разметку
+            let originalHTML = track ? track.innerHTML : '';
 
             function rebuildCarousel() {
                 const newIsMobile = window.innerWidth <= 768;
-                if (newIsMobile === isMobile) return; // режим не изменился
+                if (newIsMobile === isMobile) return;
                 isMobile = newIsMobile;
 
                 if (!track) return;
 
                 if (isMobile) {
-                    // Собираем все карточки из исходных слайдов
                     const allItems = Array.from(document.querySelectorAll('.jury-carousel-slide .jury-item'));
                     if (allItems.length === 0) return;
 
-                    // Очищаем трек
                     track.innerHTML = '';
-
-                    // Создаём новые слайды, каждый с одной карточкой
                     allItems.forEach((item, index) => {
                         const slide = document.createElement('div');
                         slide.className = 'jury-carousel-slide-mobile';
-                        // Клонируем карточку, чтобы не потерять события
                         slide.appendChild(item.cloneNode(true));
                         track.appendChild(slide);
                     });
 
                     slides = document.querySelectorAll('.jury-carousel-slide-mobile');
                 } else {
-                    // Восстанавливаем исходную разметку
                     track.innerHTML = originalHTML;
                     slides = document.querySelectorAll('.jury-carousel-slide');
                 }
@@ -753,7 +796,6 @@
                 totalSlides = slides.length;
                 currentIndex = 0;
 
-                // Пересоздаём точки
                 dotsContainer.innerHTML = '';
                 for (let i = 0; i < totalSlides; i++) {
                     const dot = document.createElement('span');
@@ -766,7 +808,6 @@
                 }
                 dots = document.querySelectorAll('.jury-carousel-dot');
 
-                // Обновляем положение
                 goToSlide(0);
             }
 
@@ -787,7 +828,6 @@
                 });
             }
 
-            // Инициализация
             if (track) {
                 originalHTML = track.innerHTML;
                 isMobile = window.innerWidth <= 768;
@@ -823,26 +863,10 @@
                 goToSlide(0);
             }
 
-            // Следим за изменением размера окна
             window.addEventListener('resize', function() {
                 rebuildCarousel();
             });
         })();
     </script>
-
-	<script>
-    	(function() {
-        	function hideTopBarOnMobile() {
-            	if (window.innerWidth <= 768) {
-                	var topBar = document.querySelector('.top-bar');
-                	if (topBar) {
-                    	topBar.style.display = 'none';
-                	}
-            	}
-        	}
-        	window.addEventListener('load', hideTopBarOnMobile);
-        	window.addEventListener('resize', hideTopBarOnMobile);
-    	})();
-	</script>
 </body>
 </html>
