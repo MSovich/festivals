@@ -966,7 +966,7 @@ nav .container {
     .social-buttons {
         width: 48px;
         height: 48px;
-        transform: translate(25px, -15px) !important; /* вправо и вверх */
+        transform: translate(45px, -5px) !important; /* вправо и вверх */
         left: 0 !important;
         bottom: 0 !important;
     }
