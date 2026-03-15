@@ -1068,7 +1068,7 @@ nav .container {
         display: block;
     }
 
-    /* Социальное меню – мобильная адаптация */
+    /* Социальное меню – мобильная адаптация с принудительным отключением анимации */
     .social-menu {
         bottom: 15px;
         left: 20px;
@@ -1077,11 +1077,12 @@ nav .container {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
-        transition: none;
-        transform: none;
+        transition: none !important;
+        transform: none !important;
     }
     .social-toggle:hover {
-        transform: none;
+        transform: none !important;
+        background: linear-gradient(135deg, #b38b2f, #c9a03d);
     }
     .social-buttons {
         width: 48px;
@@ -1412,5 +1413,3 @@ nav .container {
 .social-btn.tiktok:hover {
     background: #010101;
 }
-
-/* Мобильная адаптация социального меню (уже внутри основного мобильного медиазапроса) */
