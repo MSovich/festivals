@@ -766,6 +766,27 @@ nav .container {
     margin-top: auto;
 }
 
+/* Контакты в подвале для мобильной версии */
+.footer-contacts-mobile {
+    display: none; /* по умолчанию скрыты */
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.footer-contacts-mobile span {
+    display: inline-block;
+    color: #c9a03d;
+    font-size: 1rem;
+    margin: 5px 10px;
+    white-space: nowrap;
+}
+
+.footer-contacts-mobile i {
+    margin-right: 8px;
+    color: #c9a03d;
+}
+
 .center {
     text-align: center;
 }
@@ -1018,6 +1039,11 @@ nav .container {
         grid-template-columns: 1fr;
     }
     /* Карусель жюри на мобильных будет обработана скриптом в contacts.html */
+
+    /* Показываем контакты в подвале на мобильных */
+    .footer-contacts-mobile {
+        display: block;
+    }
 }
 
 /* Красивая кнопка для "Все 10 причин" и "Скачать календарь" */
@@ -1337,7 +1363,7 @@ nav .container {
     background: #010101;
 }
 
-/* Мобильная адаптация */
+/* Мобильная адаптация социального меню */
 @media (max-width: 768px) {
     .social-menu {
         bottom: 15px;
