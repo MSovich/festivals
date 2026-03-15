@@ -1050,10 +1050,10 @@ nav .container {
     .social-buttons {
         width: 48px;
         height: 48px;
-        transform: translate(18px, -15px); /* Поднято выше, чтобы быть ближе к троеточию */
+        transform: translate(18px, -10px); /* Поднято ещё выше, чтобы быть ближе к троеточию */
     }
     
-    /* Соцкнопки теперь такого же размера, как кнопка троеточия и расположены ближе */
+    /* Соцкнопки теперь такого же размера, как кнопка троеточия и расположены максимально близко */
     .social-btn {
         width: 40px !important;
         height: 40px !important;
@@ -1062,23 +1062,23 @@ nav .container {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
     }
 
-    /* Переопределяем позиции для более плотного расположения */
+    /* Переопределяем позиции для максимально плотного расположения */
     .social-btn.telegram {
         top: 0;
         left: 0;
-        transform: translate(-30%, -60%); /* Ближе к центру */
+        transform: translate(-20%, -50%); /* Ещё ближе к центру */
     }
     
     .social-btn.vk {
         top: 0;
         right: 0;
-        transform: translate(30%, -60%); /* Ближе к центру */
+        transform: translate(20%, -50%); /* Ещё ближе к центру */
     }
     
     .social-btn.tiktok {
         bottom: 0;
         right: 0;
-        transform: translate(30%, 40%); /* Ближе к центру */
+        transform: translate(20%, 30%); /* Ещё ближе к центру */
     }
 
     /* Причины */
