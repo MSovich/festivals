@@ -791,11 +791,11 @@ nav .container {
     text-align: center;
 }
 
-/* ========== ПЛАНШЕТНАЯ АДАПТАЦИЯ (768px - 1200px) ========== */
-@media (min-width: 768px) and (max-width: 1200px) {
+/* ========== ПЛАНШЕТНАЯ АДАПТАЦИЯ (768px - 1400px) ========== */
+@media (min-width: 768px) and (max-width: 1400px) {
     /* Контейнер */
     .container {
-        padding: 0 32px;
+        padding: 0 32px !important;
     }
     
     /* Навигация */
