@@ -1079,7 +1079,7 @@ nav .container {
     .social-buttons {
         width: 48px;
         height: 48px;
-        transform: translate(5px, -2px); /* прижато вправо на 5px, чуть выше */
+        transform: translate(0px, -7px); /* прижато вправо на 5px, чуть выше */
     }
     
     .social-btn {
