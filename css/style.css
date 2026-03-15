@@ -928,7 +928,7 @@ nav .container {
 
     /* Герой – скрываем оригинальный текст, показываем псевдоэлемент и span */
     .hero h1 {
-        font-size: 0; /* скрываем оригинальный текст */
+        font-size: 0 !important; /* полностью скрываем оригинальный текст */
         line-height: 0;
         margin-bottom: 15px;
         display: flex;
@@ -938,24 +938,24 @@ nav .container {
     
     .hero h1 span {
         color: #c9a03d !important;
-        display: block;
-        white-space: nowrap;
-        font-size: 2rem;
-        line-height: 1.3;
+        display: block !important;
+        white-space: nowrap !important;
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
     }
     
     .hero h1::before {
         content: "Фестивальные встречи";
-        display: block;
-        color: white;
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 700;
-        font-size: 2rem;
-        line-height: 1.3;
-        letter-spacing: 0.02em;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        white-space: nowrap;
-        margin-bottom: 10px;
+        display: block !important;
+        color: white !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-weight: 700 !important;
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
+        letter-spacing: 0.02em !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+        white-space: nowrap !important;
+        margin-bottom: 10px !important;
     }
     
     .hero p {
