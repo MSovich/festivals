@@ -938,7 +938,7 @@ nav .container {
     .home-button { bottom: 15px; right: 20px; }
     .phone-button { bottom: 15px; right: 75px; }
 
-    /* Социальное меню — кнопки немного раздвинуты */
+    /* Социальное меню — увеличены отступы от троеточия */
     .social-menu {
         bottom: 15px;
         left: 20px;
@@ -962,7 +962,6 @@ nav .container {
         box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4) !important;
     }
 
-    /* Контейнер для соцкнопок — без смещения */
     .social-buttons {
         width: 48px;
         height: 48px;
@@ -971,7 +970,6 @@ nav .container {
         bottom: 0 !important;
     }
     
-    /* Сами кнопки — одинаковый размер */
     .social-btn {
         width: 40px !important;
         height: 40px !important;
@@ -980,21 +978,21 @@ nav .container {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
     }
 
-    /* Немного раздвигаем кнопки друг от друга */
+    /* Увеличенные отступы от центра (троеточия) */
     .social-btn.telegram {
         top: 0;
         left: 0;
-        transform: translate(-25%, -55%) !important; /* чуть левее и выше */
+        transform: translate(-40%, -70%) !important;
     }
     .social-btn.vk {
         top: 0;
         right: 0;
-        transform: translate(25%, -55%) !important; /* чуть правее и выше */
+        transform: translate(40%, -70%) !important;
     }
     .social-btn.tiktok {
         bottom: 0;
         right: 0;
-        transform: translate(25%, 25%) !important; /* правее и чуть ниже */
+        transform: translate(40%, 40%) !important;
     }
 
     .reason-link { width: 100%; justify-content: center; padding: 8px 16px; font-size: 0.85rem; }
