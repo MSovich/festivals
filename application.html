@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка на участие | Единство России</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</span>
+                <span><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</span>
+                <span><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</span>
+            </div>
+            <button class="callback-btn" onclick="openModal()"><i class="fas fa-phone"></i> Перезвоните мне</button>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Единство<span>России</span></a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="festivals.html">Фестивали</a></li>
+                <li><a href="how.html">Как участвовать</a></li>
+                <li><a href="reasons.html">Почему мы</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="contacts.html">Жюри и контакты</a></li>
+                <li><a href="application.html" class="active btn-nav">Заявка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Онлайн‑заявка на участие</h2>
+                </div>
+                <div class="application-form">
+                    <form action="#" method="post">
+                        <div class="form-row">
+                            <div class="form-group"><label>Название коллектива / ФИО солиста *</label><input type="text" required></div>
+                            <div class="form-group"><label>Жанр</label><input type="text" placeholder="народный, современный..."></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Город *</label><input type="text" required></div>
+                            <div class="form-group"><label>Телефон для связи *</label><input type="tel" required></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Электронная почта</label><input type="email"></div>
+                            <div class="form-group"><label>ФИО руководителя</label><input type="text"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Возраст участников (от-до)</label><input type="text" placeholder="например, 12-17"></div>
+                            <div class="form-group"><label>Количество человек</label><input type="text" placeholder="участники + сопровождающие"></div>
+                        </div>
+                        <div class="form-group"><label>Название направляющей организации</label><input type="text"></div>
+                        
+                        <!-- Дата фестиваля + кнопка подробнее -->
+                        <div class="form-group">
+                            <label>Дата фестиваля</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <select id="festivalSelect" style="flex: 1;">
+                                    <option>30 апреля – 4 мая 2026, Москва</option>
+                                    <option>25–29 октября 2026, Москва</option>
+                                    <option>15–19 ноября 2026, Сочи</option>
+                                    <option>4–8 января 2027, Москва</option>
+                                    <option>23–27 октября 2027, Москва</option>
+                                    <option>21–25 октября 2028, Москва</option>
+                                </select>
+                                <a href="festival-30apr.html" id="festivalDetailLink" class="btn-small" style="white-space: nowrap;">Подробнее</a>
+                            </div>
+                        </div>
+
+                        <!-- Дата заезда и выезда -->
+                        <div class="form-row">
+                            <div class="form-group"><label>Дата заезда</label><input type="date" placeholder="гггг-мм-дд"></div>
+                            <div class="form-group"><label>Дата выезда</label><input type="date" placeholder="гггг-мм-дд"></div>
+                        </div>
+
+                        <!-- Поле с вопросами - теперь нельзя изменять размер -->
+                        <div class="form-group"><label>Ваши вопросы и пожелания</label><textarea rows="3" style="resize: none;"></textarea></div>
+                        <div class="form-group"><label>Как вы о нас узнали?</label><input type="text"></div>
+                        
+                        <!-- Чекбокс без checked (изначально не отмечен) -->
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agree" required>
+                            <label for="agree">Я принимаю <a href="policy.html">политику обработки персональных данных и правила пользования сайтом</a></label>
+                        </div>
+                        <button type="submit" class="submit-btn">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
+        </div>
+    </footer>
+
+    <!-- Плавающие кнопки -->
+    <a href="javascript:void(0)" class="phone-button" title="Перезвоните мне" onclick="openModal()"><i class="fas fa-phone-alt"></i></a>
+    <a href="index.html" class="home-button" title="На главную"><i class="fas fa-home"></i></a>
+
+    <!-- Социальное меню -->
+    <div class="social-menu">
+        <button class="social-toggle" id="socialToggle"><i class="fas fa-ellipsis-h"></i></button>
+        <div class="social-buttons" id="socialButtons">
+            <a href="https://t.me/edinstvorossiifestival" class="social-btn telegram" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/edinstvorossii" class="social-btn vk" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
+            <a href="#" class="social-btn tiktok" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Перезвоните мне" (без target) -->
+    <div class="modal-overlay" id="callbackModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="modal-header">
+                <h2>Перезвоните мне</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
+            </div>
+            <div class="modal-phones">
+                <div class="modal-phones-title">Позвоните нам, если не хотите ждать</div>
+                <div class="modal-phones-numbers">
+                    <p><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</p>
+                </div>
+            </div>
+            <div class="modal-form">
+                <form id="callbackForm" action="#" method="post">
+                    <div class="form-group"><label>Ваше имя*</label><input type="text" required></div>
+                    <div class="form-group"><label>Телефон для связи*</label><input type="tel" required></div>
+                    <div class="form-group"><label>Электронная почта</label><input type="email"></div>
+                    <div class="form-group"><label>Город, область</label><input type="text"></div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="callbackAgree" required>
+                        <label for="callbackAgree">Я принимаю <a href="policy.html">политику обработки персональных данных и правила пользования сайтом</a></label>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function openModal() {
+            document.getElementById('callbackModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('callbackModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('callbackModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            if (modal) {
+                modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            }
+            const form = document.getElementById('callbackForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Заявка отправлена! Скоро мы вам перезвоним.');
+                    closeModal();
+                });
+            }
+
+            // Социальное меню
+            const toggle = document.getElementById('socialToggle');
+            const buttons = document.getElementById('socialButtons');
+            if (toggle) {
+                toggle.addEventListener('click', function(e) { e.stopPropagation(); buttons.classList.toggle('active'); });
+                document.addEventListener('click', function(e) { if (!toggle.contains(e.target) && !buttons.contains(e.target)) buttons.classList.remove('active'); });
+            }
+
+            // Логика кнопки "Подробнее" для даты фестиваля
+            const festivalLinks = {
+                0: "festival-30apr.html",
+                1: "festival-25oct.html",
+                2: "festival-15nov.html",
+                3: "festival-04jan.html",
+                4: "festival-23oct2027.html",
+                5: "festival-21oct2028.html"
+            };
+            const select = document.getElementById('festivalSelect');
+            const detailLink = document.getElementById('festivalDetailLink');
+
+            function updateFestivalLink() {
+                const selectedIndex = select.selectedIndex;
+                detailLink.href = festivalLinks[selectedIndex] || festivalLinks[0];
+            }
+
+            if (select && detailLink) {
+                select.addEventListener('change', updateFestivalLink);
+                updateFestivalLink();
+            }
+        });
+    </script>
+</body>
+</html>

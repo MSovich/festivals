@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Единство России | Главная</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Дополнительные стили для размещения кнопок */
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .button-row .btn-reasons {
+            margin: 0;
+        }
+
+        /* Улучшение отображения на средних экранах */
+        @media (max-width: 900px) {
+            .reason-link {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Верхняя панель с контактами -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</span>
+                <span><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</span>
+                <span><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</span>
+            </div>
+            <button class="callback-btn" onclick="openModal()"><i class="fas fa-phone"></i> Перезвоните мне</button>
+        </div>
+    </div>
+
+    <!-- Навигация -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Единство<span>России</span></a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="festivals.html">Фестивали</a></li>
+                <li><a href="how.html">Как участвовать</a></li>
+                <li><a href="reasons.html">Почему мы</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="contacts.html">Жюри и контакты</a></li>
+                <li><a href="application.html" class="btn-nav">Заявка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Герой (Hero) -->
+        <section class="hero">
+            <div class="container">
+                <h1>Фестивальные встречи <span>«Единство России»</span></h1>
+                <p>Вместе со Страной! Вместе с Президентом!</p>
+                <div class="hero-buttons">
+                    <a href="application.html" class="btn btn-primary">Оставить заявку</a>
+                    <a href="festivals.html" class="btn btn-outline">Все даты</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ближайшие фестивали -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Ближайшие фестивали</h2>
+                    <p>Выберите удобные для вас даты</p>
+                </div>
+                <div class="festival-grid">
+                    <div class="festival-card">
+                        <div class="month">АПРЕЛЬ–МАЙ</div>
+                        <div class="date">30.04 – 04.05</div>
+                        <div class="location">Москва</div>
+                        <a href="festival-30apr.html" class="btn-small">Подробнее</a>
+                    </div>
+                    <div class="festival-card">
+                        <div class="month">ОКТЯБРЬ</div>
+                        <div class="date">25 – 29.10</div>
+                        <div class="location">Москва</div>
+                        <a href="festival-25oct.html" class="btn-small">Подробнее</a>
+                    </div>
+                    <div class="festival-card">
+                        <div class="month">НОЯБРЬ</div>
+                        <div class="date">15 – 19.11</div>
+                        <div class="location">Сочи</div>
+                        <a href="festival-15nov.html" class="btn-small">Подробнее</a>
+                    </div>
+                    <div class="festival-card">
+                        <div class="month">ЯНВАРЬ 2027</div>
+                        <div class="date">04 – 08.01</div>
+                        <div class="location">Москва</div>
+                        <a href="festival-04jan.html" class="btn-small">Подробнее</a>
+                    </div>
+                </div>
+                <!-- Кнопка "Все фестивали" -->
+                <div class="center" style="margin-top: 40px;">
+                    <a href="festivals.html" class="btn-reasons">Все фестивали</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Раздел "Почему выбирают нас" с кнопками под преимуществами -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Почему выбирают нас</h2>
+                </div>
+                <!-- Пять кнопок в ряд (без эмодзи) -->
+                <div class="reasons-preview">
+                    <a href="reasons.html#reason1" class="reason-link">
+                        <span class="reason-text">Два фестиваля одновременно</span>
+                    </a>
+                    <a href="reasons.html#reason2" class="reason-link">
+                        <span class="reason-text">Для всех возрастов</span>
+                    </a>
+                    <!-- Кнопка спец.условий -->
+                    <a href="javascript:void(0)" onclick="openSpecialModal()" class="reason-link">
+                        <span class="reason-text">Спец.условия</span>
+                    </a>
+                    <a href="reasons.html#reason3" class="reason-link">
+                        <span class="reason-text">Доступные цены</span>
+                    </a>
+                    <a href="reasons.html#reason4" class="reason-link">
+                        <span class="reason-text">Профессиональное жюри</span>
+                    </a>
+                </div>
+                <!-- Кнопки под преимуществами -->
+                <div class="button-row">
+                    <a href="reasons.html" class="btn-reasons">Все 10 причин</a>
+                    <a href="advantages.html" class="btn-reasons">Все наши плюсы</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Призыв к действию -->
+        <section class="cta">
+            <div class="container">
+                <h2>Готовы выступить?</h2>
+                <p style="margin-bottom: 20px;">Заполните онлайн-заявку, и мы свяжемся с вами за несколько часов!</p>
+                <a href="application.html" class="btn btn-primary">Отправить заявку</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
+        </div>
+    </footer>
+
+    <!-- Плавающие кнопки (правая сторона) -->
+    <a href="javascript:void(0)" class="phone-button" title="Перезвоните мне" onclick="openModal()"><i class="fas fa-phone-alt"></i></a>
+    <a href="index.html" class="home-button" title="На главную"><i class="fas fa-home"></i></a>
+
+    <!-- Социальное меню (кнопка с троеточием слева снизу) -->
+    <div class="social-menu">
+        <button class="social-toggle" id="socialToggle"><i class="fas fa-ellipsis-h"></i></button>
+        <div class="social-buttons" id="socialButtons">
+            <a href="https://t.me/edinstvorossiifestival" class="social-btn telegram" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/edinstvorossii" class="social-btn vk" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
+            <a href="#" class="social-btn tiktok" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Перезвоните мне" -->
+    <div class="modal-overlay" id="callbackModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="modal-header">
+                <h2>Перезвоните мне</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
+            </div>
+            <div class="modal-phones">
+                <div class="modal-phones-title">Позвоните нам, если не хотите ждать</div>
+                <div class="modal-phones-numbers">
+                    <p><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</p>
+                </div>
+            </div>
+            <div class="modal-form">
+                <form id="callbackForm" action="#" method="post">
+                    <div class="form-group"><label>Ваше имя*</label><input type="text" required></div>
+                    <div class="form-group"><label>Телефон для связи*</label><input type="tel" required></div>
+                    <div class="form-group"><label>Электронная почта</label><input type="email"></div>
+                    <div class="form-group"><label>Город, область</label><input type="text"></div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="callbackAgree" required>
+                        <label for="callbackAgree">Я принимаю <a href="policy.html">политику обработки персональных данных и правила пользования сайтом</a></label>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Спец.условия" -->
+    <div class="modal-overlay" id="specialModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeSpecialBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-gift"></i></div>
+            <div class="modal-header">
+                <h2>Специальные условия</h2>
+            </div>
+            <div class="modal-phones" style="text-align: left;">
+                <p>У нас действуют специальные условия: спонсорская помощь, гибкая система скидок и льгот.</p>
+                <p>Если на другом фестивале предложили более выгодные условия участия или мотивационные аспекты: вы можете уточнить возможности таких же условий в нашем оргкомитете!</p>
+                <p style="font-weight: 700; margin-top: 15px;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function openModal() {
+            document.getElementById('callbackModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('callbackModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function openSpecialModal() {
+            document.getElementById('specialModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSpecialModal() {
+            document.getElementById('specialModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('callbackModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const specialModal = document.getElementById('specialModal');
+            const closeSpecial = document.getElementById('closeSpecialBtn');
+
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) closeModal();
+                });
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            }
+
+            if (specialModal) {
+                specialModal.addEventListener('click', function(e) {
+                    if (e.target === specialModal) closeSpecialModal();
+                });
+                if (closeSpecial) closeSpecial.addEventListener('click', closeSpecialModal);
+            }
+
+            const form = document.getElementById('callbackForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Заявка отправлена! Скоро мы вам перезвоним.');
+                    closeModal();
+                });
+            }
+
+            // Социальное меню
+            const toggle = document.getElementById('socialToggle');
+            const buttons = document.getElementById('socialButtons');
+            if (toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    buttons.classList.toggle('active');
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!toggle.contains(event.target) && !buttons.contains(event.target)) {
+                        buttons.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

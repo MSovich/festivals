@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жюри и контакты | Единство России</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Стили для карусели жюри – 5 колонок, 2 ряда */
+        .jury-carousel-container {
+            position: relative;
+            margin: 40px 0 20px;
+            padding: 0 60px;
+            overflow: hidden;
+        }
+        .jury-carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .jury-carousel-slide {
+            flex: 0 0 100%;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 колонок на десктопе */
+            gap: 30px;
+            padding: 0 5px;
+        }
+        .jury-carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: #c9a03d;
+            border: none;
+            border-radius: 50%;
+            color: #0b1c34;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+        .jury-carousel-arrow:hover {
+            background: #b38b2f;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .jury-carousel-arrow.left {
+            left: 20px;
+        }
+        .jury-carousel-arrow.right {
+            right: 20px;
+        }
+        .jury-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .jury-carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .jury-carousel-dot.active {
+            background: #c9a03d;
+            transform: scale(1.2);
+        }
+        .jury-name-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0b1c34;
+            line-height: 1.3;
+        }
+        .jury-name-line.first {
+            margin-top: 10px;
+        }
+        .jury-name-line.last {
+            margin-bottom: 8px;
+        }
+        .jury-item p {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #2d2d3a;
+            line-height: 1.4;
+            margin-top: 8px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .jury-carousel-container {
+                padding: 0 50px;
+            }
+            .jury-carousel-slide {
+                grid-template-columns: repeat(3, 1fr); /* 3 колонки на планшетах */
+            }
+            .jury-carousel-arrow.left {
+                left: 15px;
+            }
+            .jury-carousel-arrow.right {
+                right: 15px;
+            }
+        }
+        @media (max-width: 768px) {
+            .jury-carousel-container {
+                padding: 0 40px;
+            }
+            .jury-carousel-slide {
+                grid-template-columns: repeat(2, 1fr); /* 2 колонки на маленьких планшетах */
+            }
+            .jury-carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .jury-carousel-arrow.left {
+                left: 10px;
+            }
+            .jury-carousel-arrow.right {
+                right: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .jury-carousel-slide {
+                grid-template-columns: 1fr; /* 1 колонка на телефонах */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</span>
+                <span><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</span>
+                <span><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</span>
+            </div>
+            <button class="callback-btn" onclick="openModal()"><i class="fas fa-phone"></i> Перезвоните мне</button>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Единство<span>России</span></a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="festivals.html">Фестивали</a></li>
+                <li><a href="how.html">Как участвовать</a></li>
+                <li><a href="reasons.html">Почему мы</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="contacts.html" class="active">Жюри и контакты</a></li>
+                <li><a href="application.html" class="btn-nav">Заявка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Секция жюри с каруселью -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Наше жюри</h2>
+                    <p>Высокопрофессиональные эксперты в области танца, музыки, вокала и моды</p>
+                </div>
+
+                <div class="jury-carousel-container">
+                    <button class="jury-carousel-arrow left" id="juryPrev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="jury-carousel-arrow right" id="juryNext"><i class="fas fa-chevron-right"></i></button>
+                    
+                    <div class="jury-carousel-track" id="juryTrack">
+                        <!-- Слайд 1 (первые 10) -->
+                        <div class="jury-carousel-slide">
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Юрий</div>
+                                <div class="jury-name-line">Григорьевич</div>
+                                <div class="jury-name-line last">Деревягин</div>
+                                <p>Заведующий кафедрой народного танца МГУКИ, профессор</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Геннадий</div>
+                                <div class="jury-name-line">Васильевич</div>
+                                <div class="jury-name-line last">Минх</div>
+                                <p>Народный артист России, главный балетмейстер ЦПА ФСБ России</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Борис</div>
+                                <div class="jury-name-line">Сергеевич</div>
+                                <div class="jury-name-line last">Санкин</div>
+                                <p>Народный артист РСФСР, профессор, академик</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Лидия</div>
+                                <div class="jury-name-line">Абрамовна</div>
+                                <div class="jury-name-line last">Устинова</div>
+                                <p>Народная артистка России, профессор МГУКИ</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Ренат</div>
+                                <div class="jury-name-line">Рустамович</div>
+                                <div class="jury-name-line last">Мамин</div>
+                                <p>Режиссер-хореограф, педагог школы-студии МХАТ</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Ирина</div>
+                                <div class="jury-name-line">Викторовна</div>
+                                <div class="jury-name-line last">Зоточкина</div>
+                                <p>Заслуженный деятель искусств Карелии, хореограф</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Игорь</div>
+                                <div class="jury-name-line">Владимирович</div>
+                                <div class="jury-name-line last">Пиворович</div>
+                                <p>Заслуженный артист России, педагог, балетмейстер</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Олег</div>
+                                <div class="jury-name-line">Викторович</div>
+                                <div class="jury-name-line last">Губин</div>
+                                <p>Заслуженный артист России, балетмейстер ансамбля «Русская Фантазия»</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Елена</div>
+                                <div class="jury-name-line">Всеволодовна</div>
+                                <div class="jury-name-line last">Смелковская</div>
+                                <p>Доцент МГИК, преподаватель классики</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Вадим</div>
+                                <div class="jury-name-line">Тагирович</div>
+                                <div class="jury-name-line last">Гиглаури</div>
+                                <p>Педагог-хореограф, специалист по современной хореографии</p>
+                            </div>
+                        </div>
+                        <!-- Слайд 2 (следующие 10) -->
+                        <div class="jury-carousel-slide">
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Виктор</div>
+                                <div class="jury-name-line">Григорьевич</div>
+                                <div class="jury-name-line last">Шершнев</div>
+                                <p>Заслуженный работник культуры РФ, балетмейстер-постановщик</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Сергей</div>
+                                <div class="jury-name-line">Андреевич</div>
+                                <div class="jury-name-line last">Ванцов</div>
+                                <p>Режиссер-хореограф, специалист по современной хореографии</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Татьяна</div>
+                                <div class="jury-name-line">Владимировна</div>
+                                <div class="jury-name-line last">Ледовских</div>
+                                <p>Прима-балерина, лауреат Госпремии РФ</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Наталья</div>
+                                <div class="jury-name-line">Александровна</div>
+                                <div class="jury-name-line last">Фивинцева</div>
+                                <p>Зав. отделением хореографии, балетмейстер-педагог</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Елена</div>
+                                <div class="jury-name-line">Александровна</div>
+                                <div class="jury-name-line last">Фивинцева</div>
+                                <p>Заслуженная артистка Украины, преподаватель</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Ирина</div>
+                                <div class="jury-name-line last">Галушкина</div>
+                                <p>Педагог-хореограф, артистка балета</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Наталья</div>
+                                <div class="jury-name-line">Сергеевна</div>
+                                <div class="jury-name-line last">Гофман</div>
+                                <p>Педагог современного танца МГУКИ</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Ольга</div>
+                                <div class="jury-name-line">Сергеевна</div>
+                                <div class="jury-name-line last">Баталина</div>
+                                <p>Ст. преподаватель кафедры пластики ВТИ им. Щукина</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Марина</div>
+                                <div class="jury-name-line">Анатольевна</div>
+                                <div class="jury-name-line last">Макарова</div>
+                                <p>Преподаватель МОКИ, Заслуженный работник культуры МО</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Юлия</div>
+                                <div class="jury-name-line">Марковна</div>
+                                <div class="jury-name-line last">Садовская</div>
+                                <p>Режиссер-хореограф, преподаватель МГУКИ</p>
+                            </div>
+                        </div>
+                        <!-- Слайд 3 (следующие 10) -->
+                        <div class="jury-carousel-slide">
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Марио</div>
+                                <div class="jury-name-line last">Бетанкурт Диас</div>
+                                <p>Хореограф-постановщик, преподаватель латиноамериканских направлений</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Александр</div>
+                                <div class="jury-name-line">Сергеевич</div>
+                                <div class="jury-name-line last">Могилев</div>
+                                <p>Педагог-хореограф, победитель шоу «Танцуй» на 1 канале</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Альфия</div>
+                                <div class="jury-name-line">Мухаметовна</div>
+                                <div class="jury-name-line last">Матвеенко</div>
+                                <p>Член Союза дизайнеров России, руководитель Дизайн-театра «СТАРТ»</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Татьяна</div>
+                                <div class="jury-name-line">Валентиновна</div>
+                                <div class="jury-name-line last">Петрова</div>
+                                <p>Дизайнер, член московского союза художников</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Леонид</div>
+                                <div class="jury-name-line">Павлович</div>
+                                <div class="jury-name-line last">Хожайнов</div>
+                                <p>Преподаватель кафедры танцев народов мира МГИК</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Светлана</div>
+                                <div class="jury-name-line last">Деркач</div>
+                                <p>Модельер, дизайнер одежды, организатор конкурсов моды</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Елена</div>
+                                <div class="jury-name-line">Петровна</div>
+                                <div class="jury-name-line last">Дударенко</div>
+                                <p>Методист, член жюри фестивалей театров моды</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Нэлли</div>
+                                <div class="jury-name-line">Анатольевна</div>
+                                <div class="jury-name-line last">Воронина</div>
+                                <p>Мастер сцены, солистка «Кремлевского театра балета»</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Евгения</div>
+                                <div class="jury-name-line">Осиповна</div>
+                                <div class="jury-name-line last">Засимова</div>
+                                <p>Заслуженный деятель искусств России, профессор МГИК</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Михаил</div>
+                                <div class="jury-name-line">Юрьевич</div>
+                                <div class="jury-name-line last">Уткин</div>
+                                <p>Народный артист России, худрук Москонцерта</p>
+                            </div>
+                        </div>
+                        <!-- Слайд 4 (следующие 10) -->
+                        <div class="jury-carousel-slide">
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Елена</div>
+                                <div class="jury-name-line">Ивановна</div>
+                                <div class="jury-name-line last">Горячева</div>
+                                <p>Народная артистка России, хормейстер хора им. Пятницкого</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Олег</div>
+                                <div class="jury-name-line">Борисович</div>
+                                <div class="jury-name-line last">Иванов</div>
+                                <p>Народный артист России, композитор</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Анна</div>
+                                <div class="jury-name-line">Павловна</div>
+                                <div class="jury-name-line last">Литвиненко</div>
+                                <p>Народная артистка России, профессор РАМ им. Гнесиных</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Владимир</div>
+                                <div class="jury-name-line">Юрьевич</div>
+                                <div class="jury-name-line last">Михайлов</div>
+                                <p>Заслуженный артист России, певец, композитор</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Ирина</div>
+                                <div class="jury-name-line">Владимировна</div>
+                                <div class="jury-name-line last">Сахнова</div>
+                                <p>Зав. кафедрой эстрадно-джазового искусства МПГУ, доцент</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Татьяна</div>
+                                <div class="jury-name-line">Петровна</div>
+                                <div class="jury-name-line last">Беляева</div>
+                                <p>Заслуженный работник культуры России, профессор МГИК</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Георгий</div>
+                                <div class="jury-name-line">Владиславович</div>
+                                <div class="jury-name-line last">Денисенко</div>
+                                <p>Композитор, пианист, звукорежиссер</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Анастасия</div>
+                                <div class="jury-name-line">Александровна</div>
+                                <div class="jury-name-line last">Плохоцкая</div>
+                                <p>Ст. преподаватель МПГУ, лауреат международных конкурсов</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Елена</div>
+                                <div class="jury-name-line">Васильевна</div>
+                                <div class="jury-name-line last">Никольская</div>
+                                <p>Кандидат педагогических наук, доцент МПГУ</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Наталья</div>
+                                <div class="jury-name-line">Васильевна</div>
+                                <div class="jury-name-line last">Хлынина</div>
+                                <p>Доцент РАМ им. Гнесиных, лауреат конкурсов</p>
+                            </div>
+                        </div>
+                        <!-- Слайд 5 (последние 10) -->
+                        <div class="jury-carousel-slide">
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Валерий</div>
+                                <div class="jury-name-line">Павлович</div>
+                                <div class="jury-name-line last">Мелехин</div>
+                                <p>Профессор МГУКИ, Заслуженный работник культуры России</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Ирина</div>
+                                <div class="jury-name-line">Васильевна</div>
+                                <div class="jury-name-line last">Шпарийчук</div>
+                                <p>Профессор МГИК, Заслуженный работник культуры России</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Евгений</div>
+                                <div class="jury-name-line">Олегович</div>
+                                <div class="jury-name-line last">Моисеев</div>
+                                <p>Преподаватель вокала, лауреат конкурсов</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Людмила</div>
+                                <div class="jury-name-line">Петровна</div>
+                                <div class="jury-name-line last">Ермилова</div>
+                                <p>Профессор МПГУ, худрук музыкального театра МПГУ</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Елена</div>
+                                <div class="jury-name-line">Валентиновна</div>
+                                <div class="jury-name-line last">Карасёва</div>
+                                <p>Зав. студией музыкального творчества, рук. ансамбля «Купавушка»</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Александр</div>
+                                <div class="jury-name-line">Николаевич</div>
+                                <div class="jury-name-line last">Кабзистый</div>
+                                <p>Доцент кафедры оркестрового дирижирования МГИК</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Наталия</div>
+                                <div class="jury-name-line">Руслановна</div>
+                                <div class="jury-name-line last">Лаврененко</div>
+                                <p>Заслуженный работник культуры РФ, доцент МПГУ</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Борис</div>
+                                <div class="jury-name-line">Сергеевич</div>
+                                <div class="jury-name-line last">Ворон</div>
+                                <p>Заслуженный артист РФ, профессор, зав. кафедрой РАМ им. Гнесиных</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Лариса</div>
+                                <div class="jury-name-line">Федоровна</div>
+                                <div class="jury-name-line last">Тараненко</div>
+                                <p>Доцент эстрадно-джазового пения МГУКИ</p>
+                            </div>
+                            <div class="jury-item">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="">
+                                <div class="jury-name-line first">Галина</div>
+                                <div class="jury-name-line">Васильевна</div>
+                                <div class="jury-name-line last">Паринова</div>
+                                <p>Доцент кафедры сольного народного пения МГИК</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jury-carousel-dots" id="juryDots">
+                    <!-- Точки будут добавлены скриптом -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Партнёры -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Наши партнёры</h2>
+                </div>
+                <div class="partners">
+                    <img src="https://via.placeholder.com/150x60?text=Партнёр+1" alt="">
+                    <img src="https://via.placeholder.com/150x60?text=Партнёр+2" alt="">
+                    <img src="https://via.placeholder.com/150x60?text=Партнёр+3" alt="">
+                    <img src="https://via.placeholder.com/150x60?text=Партнёр+4" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- Подписка на новости -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Будьте в курсе событий</h2>
+                    <p>Присоединяйтесь к нашему сообществу, чтобы первыми узнавать о фестивалях и получать эксклюзивные предложения</p>
+                </div>
+                <div class="application-form" style="max-width: 600px; margin: 0 auto;">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label>Ваш E-mail *</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон (не обязательно)</label>
+                            <input type="tel">
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="subscribeAgree" required>
+                            <label for="subscribeAgree">Я принимаю <a href="policy.html">политику обработки персональных данных и правила пользования сайтом</a></label>
+                        </div>
+                        <button type="submit" class="submit-btn">Подписаться</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты организаторов -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Контакты организаторов</h2>
+                </div>
+                <div class="contact-grid">
+                    <div><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52, +7 (903) 762-22-29, +7 (499) 909-07-70</div>
+                    <div><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</div>
+                    <div><i class="fas fa-building"></i> Фонд «Возрождение», ИНН 7716197223</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
+        </div>
+    </footer>
+
+    <!-- Плавающие кнопки -->
+    <a href="javascript:void(0)" class="phone-button" title="Перезвоните мне" onclick="openModal()"><i class="fas fa-phone-alt"></i></a>
+    <a href="index.html" class="home-button" title="На главную"><i class="fas fa-home"></i></a>
+
+    <!-- Социальное меню -->
+    <div class="social-menu">
+        <button class="social-toggle" id="socialToggle"><i class="fas fa-ellipsis-h"></i></button>
+        <div class="social-buttons" id="socialButtons">
+            <a href="https://t.me/edinstvorossiifestival" class="social-btn telegram" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/edinstvorossii" class="social-btn vk" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
+            <a href="#" class="social-btn tiktok" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Перезвоните мне" -->
+    <div class="modal-overlay" id="callbackModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="modal-header">
+                <h2>Перезвоните мне</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
+            </div>
+            <div class="modal-phones">
+                <div class="modal-phones-title">Позвоните нам, если не хотите ждать</div>
+                <div class="modal-phones-numbers">
+                    <p><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</p>
+                </div>
+            </div>
+            <div class="modal-form">
+                <form id="callbackForm" action="#" method="post">
+                    <div class="form-group"><label>Ваше имя*</label><input type="text" required></div>
+                    <div class="form-group"><label>Телефон для связи*</label><input type="tel" required></div>
+                    <div class="form-group"><label>Электронная почта</label><input type="email"></div>
+                    <div class="form-group"><label>Город, область</label><input type="text"></div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="callbackAgree" required>
+                        <label for="callbackAgree">Я принимаю <a href="policy.html">политику обработки персональных данных и правила пользования сайтом</a></label>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function openModal() { document.getElementById('callbackModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('callbackModal').classList.remove('active'); document.body.style.overflow = ''; }
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('callbackModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            if (modal) {
+                modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            }
+            const form = document.getElementById('callbackForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Заявка отправлена! Скоро мы вам перезвоним.');
+                    closeModal();
+                });
+            }
+            const toggle = document.getElementById('socialToggle');
+            const buttons = document.getElementById('socialButtons');
+            if (toggle) {
+                toggle.addEventListener('click', function(e) { e.stopPropagation(); buttons.classList.toggle('active'); });
+                document.addEventListener('click', function(e) { if (!toggle.contains(e.target) && !buttons.contains(e.target)) buttons.classList.remove('active'); });
+            }
+        });
+    </script>
+    <script>
+        // Скрипт для карусели жюри (бесконечная)
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('juryTrack');
+            const slides = document.querySelectorAll('.jury-carousel-slide');
+            const prevBtn = document.getElementById('juryPrev');
+            const nextBtn = document.getElementById('juryNext');
+            const dotsContainer = document.getElementById('juryDots');
+            if (!track || slides.length === 0) return;
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            
+            // Создаём точки
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('jury-carousel-dot');
+                dot.dataset.index = i;
+                dot.addEventListener('click', function() {
+                    goToSlide(parseInt(this.dataset.index));
+                });
+                dotsContainer.appendChild(dot);
+            }
+            const dots = document.querySelectorAll('.jury-carousel-dot');
+            
+            function goToSlide(index) {
+                // Бесконечность: если индекс меньше 0, переходим к последнему
+                if (index < 0) index = totalSlides - 1;
+                // если больше последнего, переходим к первому
+                if (index >= totalSlides) index = 0;
+                
+                currentIndex = index;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateDots();
+            }
+            
+            function updateDots() {
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) dot.classList.add('active');
+                    else dot.classList.remove('active');
+                });
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                goToSlide(currentIndex + 1);
+            });
+            
+            goToSlide(0);
+        });
+    </script>
+</body>
+</html>

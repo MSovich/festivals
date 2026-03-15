@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все наши плюсы | Единство России</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .advantages-content {
+            background: white;
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(201,160,61,0.2);
+            margin: 40px 0;
+        }
+        .advantages-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: #0b1c34;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .advantages-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #0b1c34;
+            margin: 40px 0 20px;
+            border-left: 5px solid #c9a03d;
+            padding-left: 20px;
+        }
+        .advantages-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: #0b1c34;
+            margin: 30px 0 15px;
+        }
+        .advantages-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            columns: 2;
+            column-gap: 40px;
+        }
+        .advantages-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            break-inside: avoid;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        .advantages-list li::before {
+            content: "✔";
+            color: #c9a03d;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .advantages-list strong {
+            color: #0b1c34;
+        }
+        .note {
+            background: #f8faff;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            border-left: 5px solid #c9a03d;
+        }
+        .back-button {
+            display: inline-block;
+            margin: 20px 0 10px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #c9a03d, #b38b2f);
+            color: #0b1c34;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(201,160,61,0.3);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(201,160,61,0.5);
+        }
+        @media (max-width: 768px) {
+            .advantages-content {
+                padding: 30px 20px;
+            }
+            .advantages-content h1 {
+                font-size: 2.2rem;
+            }
+            .advantages-list {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</span>
+                <span><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</span>
+                <span><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</span>
+            </div>
+            <button class="callback-btn" onclick="openModal()"><i class="fas fa-phone"></i> Перезвоните мне</button>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Единство<span>России</span></a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="festivals.html">Фестивали</a></li>
+                <li><a href="how.html">Как участвовать</a></li>
+                <li><a href="reasons.html">Почему мы</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="contacts.html">Жюри и контакты</a></li>
+                <li><a href="application.html" class="btn-nav">Заявка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <!-- Кнопка назад -->
+                <div style="margin-bottom: 20px;">
+                    <a href="javascript:history.back()" class="back-button"><i class="fas fa-arrow-left"></i> Вернуться назад</a>
+                </div>
+
+                <div class="advantages-content">
+                    <h1>ЕЖЕГОДНЫЕ ФЕСТИВАЛЬНЫЕ ВСТРЕЧИ<br>в Москве</h1>
+                    <div class="note">
+                        <p><strong>Прочитайте обязательно!</strong><br>Наши плюсы – по сравнению с другими предложениями<br>или почему Вам стоит выбрать именно наши фестивали:</p>
+                    </div>
+
+                    <h2>Основное</h2>
+                    <ul class="advantages-list">
+                        <li><strong>1.</strong> За один фестивальный взнос участие в двух конкурсах одновременно – показ конкурсных программ двум жюри, вручается два приза, два диплома;</li>
+                        <li><strong>2.</strong> Премия – 25.000 руб. для одного из коллективов-Дипломантов, Премия – 35.000 руб. для одного из коллективов-Лауреатов, Премия – 55.000 руб. для одного из коллективов-обладателей Гран-При;</li>
+                        <li><strong>3.</strong> Отель и концертный зал находятся на одной территории гостиничного комплекса;</li>
+                        <li><strong>4.</strong> Возможность бесплатного участия, проживания и питания для 1, 2 или 3 руководителей (в зависимости от количества участников);</li>
+                        <li><strong>5.</strong> Стоимость участия в фестивале 5 дней/4 ночи в Москве ниже, чем на Международных фестивалях в большинстве регионов России;</li>
+                        <li><strong>6.</strong> Возможность бесплатного участия в программе энциклопедии «Богатство России»;</li>
+                        <li><strong>7.</strong> Сим-карта с суммой на счете – для звонков без роуминга по Москве – бесплатно!</li>
+                        <li><strong>8.</strong> Фотографии на конкурсе всех ваших номеров (до 100 фото на каждый номер) – бесплатно!</li>
+                        <li><strong>9.</strong> Фестивальный проспект с картой станций метро всем участникам – бесплатно!</li>
+                        <li><strong>10.</strong> Афиши конкурса с фотографиями коллектива. Всем участникам – бесплатно!</li>
+                        <li><strong>11.</strong> Сертификаты за пройденные мастер-классы. Руководителям – бесплатно!</li>
+                        <li><strong>12.</strong> Фирменные портфели, ручки, ежедневники. Для руководителей – бесплатно!</li>
+                        <li><strong>13.</strong> Подарки для коллективов от фестиваля – бесплатно!</li>
+                        <li><strong>14.</strong> Видеозапись выступлений – бесплатно!</li>
+                    </ul>
+
+                    <h2>Качество</h2>
+                    <ul class="advantages-list">
+                        <li><strong>15.</strong> Прекрасная, четко организованная работа организаторов, позволяющая вам чувствовать себя спокойно и уверенно;</li>
+                        <li><strong>16.</strong> Встреча коллективов у вагонов поезда по прибытии в Москву и сопровождение до гостиниц;</li>
+                        <li><strong>17.</strong> Связь с организаторами фестиваля в любое время по любому вопросу во все дни фестиваля;</li>
+                        <li><strong>18.</strong> Чуткое отношение, порядочность, культура и уважение во все дни фестиваля;</li>
+                        <li><strong>19.</strong> Самое лучшее, самое профессиональное жюри, состоящее из академиков, профессоров, доцентов высших учебных заведений культуры и искусства;</li>
+                        <li><strong>20.</strong> Выступление на одних из лучших и значительных площадках г. Москвы;</li>
+                        <li><strong>21.</strong> Конкурсы-фестивали в Москве — в столице нашей Родины;</li>
+                        <li><strong>22.</strong> Помощь и поддержка при расселении в гостиницы;</li>
+                    </ul>
+
+                    <h2>Возможности</h2>
+                    <ul class="advantages-list">
+                        <li><strong>23.</strong> Обширная культурная программа (до 40 музеев Москвы, концертные залы, цирк, выставки и многое другое) – в большинстве бесплатно!</li>
+                        <li><strong>24.</strong> Благодарственные письма всем вашим спонсорам, руководителям министерств и ведомств, которые смогли вас поддержать в этой поездке – бесплатно!</li>
+                        <li><strong>25.</strong> Письма от наших фондов вашим потенциальным спонсорам, руководителям вышестоящих организаций и ведомств о возможной поддержке вашего коллектива для поездки на наш фестиваль – до 10 писем на коллектив – бесплатно!</li>
+                        <li><strong>26.</strong> Возможность получения сертификатов на 50% скидку фестивального взноса на другие фестивали;</li>
+                        <li><strong>27.</strong> Большое количество новых контактов с коллективами других регионов;</li>
+                        <li><strong>28.</strong> Новые контакты с фестивальными компаниями в России и за рубежом;</li>
+                        <li><strong>29.</strong> Возможность большого количества мастер-классов – бесплатно!;</li>
+                        <li><strong>30.</strong> Дополнительные призы от различных организаций.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
+        </div>
+    </footer>
+
+    <!-- Плавающие кнопки -->
+    <a href="javascript:void(0)" class="phone-button" title="Перезвоните мне" onclick="openModal()"><i class="fas fa-phone-alt"></i></a>
+    <a href="index.html" class="home-button" title="На главную"><i class="fas fa-home"></i></a>
+
+    <!-- Социальное меню -->
+    <div class="social-menu">
+        <button class="social-toggle" id="socialToggle"><i class="fas fa-ellipsis-h"></i></button>
+        <div class="social-buttons" id="socialButtons">
+            <a href="https://t.me/edinstvorossiifestival" class="social-btn telegram" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/edinstvorossii" class="social-btn vk" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
+            <a href="#" class="social-btn tiktok" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Перезвоните мне" (с ссылкой на policy.html без target) -->
+    <div class="modal-overlay" id="callbackModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="modal-header">
+                <h2>Перезвоните мне</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
+            </div>
+            <div class="modal-phones">
+                <div class="modal-phones-title">Позвоните нам, если не хотите ждать</div>
+                <div class="modal-phones-numbers">
+                    <p><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</p>
+                </div>
+            </div>
+            <div class="modal-form">
+                <form id="callbackForm" action="#" method="post">
+                    <div class="form-group"><label>Ваше имя*</label><input type="text" required></div>
+                    <div class="form-group"><label>Телефон для связи*</label><input type="tel" required></div>
+                    <div class="form-group"><label>Электронная почта</label><input type="email"></div>
+                    <div class="form-group"><label>Город, область</label><input type="text"></div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="callbackAgree" required>
+                        <label for="callbackAgree">Я принимаю <a href="policy.html">политику обработки персональных данных и правила пользования сайтом</a></label>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function openModal() { document.getElementById('callbackModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('callbackModal').classList.remove('active'); document.body.style.overflow = ''; }
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('callbackModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            if (modal) {
+                modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            }
+            const form = document.getElementById('callbackForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Заявка отправлена! Скоро мы вам перезвоним.');
+                    closeModal();
+                });
+            }
+            const toggle = document.getElementById('socialToggle');
+            const buttons = document.getElementById('socialButtons');
+            if (toggle) {
+                toggle.addEventListener('click', function(e) { e.stopPropagation(); buttons.classList.toggle('active'); });
+                document.addEventListener('click', function(e) { if (!toggle.contains(e.target) && !buttons.contains(e.target)) buttons.classList.remove('active'); });
+            }
+        });
+    </script>
+</body>
+</html>
