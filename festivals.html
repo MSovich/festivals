@@ -10,53 +10,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Стили для мобильной версии карточек фестивалей */
+        /* Общие стили для карточек */
+        .festival-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        /* Стили для надписи "2 фестиваля" (красивая как на ПК) */
+        .festival-card .badge {
+            background: rgba(201, 160, 61, 0.1);
+            color: #0b1c34;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 15px 0 20px 0;
+            border: 1px solid #c9a03d;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(201, 160, 61, 0.15);
+        }
+        
+        /* Группа кнопок для десктопа */
+        .festival-card .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        .festival-card .btn-small {
+            min-width: 140px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            border: 2px solid #0b1c34;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #0b1c34;
+            text-decoration: none;
+            transition: 0.3s;
+            background: transparent;
+        }
+        
+        .festival-card .btn-small:hover {
+            background: #0b1c34;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        /* Мобильные стили */
         @media (max-width: 768px) {
             .festival-card {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
                 padding: 25px 15px;
             }
             
-            /* Перемещаем badge под дату и место */
             .festival-card .badge {
-                order: 0;
-                margin: 15px 0 20px 0;
-                font-size: 1rem;
+                margin: 20px 0 25px 0;
                 padding: 8px 20px;
-                background: #c9a03d;
-                color: #0b1c34;
-                font-weight: 700;
-                border: none;
+                font-size: 1rem;
             }
             
-            /* Группа кнопок */
             .festival-card .button-group {
-                display: flex;
                 flex-direction: column;
-                width: 100%;
-                align-items: center;
                 gap: 15px;
-                margin-top: 5px;
+                align-items: center;
             }
             
             .festival-card .btn-small {
                 width: 100%;
                 max-width: 250px;
-                margin: 0;
                 padding: 12px 20px;
                 font-size: 1rem;
-                border-width: 2px;
             }
             
-            /* Увеличиваем расстояние между кнопками */
-            .festival-card .button-group .btn-small:first-child {
-                margin-bottom: 5px;
-            }
-            
-            /* Стили для даты и места */
             .festival-card .date {
                 font-size: 2.2rem;
                 margin: 5px 0;
@@ -64,6 +95,19 @@
             
             .festival-card .location {
                 margin-bottom: 5px;
+            }
+        }
+        
+        /* Планшетные стили (при необходимости) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .festival-card .button-group {
+                gap: 10px;
+            }
+            
+            .festival-card .btn-small {
+                min-width: 120px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
         }
     </style>
