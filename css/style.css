@@ -938,7 +938,7 @@ nav .container {
     .home-button { bottom: 15px; right: 20px; }
     .phone-button { bottom: 15px; right: 75px; }
 
-    /* Социальное меню — кнопки смещены влево (уменьшен сдвиг вправо), TikTok поднят выше */
+    /* Социальное меню — кнопки левее, TikTok на одной линии с троеточием */
     .social-menu {
         bottom: 15px;
         left: 20px;
@@ -962,11 +962,11 @@ nav .container {
         box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4) !important;
     }
 
-    /* Контейнер соцкнопок — сдвинут влево (уменьшено translateX) */
+    /* Контейнер соцкнопок — сдвинут левее (уменьшено translateX) */
     .social-buttons {
         width: 48px;
         height: 48px;
-        transform: translate(20px, -30px) !important; /* правее меньше, чтобы сместить влево */
+        transform: translate(10px, -30px) !important; /* левее, чем было 20px */
         left: 0 !important;
         bottom: 0 !important;
     }
@@ -990,9 +990,9 @@ nav .container {
         transform: translate(50%, -70%) !important;
     }
     .social-btn.tiktok {
-        bottom: 0;
+        top: 50%; /* центрируем по вертикали */
         right: 0;
-        transform: translate(40%, 20%) !important; /* поднят выше (было 40%) */
+        transform: translate(40%, -50%) !important; /* центр на одной линии с троеточием */
     }
 
     .reason-link { width: 100%; justify-content: center; padding: 8px 16px; font-size: 0.85rem; }
