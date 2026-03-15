@@ -1075,10 +1075,11 @@ nav .container {
         box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4) !important;
     }
 
+    /* Контейнер для соцкнопок – прижат к троеточию */
     .social-buttons {
         width: 48px;
         height: 48px;
-        transform: translate(18px, 15px); /* Опущено ниже */
+        transform: translate(5px, -2px); /* прижато вправо на 5px, чуть выше */
     }
     
     .social-btn {
@@ -1092,19 +1093,19 @@ nav .container {
     .social-btn.telegram {
         top: 0;
         left: 0;
-        transform: translate(-15%, -40%);
+        transform: translate(-20%, -50%);
     }
     
     .social-btn.vk {
         top: 0;
         right: 0;
-        transform: translate(15%, -40%);
+        transform: translate(20%, -50%);
     }
     
     .social-btn.tiktok {
         bottom: 0;
         right: 0;
-        transform: translate(15%, 25%);
+        transform: translate(20%, 30%);
     }
 
     /* Причины */
