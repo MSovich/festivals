@@ -796,16 +796,37 @@ nav .container {
     .container {
         padding: 0 32px;
     }
+    
+    /* Навигация для планшетов - пункты ближе друг к другу и дальше от логотипа */
+    nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
     .nav-links {
-        gap: 20px;
+        gap: 12px; /* Уменьшено с 20px до 12px - пункты ближе друг к другу */
+        margin-left: auto; /* Прижимаем меню к правому краю - дальше от логотипа */
+        padding-left: 20px; /* Добавляем отступ слева для дополнительного расстояния от логотипа */
     }
+    
     .nav-links a {
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* Немного уменьшен размер шрифта */
+        padding: 6px 8px; /* Уменьшены отступы вокруг ссылок */
+        white-space: nowrap; /* Запрещаем перенос текста в пунктах меню */
     }
+    
     .btn-nav {
-        padding: 6px 20px;
-        font-size: 0.9rem;
+        padding: 6px 14px; /* Уменьшены отступы у кнопки "Заявка" */
+        font-size: 0.85rem;
+        margin-left: 5px;
     }
+    
+    .logo {
+        font-size: 1.8rem; /* Чуть уменьшаем логотип */
+        margin-right: 10px; /* Отступ от меню */
+    }
+    
     .hero h1 {
         font-size: 3.2rem;
     }
@@ -1049,7 +1070,7 @@ nav .container {
     .social-buttons {
         width: 48px;
         height: 48px;
-        transform: translate(18px, 15px); /* Опущено ниже (было 10px, стало 15px) */
+        transform: translate(18px, 15px); /* Опущено ниже */
     }
     
     .social-btn {
