@@ -926,24 +926,26 @@ nav .container {
         display: block;
     }
 
-    /* Герой – исправлено: скрыт оригинальный текст, отображаются псевдоэлемент и span */
+    /* Герой – простое решение: два блока через CSS */
     .hero h1 {
-        font-size: 0; /* скрываем оригинальный текст */
-        line-height: 0;
+        font-size: 2rem;
+        line-height: 1.3;
         margin-bottom: 15px;
+        color: white; /* Явно задаем цвет */
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
+    /* Скрываем оригинальный текст, но оставляем span видимым */
     .hero h1 span {
         color: #c9a03d !important;
         display: block;
         white-space: nowrap;
         font-size: 2rem;
-        line-height: 1.3;
     }
     
+    /* Добавляем текст через before */
     .hero h1::before {
         content: "Фестивальные встречи";
         display: block;
@@ -951,7 +953,6 @@ nav .container {
         font-family: 'Cormorant Garamond', serif;
         font-weight: 700;
         font-size: 2rem;
-        line-height: 1.3;
         letter-spacing: 0.02em;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         white-space: nowrap;
@@ -1065,6 +1066,32 @@ nav .container {
     /* Показываем контакты в подвале на мобильных */
     .footer-contacts-mobile {
         display: block;
+    }
+
+    /* Социальное меню – мобильная адаптация */
+    .social-menu {
+        bottom: 15px;
+        left: 20px;
+    }
+    .social-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        transition: none;
+        transform: none;
+    }
+    .social-toggle:hover {
+        transform: none;
+    }
+    .social-buttons {
+        width: 48px;
+        height: 48px;
+        transform: translate(18px, -20px); /* поднято на 4px вверх */
+    }
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
     }
 }
 
@@ -1308,13 +1335,14 @@ nav .container {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4);
-    transition: 0.3s;
+    transition: none; /* убираем анимацию */
+    transform: none; /* убираем трансформацию */
 }
 
 .social-toggle:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 12px 30px rgba(201, 160, 61, 0.6);
     background: linear-gradient(135deg, #b38b2f, #c9a03d);
+    transform: none; /* убираем движение при наведении */
+    box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4);
 }
 
 .social-buttons {
@@ -1385,25 +1413,4 @@ nav .container {
     background: #010101;
 }
 
-/* Мобильная адаптация социального меню */
-@media (max-width: 768px) {
-    .social-menu {
-        bottom: 15px;
-        left: 20px;
-    }
-    .social-toggle {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    .social-buttons {
-        width: 48px;
-        height: 48px;
-        transform: translate(18px, -20px); /* поднято на 4px вверх */
-    }
-    .social-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-}
+/* Мобильная адаптация социального меню (уже внутри основного мобильного медиазапроса) */
