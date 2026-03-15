@@ -885,7 +885,12 @@ nav .container {
 
 /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ (до 768px) ========== */
 @media (max-width: 768px) {
-    /* Контактная информация в топ-баре */
+    /* Скрываем верхнюю панель с принудительным !important */
+    .top-bar {
+        display: none !important;
+    }
+
+    /* Контактная информация в топ-баре (уже скрыта, но оставим на всякий случай) */
     .top-bar .container {
         flex-direction: column;
         align-items: center;
@@ -1038,7 +1043,6 @@ nav .container {
     .contact-grid {
         grid-template-columns: 1fr;
     }
-    /* Карусель жюри на мобильных будет обработана скриптом в contacts.html */
 
     /* Показываем контакты в подвале на мобильных */
     .footer-contacts-mobile {
