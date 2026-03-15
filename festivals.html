@@ -9,6 +9,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Стили для мобильной версии карточек фестивалей */
+        @media (max-width: 768px) {
+            .festival-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px 15px;
+            }
+            
+            .festival-card .badge {
+                margin-bottom: 10px;
+                font-size: 0.9rem;
+                padding: 6px 15px;
+            }
+            
+            .festival-card .btn-small {
+                width: 100%;
+                max-width: 200px;
+                margin: 5px auto;
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+            
+            /* Контейнер для двух кнопок */
+            .festival-card .button-group {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                gap: 8px;
+                margin-top: 10px;
+            }
+            
+            .festival-card .button-group .btn-small {
+                margin: 0;
+            }
+            
+            /* Располагаем надпись "2 фестиваля" над кнопками */
+            .festival-card .badge {
+                order: -1;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -52,8 +97,10 @@
                         <div class="date">30.04 – 04.05</div>
                         <div class="location">Москва</div>
                         <div class="badge">2 фестиваля</div>
-                        <a href="festival-30apr.html" class="btn-small">Подробнее</a>
-                        <a href="application.html" class="btn-small" style="margin-top:10px;">Участвовать</a>
+                        <div class="button-group">
+                            <a href="festival-30apr.html" class="btn-small">Подробнее</a>
+                            <a href="application.html" class="btn-small">Участвовать</a>
+                        </div>
                     </div>
                     <!-- Карточка 2 -->
                     <div class="festival-card">
@@ -61,8 +108,10 @@
                         <div class="date">25 – 29.10</div>
                         <div class="location">Москва</div>
                         <div class="badge">2 фестиваля</div>
-                        <a href="festival-25oct.html" class="btn-small">Подробнее</a>
-                        <a href="application.html" class="btn-small" style="margin-top:10px;">Участвовать</a>
+                        <div class="button-group">
+                            <a href="festival-25oct.html" class="btn-small">Подробнее</a>
+                            <a href="application.html" class="btn-small">Участвовать</a>
+                        </div>
                     </div>
                     <!-- Карточка 3 -->
                     <div class="festival-card">
@@ -70,8 +119,10 @@
                         <div class="date">15 – 19.11</div>
                         <div class="location">Сочи</div>
                         <div class="badge">2 фестиваля</div>
-                        <a href="festival-15nov.html" class="btn-small">Подробнее</a>
-                        <a href="application.html" class="btn-small" style="margin-top:10px;">Участвовать</a>
+                        <div class="button-group">
+                            <a href="festival-15nov.html" class="btn-small">Подробнее</a>
+                            <a href="application.html" class="btn-small">Участвовать</a>
+                        </div>
                     </div>
                     <!-- Карточка 4 -->
                     <div class="festival-card">
@@ -79,8 +130,10 @@
                         <div class="date">04 – 08.01</div>
                         <div class="location">Москва</div>
                         <div class="badge">2 фестиваля</div>
-                        <a href="festival-04jan.html" class="btn-small">Подробнее</a>
-                        <a href="application.html" class="btn-small" style="margin-top:10px;">Участвовать</a>
+                        <div class="button-group">
+                            <a href="festival-04jan.html" class="btn-small">Подробнее</a>
+                            <a href="application.html" class="btn-small">Участвовать</a>
+                        </div>
                     </div>
                     <!-- Карточка 5 -->
                     <div class="festival-card">
@@ -88,8 +141,10 @@
                         <div class="date">23 – 27.10</div>
                         <div class="location">Москва</div>
                         <div class="badge">2 фестиваля</div>
-                        <a href="festival-23oct2027.html" class="btn-small">Подробнее</a>
-                        <a href="application.html" class="btn-small" style="margin-top:10px;">Участвовать</a>
+                        <div class="button-group">
+                            <a href="festival-23oct2027.html" class="btn-small">Подробнее</a>
+                            <a href="application.html" class="btn-small">Участвовать</a>
+                        </div>
                     </div>
                     <!-- Карточка 6 -->
                     <div class="festival-card">
@@ -97,8 +152,10 @@
                         <div class="date">21 – 25.10</div>
                         <div class="location">Москва</div>
                         <div class="badge">2 фестиваля</div>
-                        <a href="festival-21oct2028.html" class="btn-small">Подробнее</a>
-                        <a href="application.html" class="btn-small" style="margin-top:10px;">Участвовать</a>
+                        <div class="button-group">
+                            <a href="festival-21oct2028.html" class="btn-small">Подробнее</a>
+                            <a href="application.html" class="btn-small">Участвовать</a>
+                        </div>
                     </div>
                 </div>
                 <div class="center" style="margin-top: 40px;">
@@ -110,10 +167,9 @@
 
     <footer class="footer">
         <div class="container">
-            <!-- Контакты для мобильной версии (исправлено) -->
+            <!-- Контакты для мобильной версии -->
             <div class="footer-contacts-mobile">
-                <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
-                <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="tel:+79037622229" style="color: #c9a03d; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
                 <span><a href="mailto:edinstvoro@mail.ru" style="color: #c9a03d; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvoro@mail.ru</a></span>
             </div>
             <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
@@ -134,7 +190,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" (исправлено) -->
+    <!-- Модальное окно "Перезвоните мне" -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -166,7 +222,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Спец.условия" (без изменений, но телефон тоже можно сделать ссылкой) -->
+    <!-- Модальное окно "Спецусловия" -->
     <div class="modal-overlay" id="specialModal">
         <div class="modal-content">
             <button class="modal-close" id="closeSpecialBtn">&times;</button>
