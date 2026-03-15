@@ -926,16 +926,28 @@ nav .container {
         display: block;
     }
 
-    /* Герой – уменьшаем шрифт и делаем span блочным для переноса */
+    /* Герой – форматирование заголовка */
     .hero h1 {
         font-size: 2rem;
         line-height: 1.3;
         margin-bottom: 15px;
         hyphens: none;
     }
+    /* «Фестивальные встречи» всегда в одну строку */
+    .hero h1::before {
+        content: "Фестивальные встречи";
+        display: block;
+        white-space: nowrap;
+    }
+    /* Скрываем оригинальный текст до span */
+    .hero h1 {
+        font-size: 0;
+    }
     .hero h1 span {
-        display: block;          /* переносим «Единство России» на новую строку */
-        white-space: nowrap;      /* но внутри span текст не разрывается */
+        font-size: 2rem;
+        display: block;
+        color: #c9a03d;
+        white-space: nowrap;
     }
     .hero p {
         font-size: 1rem;
