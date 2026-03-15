@@ -278,5 +278,20 @@
             }
         });
     </script>
+
+	<script>
+    	(function() {
+        	function hideTopBarOnMobile() {
+            	if (window.innerWidth <= 768) {
+                	var topBar = document.querySelector('.top-bar');
+                	if (topBar) {
+                    	topBar.style.display = 'none';
+                	}
+            	}
+        	}
+        	window.addEventListener('load', hideTopBarOnMobile);
+        	window.addEventListener('resize', hideTopBarOnMobile);
+    	})();
+	</script>
 </body>
 </html>
