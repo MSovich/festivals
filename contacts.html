@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Стили для карусели жюри – 5 колонок, 2 ряда */
+        /* Стили для карусели жюри – 5 колонок, 2 ряда (для десктопа) */
         .jury-carousel-container {
             position: relative;
             margin: 40px 0 20px;
@@ -97,7 +97,7 @@
             margin-top: 8px;
         }
 
-        /* Адаптивность */
+        /* Адаптивность для планшетов */
         @media (max-width: 1024px) {
             .jury-carousel-container {
                 padding: 0 50px;
@@ -112,12 +112,11 @@
                 right: 15px;
             }
         }
+
+        /* Мобильная версия – каждый слайд содержит одну карточку (настраивается скриптом) */
         @media (max-width: 768px) {
             .jury-carousel-container {
                 padding: 0 40px;
-            }
-            .jury-carousel-slide {
-                grid-template-columns: repeat(2, 1fr); /* 2 колонки на маленьких планшетах */
             }
             .jury-carousel-arrow {
                 width: 40px;
@@ -130,10 +129,21 @@
             .jury-carousel-arrow.right {
                 right: 10px;
             }
-        }
-        @media (max-width: 480px) {
+            /* Скрываем исходные слайды, они будут заменены скриптом */
             .jury-carousel-slide {
-                grid-template-columns: 1fr; /* 1 колонка на телефонах */
+                display: none;
+            }
+            /* Стили для динамически созданных слайдов с одной карточкой */
+            .jury-carousel-slide-mobile {
+                flex: 0 0 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+            }
+            .jury-carousel-slide-mobile .jury-item {
+                max-width: 300px;
+                width: 100%;
             }
         }
     </style>
@@ -180,7 +190,7 @@
                     <button class="jury-carousel-arrow right" id="juryNext"><i class="fas fa-chevron-right"></i></button>
                     
                     <div class="jury-carousel-track" id="juryTrack">
-                        <!-- Слайд 1 (первые 10) -->
+                        <!-- Слайд 1 (10 карточек) -->
                         <div class="jury-carousel-slide">
                             <div class="jury-item">
                                 <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
@@ -253,7 +263,7 @@
                                 <p>Педагог-хореограф, специалист по современной хореографии</p>
                             </div>
                         </div>
-                        <!-- Слайд 2 (следующие 10) -->
+                        <!-- Слайд 2 (10 карточек) -->
                         <div class="jury-carousel-slide">
                             <div class="jury-item">
                                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
@@ -325,7 +335,7 @@
                                 <p>Режиссер-хореограф, преподаватель МГУКИ</p>
                             </div>
                         </div>
-                        <!-- Слайд 3 (следующие 10) -->
+                        <!-- Слайд 3 (10 карточек) -->
                         <div class="jury-carousel-slide">
                             <div class="jury-item">
                                 <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
@@ -396,7 +406,7 @@
                                 <p>Народный артист России, худрук Москонцерта</p>
                             </div>
                         </div>
-                        <!-- Слайд 4 (следующие 10) -->
+                        <!-- Слайд 4 (10 карточек) -->
                         <div class="jury-carousel-slide">
                             <div class="jury-item">
                                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop" alt="">
@@ -469,7 +479,7 @@
                                 <p>Доцент РАМ им. Гнесиных, лауреат конкурсов</p>
                             </div>
                         </div>
-                        <!-- Слайд 5 (последние 10) -->
+                        <!-- Слайд 5 (10 карточек) -->
                         <div class="jury-carousel-slide">
                             <div class="jury-item">
                                 <img src="https://images.unsplash.com/photo-1494790108777-50fd5e3a5c91?w=200&h=200&fit=crop" alt="">
@@ -687,59 +697,130 @@
             }
         });
     </script>
+
+    <!-- Скрипт для адаптивной карусели жюри -->
     <script>
-        // Скрипт для карусели жюри (бесконечная)
-        document.addEventListener('DOMContentLoaded', function() {
+        (function() {
             const track = document.getElementById('juryTrack');
-            const slides = document.querySelectorAll('.jury-carousel-slide');
             const prevBtn = document.getElementById('juryPrev');
             const nextBtn = document.getElementById('juryNext');
             const dotsContainer = document.getElementById('juryDots');
-            if (!track || slides.length === 0) return;
-            
             let currentIndex = 0;
-            const totalSlides = slides.length;
-            
-            // Создаём точки
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('span');
-                dot.classList.add('jury-carousel-dot');
-                dot.dataset.index = i;
-                dot.addEventListener('click', function() {
-                    goToSlide(parseInt(this.dataset.index));
-                });
-                dotsContainer.appendChild(dot);
+            let totalSlides = 0;
+            let slides = [];
+            let dots = [];
+            let isMobile = window.innerWidth <= 768;
+            let originalHTML = track ? track.innerHTML : ''; // сохраняем исходную разметку
+
+            function rebuildCarousel() {
+                const newIsMobile = window.innerWidth <= 768;
+                if (newIsMobile === isMobile) return; // режим не изменился
+                isMobile = newIsMobile;
+
+                if (!track) return;
+
+                if (isMobile) {
+                    // Собираем все карточки из исходных слайдов
+                    const allItems = Array.from(document.querySelectorAll('.jury-carousel-slide .jury-item'));
+                    if (allItems.length === 0) return;
+
+                    // Очищаем трек
+                    track.innerHTML = '';
+
+                    // Создаём новые слайды, каждый с одной карточкой
+                    allItems.forEach((item, index) => {
+                        const slide = document.createElement('div');
+                        slide.className = 'jury-carousel-slide-mobile';
+                        // Клонируем карточку, чтобы не потерять события
+                        slide.appendChild(item.cloneNode(true));
+                        track.appendChild(slide);
+                    });
+
+                    slides = document.querySelectorAll('.jury-carousel-slide-mobile');
+                } else {
+                    // Восстанавливаем исходную разметку
+                    track.innerHTML = originalHTML;
+                    slides = document.querySelectorAll('.jury-carousel-slide');
+                }
+
+                totalSlides = slides.length;
+                currentIndex = 0;
+
+                // Пересоздаём точки
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('jury-carousel-dot');
+                    dot.dataset.index = i;
+                    dot.addEventListener('click', function() {
+                        goToSlide(parseInt(this.dataset.index));
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+                dots = document.querySelectorAll('.jury-carousel-dot');
+
+                // Обновляем положение
+                goToSlide(0);
             }
-            const dots = document.querySelectorAll('.jury-carousel-dot');
-            
+
             function goToSlide(index) {
-                // Бесконечность: если индекс меньше 0, переходим к последнему
                 if (index < 0) index = totalSlides - 1;
-                // если больше последнего, переходим к первому
                 if (index >= totalSlides) index = 0;
-                
                 currentIndex = index;
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                if (track) {
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
                 updateDots();
             }
-            
+
             function updateDots() {
                 dots.forEach((dot, i) => {
                     if (i === currentIndex) dot.classList.add('active');
                     else dot.classList.remove('active');
                 });
             }
-            
-            prevBtn.addEventListener('click', () => {
-                goToSlide(currentIndex - 1);
+
+            // Инициализация
+            if (track) {
+                originalHTML = track.innerHTML;
+                isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    const allItems = Array.from(document.querySelectorAll('.jury-carousel-slide .jury-item'));
+                    track.innerHTML = '';
+                    allItems.forEach(item => {
+                        const slide = document.createElement('div');
+                        slide.className = 'jury-carousel-slide-mobile';
+                        slide.appendChild(item.cloneNode(true));
+                        track.appendChild(slide);
+                    });
+                    slides = document.querySelectorAll('.jury-carousel-slide-mobile');
+                } else {
+                    slides = document.querySelectorAll('.jury-carousel-slide');
+                }
+                totalSlides = slides.length;
+
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('jury-carousel-dot');
+                    dot.dataset.index = i;
+                    dot.addEventListener('click', function() {
+                        goToSlide(parseInt(this.dataset.index));
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+                dots = document.querySelectorAll('.jury-carousel-dot');
+
+                prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+                nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+                goToSlide(0);
+            }
+
+            // Следим за изменением размера окна
+            window.addEventListener('resize', function() {
+                rebuildCarousel();
             });
-            
-            nextBtn.addEventListener('click', () => {
-                goToSlide(currentIndex + 1);
-            });
-            
-            goToSlide(0);
-        });
+        })();
     </script>
 </body>
 </html>
