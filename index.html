@@ -21,24 +21,16 @@
         .button-row .btn-reasons {
             margin: 0;
         }
-
-        /* Улучшение отображения на средних экранах */
-        @media (max-width: 900px) {
-            .reason-link {
-                padding: 6px 12px;
-                font-size: 0.85rem;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Верхняя панель с контактами -->
+    <!-- Верхняя панель с контактами (исправлено) -->
     <div class="top-bar">
         <div class="container">
             <div class="contact-info">
-                <span><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</span>
-                <span><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</span>
-                <span><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</span>
+                <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
+                <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="mailto:edinstvorossii2010@mail.ru" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</a></span>
             </div>
             <button class="callback-btn" onclick="openModal()"><i class="fas fa-phone"></i> Перезвоните мне</button>
         </div>
@@ -157,14 +149,13 @@
         </section>
     </main>
 
-    <!-- Подвал -->
+    <!-- Подвал (исправлено) -->
     <footer class="footer">
         <div class="container">
-            <!-- Контакты для мобильной версии (появятся только на экранах до 768px) -->
+            <!-- Контакты для мобильной версии (исправлено) -->
             <div class="footer-contacts-mobile">
-	            <span><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</span>
-                <span><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</span>
-                <span><i class="fas fa-envelope"></i> edinstvoro@mail.ru</span>
+                <span><a href="tel:+79037622229" style="color: #c9a03d; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="mailto:edinstvoro@mail.ru" style="color: #c9a03d; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvoro@mail.ru</a></span>
             </div>
             <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
         </div>
@@ -184,7 +175,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" -->
+    <!-- Модальное окно "Перезвоните мне" (исправлено) -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -196,8 +187,8 @@
             <div class="modal-phones">
                 <div class="modal-phones-title">Позвоните нам, если не хотите ждать</div>
                 <div class="modal-phones-numbers">
-                    <p><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</p>
-                    <p><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</p>
+                    <p><a href="tel:+79895687852" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></p>
+                    <p><a href="tel:+79037622229" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></p>
                 </div>
             </div>
             <div class="modal-form">
@@ -216,7 +207,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Спец.условия" -->
+    <!-- Модальное окно "Спец.условия" (без изменений) -->
     <div class="modal-overlay" id="specialModal">
         <div class="modal-content">
             <button class="modal-close" id="closeSpecialBtn">&times;</button>
@@ -227,7 +218,7 @@
             <div class="modal-phones" style="text-align: left;">
                 <p>У нас действуют специальные условия: спонсорская помощь, гибкая система скидок и льгот.</p>
                 <p>Если на другом фестивале предложили более выгодные условия участия или мотивационные аспекты: вы можете уточнить возможности таких же условий в нашем оргкомитете!</p>
-                <p style="font-weight: 700; margin-top: 15px;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</p>
+                <p style="font-weight: 700; margin-top: 15px;"><a href="tel:+79895687852" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></p>
             </div>
         </div>
     </div>
@@ -300,20 +291,5 @@
             }
         });
     </script>
-
-	<script>
-    	(function() {
-        	function hideTopBarOnMobile() {
-            	if (window.innerWidth <= 768) {
-                	var topBar = document.querySelector('.top-bar');
-                	if (topBar) {
-                    	topBar.style.display = 'none';
-                	}
-            	}
-        	}
-        	window.addEventListener('load', hideTopBarOnMobile);
-        	window.addEventListener('resize', hideTopBarOnMobile);
-    	})();
-	</script>
 </body>
 </html>
