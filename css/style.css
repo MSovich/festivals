@@ -933,22 +933,33 @@ nav .container {
         margin-bottom: 15px;
         hyphens: none;
     }
-    /* «Фестивальные встречи» всегда в одну строку */
+    
+    /* Замена заголовка только на мобильных */
+    .hero h1 {
+        font-size: 0 !important; /* скрываем оригинальный текст */
+        line-height: 0;
+    }
+    
     .hero h1::before {
         content: "Фестивальные встречи";
         display: block;
-        white-space: nowrap;
-    }
-    /* Скрываем оригинальный текст до span */
-    .hero h1 {
-        font-size: 0;
-    }
-    .hero h1 span {
         font-size: 2rem;
-        display: block;
-        color: #c9a03d;
-        white-space: nowrap;
+        color: white;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        white-space: nowrap; /* запрещаем перенос */
+        margin-bottom: 10px;
     }
+    
+    .hero h1 span {
+        font-size: 2rem !important;
+        display: block !important;
+        color: #c9a03d !important;
+        white-space: nowrap !important;
+    }
+    
     .hero p {
         font-size: 1rem;
         line-height: 1.4;
