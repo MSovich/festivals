@@ -933,6 +933,9 @@ nav .container {
         margin-bottom: 15px;
         hyphens: none; /* запрещаем переносы слов */
     }
+    .hero h1 span {
+        white-space: nowrap; /* «Единство России» не разрывается */
+    }
     .hero p {
         font-size: 1rem;
         line-height: 1.4;
