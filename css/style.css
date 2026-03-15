@@ -797,38 +797,41 @@ nav .container {
         padding: 0 32px;
     }
     
-    /* Навигация для планшетов - пункты ближе друг к другу и дальше от логотипа */
+    /* Усиленная навигация для планшетов */
     nav .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
     }
     
-    .nav-links {
-        gap: 8px !important; /* Минимальное расстояние между пунктами */
-        margin-left: auto !important; /* Прижимаем меню к правому краю */
-        padding-left: 30px !important; /* Отступ от логотипа */
+    nav .nav-links {
+        display: flex !important;
+        gap: 5px !important;
+        margin-left: auto !important;
+        padding-left: 40px !important;
+        flex-wrap: nowrap !important;
     }
     
-    .nav-links li {
-        margin: 0 !important; /* Убираем внешние отступы */
+    nav .nav-links li {
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
-    .nav-links a {
-        font-size: 0.8rem !important; /* Уменьшенный шрифт */
-        padding: 4px 6px !important; /* Минимальные отступы */
-        white-space: nowrap;
+    nav .nav-links a {
+        font-size: 0.75rem !important;
+        padding: 4px 4px !important;
+        white-space: nowrap !important;
     }
     
-    .btn-nav {
-        padding: 4px 10px !important;
-        font-size: 0.8rem !important;
-        margin-left: 5px;
+    nav .btn-nav {
+        padding: 4px 8px !important;
+        font-size: 0.75rem !important;
+        margin-left: 5px !important;
     }
     
-    .logo {
-        font-size: 1.6rem !important; /* Уменьшенный логотип */
-        margin-right: 5px;
+    nav .logo {
+        font-size: 1.4rem !important;
+        margin-right: 5px !important;
     }
     
     /* Остальные стили для планшетов без изменений */
