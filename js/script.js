@@ -6,18 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.toggle('show');
         });
     }
-});
 
-// Скрыть верхнюю панель на мобильных устройствах
-function hideTopBarOnMobile() {
-    if (window.innerWidth <= 768) {
-        const topBar = document.querySelector('.top-bar');
-        if (topBar) {
-            topBar.style.display = 'none';
+    // Скрывать соцкнопки при скролле
+    window.addEventListener('scroll', function() {
+        var socialButtons = document.getElementById('socialButtons');
+        if (socialButtons && socialButtons.classList.contains('active')) {
+            socialButtons.classList.remove('active');
         }
-    }
-}
-
-// Вызвать при загрузке и при изменении размера окна
-window.addEventListener('load', hideTopBarOnMobile);
-window.addEventListener('resize', hideTopBarOnMobile);
+    });
+});
