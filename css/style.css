@@ -1093,19 +1093,19 @@ nav .container {
     .social-btn.telegram {
         top: 0;
         left: 0;
-        transform: translate(-20%, -50%);
+        transform: translate(-10%, -40%);
     }
     
     .social-btn.vk {
         top: 0;
         right: 0;
-        transform: translate(20%, -50%);
+        transform: translate(10%, -40%);
     }
     
     .social-btn.tiktok {
         bottom: 0;
         right: 0;
-        transform: translate(20%, 30%);
+        transform: translate(10%, 20%);
     }
 
     /* Причины */
