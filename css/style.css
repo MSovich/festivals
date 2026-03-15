@@ -885,26 +885,9 @@ nav .container {
 
 /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ (до 768px) ========== */
 @media (max-width: 768px) {
-    /* Скрываем верхнюю панель с принудительным !important */
+    /* Скрываем верхнюю панель */
     .top-bar {
         display: none !important;
-    }
-
-    /* Контактная информация в топ-баре (уже скрыта, но оставим на всякий случай) */
-    .top-bar .container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    .contact-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        width: 100%;
-    }
-    .contact-info span {
-        text-align: center;
-        word-break: break-word;
     }
 
     /* Навигация */
@@ -943,13 +926,19 @@ nav .container {
         display: block;
     }
 
-    /* Герой */
+    /* Герой – уменьшаем шрифт, чтобы заголовки занимали меньше места */
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.3;
+        margin-bottom: 15px;
     }
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        line-height: 1.4;
+        max-width: 100%;
+        padding: 0 10px;
     }
+
     .btn {
         padding: 12px 30px;
         font-size: 0.95rem;
