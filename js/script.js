@@ -14,4 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
             socialButtons.classList.remove('active');
         }
     });
+
+    // Принудительно убираем анимацию кнопки троеточия на мобильных
+    if (window.innerWidth <= 768) {
+        var toggleBtn = document.querySelector('.social-toggle');
+        if (toggleBtn) {
+            toggleBtn.style.transition = 'none';
+            toggleBtn.style.transform = 'none';
+        }
+    }
 });
