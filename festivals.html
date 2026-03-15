@@ -35,19 +35,20 @@
             box-shadow: 0 2px 8px rgba(201, 160, 61, 0.15);
         }
         
-        /* Группа кнопок для десктопа */
+        /* Группа кнопок - вертикальное расположение для всех устройств */
         .festival-card .button-group {
             display: flex;
+            flex-direction: column;
             gap: 15px;
-            justify-content: center;
+            align-items: center;
             width: 100%;
             margin-top: 5px;
         }
         
         .festival-card .btn-small {
-            min-width: 140px;
-            padding: 10px 20px;
-            font-size: 0.95rem;
+            min-width: 180px;
+            padding: 12px 24px;
+            font-size: 1rem;
             border: 2px solid #0b1c34;
             border-radius: 40px;
             font-weight: 600;
@@ -55,6 +56,7 @@
             text-decoration: none;
             transition: 0.3s;
             background: transparent;
+            text-align: center;
         }
         
         .festival-card .btn-small:hover {
@@ -63,7 +65,7 @@
             transform: scale(1.05);
         }
         
-        /* Мобильные стили */
+        /* Мобильные стили (минимальные изменения) */
         @media (max-width: 768px) {
             .festival-card {
                 padding: 25px 15px;
@@ -75,17 +77,9 @@
                 font-size: 1rem;
             }
             
-            .festival-card .button-group {
-                flex-direction: column;
-                gap: 15px;
-                align-items: center;
-            }
-            
             .festival-card .btn-small {
                 width: 100%;
                 max-width: 250px;
-                padding: 12px 20px;
-                font-size: 1rem;
             }
             
             .festival-card .date {
@@ -100,14 +94,9 @@
         
         /* Планшетные стили (при необходимости) */
         @media (min-width: 769px) and (max-width: 1024px) {
-            .festival-card .button-group {
-                gap: 10px;
-            }
-            
             .festival-card .btn-small {
-                min-width: 120px;
-                padding: 8px 16px;
-                font-size: 0.9rem;
+                min-width: 160px;
+                padding: 10px 20px;
             }
         }
     </style>
