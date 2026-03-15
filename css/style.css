@@ -797,14 +797,21 @@ nav .container {
         padding: 0 32px;
     }
     .nav-links {
-        gap: 20px;
+        gap: 12px; /* Уменьшаем расстояние между пунктами меню */
+        margin-left: auto; /* Прижимаем меню к правому краю */
     }
     .nav-links a {
         font-size: 0.9rem;
+        padding: 8px 10px; /* Увеличиваем область клика */
     }
     .btn-nav {
-        padding: 6px 20px;
+        padding: 6px 16px;
         font-size: 0.9rem;
+        margin-left: 5px; /* Небольшой отступ от остальных пунктов */
+    }
+    .logo {
+        font-size: 1.8rem; /* Чуть уменьшаем логотип */
+        margin-right: 10px; /* Отступ от меню */
     }
     .hero h1 {
         font-size: 3.2rem;
@@ -931,36 +938,32 @@ nav .container {
         font-size: 2rem;
         line-height: 1.3;
         margin-bottom: 15px;
+        color: white; /* Явно задаем цвет */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
-    /* Убираем оригинальный текст, оставляем только место */
-    .hero h1 {
-        font-size: 0;
-        line-height: 0;
+    /* Скрываем оригинальный текст, но оставляем span видимым */
+    .hero h1 span {
+        color: #c9a03d !important;
+        display: block;
+        white-space: nowrap;
+        font-size: 2rem;
     }
     
-    /* Создаем первую строку через before */
+    /* Добавляем текст через before */
     .hero h1::before {
         content: "Фестивальные встречи";
         display: block;
-        font-size: 2rem;
-        line-height: 1.3;
         color: white;
         font-family: 'Cormorant Garamond', serif;
         font-weight: 700;
+        font-size: 2rem;
         letter-spacing: 0.02em;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         white-space: nowrap;
         margin-bottom: 10px;
-    }
-    
-    /* Показываем span как вторую строку */
-    .hero h1 span {
-        display: block;
-        font-size: 2rem;
-        line-height: 1.3;
-        color: #c9a03d !important;
-        white-space: nowrap;
     }
     
     .hero p {
@@ -968,6 +971,8 @@ nav .container {
         line-height: 1.4;
         max-width: 100%;
         padding: 0 10px;
+        hyphens: none;
+        color: white;
         margin-top: 15px;
     }
 
@@ -1097,199 +1102,6 @@ nav .container {
     box-shadow: 0 8px 20px rgba(201, 160, 61, 0.4);
 }
 
-/* Модальное окно "Перезвоните мне" */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
-    background: #fff;
-    border-radius: 30px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-    position: relative;
-    padding: 40px 30px;
-    transform: translateY(-20px);
-    transition: transform 0.3s ease;
-}
-
-.modal-overlay.active .modal-content {
-    transform: translateY(0);
-}
-
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    color: #0b1c34;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-    z-index: 10;
-}
-
-.modal-close:hover {
-    background: #c9a03d;
-    color: white;
-    transform: rotate(90deg);
-}
-
-.modal-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.modal-header h2 {
-    font-size: 2rem;
-    color: #0b1c34;
-    margin-bottom: 5px;
-}
-
-.modal-header p {
-    color: #666;
-    font-size: 1rem;
-}
-
-.modal-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #c9a03d, #b38b2f);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    color: #0b1c34;
-    font-size: 2.5rem;
-    border: 3px solid white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.modal-phones {
-    text-align: center;
-    margin: 15px 0 25px;
-    padding: 15px;
-    background: #f8f8f8;
-    border-radius: 20px;
-    border: 1px solid rgba(201, 160, 61, 0.3);
-}
-
-.modal-phones-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #0b1c34;
-    margin-bottom: 10px;
-}
-
-.modal-phones-numbers p {
-    font-size: 1.1rem;
-    color: #0b1c34;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.modal-phones-numbers p:last-child {
-    margin-bottom: 0;
-}
-
-.modal-phones-numbers i {
-    color: #c9a03d;
-    margin-right: 10px;
-    width: 20px;
-}
-
-.modal-form .form-group {
-    margin-bottom: 20px;
-}
-
-.modal-form .form-group label {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 8px;
-    color: #0b1c34;
-    font-size: 0.95rem;
-}
-
-.modal-form .form-group input {
-    width: 100%;
-    padding: 15px 20px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    transition: 0.3s;
-    background: #f9f9fc;
-}
-
-.modal-form .form-group input:focus {
-    border-color: #c9a03d;
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(201,160,61,0.2);
-    background: white;
-}
-
-.modal-form .checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0;
-}
-
-.modal-form .checkbox-group label {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.modal-form .submit-btn {
-    background: linear-gradient(135deg, #0b1c34, #1e3a5f);
-    color: white;
-    border: none;
-    padding: 16px 40px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 100%;
-    box-shadow: 0 4px 15px rgba(11,28,52,0.3);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.modal-form .submit-btn:hover {
-    background: linear-gradient(135deg, #1e3a5f, #0b1c34);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(11,28,52,0.5);
-}
-
 /* ===== СОЦИАЛЬНОЕ МЕНЮ (слева снизу) ===== */
 .social-menu {
     position: fixed;
@@ -1311,13 +1123,13 @@ nav .container {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4);
-    transition: 0.3s;
+    transition: none; /* Убираем анимацию */
+    transform: none; /* Убираем трансформацию */
 }
 
 .social-toggle:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 12px 30px rgba(201, 160, 61, 0.6);
     background: linear-gradient(135deg, #b38b2f, #c9a03d);
+    transform: none; /* Убираем движение при наведении */
 }
 
 .social-buttons {
@@ -1398,6 +1210,11 @@ nav .container {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
+        transition: none;
+        transform: none;
+    }
+    .social-toggle:hover {
+        transform: none;
     }
     .social-buttons {
         width: 48px;
