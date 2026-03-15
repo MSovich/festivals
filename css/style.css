@@ -928,7 +928,7 @@ nav .container {
 
     /* Герой – скрываем оригинальный текст, показываем псевдоэлемент и span */
     .hero h1 {
-        font-size: 0 !important; /* полностью скрываем оригинальный текст */
+        font-size: 0 !important;
         line-height: 0;
         margin-bottom: 15px;
         display: flex;
@@ -1001,7 +1001,7 @@ nav .container {
         hyphens: none;
     }
 
-    /* Плавающие кнопки */
+    /* Плавающие кнопки – единый размер 40px */
     .home-button {
         bottom: 15px;
         right: 20px;
@@ -1067,7 +1067,7 @@ nav .container {
         display: block;
     }
 
-    /* Социальное меню – мобильная адаптация с принудительным отключением анимации */
+    /* Социальное меню – мобильная адаптация: размер 40px как у кнопок справа */
     .social-menu {
         bottom: 15px;
         left: 20px;
@@ -1078,10 +1078,20 @@ nav .container {
         font-size: 1.2rem;
         transition: none !important;
         transform: none !important;
+        box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4); /* такая же тень, как у .phone-button */
+        background: linear-gradient(135deg, #c9a03d, #b38b2f); /* золотой градиент, как у кнопок справа */
+        color: #0b1c34;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
     }
     .social-toggle:hover {
         transform: none !important;
         background: linear-gradient(135deg, #b38b2f, #c9a03d);
+        box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4);
     }
     .social-buttons {
         width: 48px;
@@ -1314,7 +1324,7 @@ nav .container {
     box-shadow: 0 8px 25px rgba(11,28,52,0.5);
 }
 
-/* ===== СОЦИАЛЬНОЕ МЕНЮ (слева снизу) ===== */
+/* ===== СОЦИАЛЬНОЕ МЕНЮ (слева снизу) для десктопа ===== */
 .social-menu {
     position: fixed;
     bottom: 20px;
@@ -1335,13 +1345,13 @@ nav .container {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4);
-    transition: none; /* убираем анимацию */
-    transform: none; /* убираем трансформацию */
+    transition: none;
+    transform: none;
 }
 
 .social-toggle:hover {
     background: linear-gradient(135deg, #b38b2f, #c9a03d);
-    transform: none; /* убираем движение при наведении */
+    transform: none;
     box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4);
 }
 
@@ -1351,7 +1361,7 @@ nav .container {
     left: 0;
     width: 60px;
     height: 60px;
-    transform: translate(27px, -25px); /* поднято на 5px вверх */
+    transform: translate(27px, -25px);
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
@@ -1380,23 +1390,22 @@ nav .container {
     transition: 0.3s;
 }
 
-/* Кнопки располагаются по трём углам квадрата, вплотную к центру */
 .social-btn.telegram {
     top: 0;
     left: 0;
-    transform: translate(-50%, -70%); /* поднято выше */
+    transform: translate(-50%, -70%);
 }
 
 .social-btn.vk {
     top: 0;
     right: 0;
-    transform: translate(calc(50% + 5px), -70%); /* сдвиг вправо на 5px */
+    transform: translate(calc(50% + 5px), -70%);
 }
 
 .social-btn.tiktok {
     bottom: 0;
     right: 0;
-    transform: translate(calc(50% + 5px), 50%); /* сдвиг вправо на 5px */
+    transform: translate(calc(50% + 5px), 50%);
 }
 
 .social-btn:hover {
