@@ -938,7 +938,7 @@ nav .container {
     .home-button { bottom: 15px; right: 20px; }
     .phone-button { bottom: 15px; right: 75px; }
 
-    /* Социальное меню — кнопки смещены вправо и вверх */
+    /* Социальное меню — кнопки смещены вправо и вверх, раздвинуты */
     .social-menu {
         bottom: 15px;
         left: 20px;
@@ -962,11 +962,11 @@ nav .container {
         box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4) !important;
     }
 
-    /* Контейнер соцкнопок — сдвинут вправо и вверх */
+    /* Контейнер соцкнопок — смещён вправо и вверх */
     .social-buttons {
         width: 48px;
         height: 48px;
-        transform: translate(45px, -5px) !important; /* вправо и вверх */
+        transform: translate(40px, -30px) !important; /* правее и выше */
         left: 0 !important;
         bottom: 0 !important;
     }
@@ -979,16 +979,16 @@ nav .container {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
     }
 
-    /* Позиции кнопок относительно контейнера */
+    /* Раздвигаем кнопки Telegram и VK */
     .social-btn.telegram {
         top: 0;
         left: 0;
-        transform: translate(-40%, -70%) !important;
+        transform: translate(-50%, -70%) !important; /* дальше от центра */
     }
     .social-btn.vk {
         top: 0;
         right: 0;
-        transform: translate(40%, -70%) !important;
+        transform: translate(50%, -70%) !important; /* дальше от центра */
     }
     .social-btn.tiktok {
         bottom: 0;
