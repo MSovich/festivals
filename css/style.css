@@ -805,28 +805,33 @@ nav .container {
     }
     
     .nav-links {
-        gap: 12px; /* Уменьшено с 20px до 12px - пункты ближе друг к другу */
-        margin-left: auto; /* Прижимаем меню к правому краю - дальше от логотипа */
-        padding-left: 20px; /* Добавляем отступ слева для дополнительного расстояния от логотипа */
+        gap: 8px !important; /* Минимальное расстояние между пунктами */
+        margin-left: auto !important; /* Прижимаем меню к правому краю */
+        padding-left: 30px !important; /* Отступ от логотипа */
+    }
+    
+    .nav-links li {
+        margin: 0 !important; /* Убираем внешние отступы */
     }
     
     .nav-links a {
-        font-size: 0.85rem; /* Немного уменьшен размер шрифта */
-        padding: 6px 8px; /* Уменьшены отступы вокруг ссылок */
-        white-space: nowrap; /* Запрещаем перенос текста в пунктах меню */
+        font-size: 0.8rem !important; /* Уменьшенный шрифт */
+        padding: 4px 6px !important; /* Минимальные отступы */
+        white-space: nowrap;
     }
     
     .btn-nav {
-        padding: 6px 14px; /* Уменьшены отступы у кнопки "Заявка" */
-        font-size: 0.85rem;
+        padding: 4px 10px !important;
+        font-size: 0.8rem !important;
         margin-left: 5px;
     }
     
     .logo {
-        font-size: 1.8rem; /* Чуть уменьшаем логотип */
-        margin-right: 10px; /* Отступ от меню */
+        font-size: 1.6rem !important; /* Уменьшенный логотип */
+        margin-right: 5px;
     }
     
+    /* Остальные стили для планшетов без изменений */
     .hero h1 {
         font-size: 3.2rem;
     }
