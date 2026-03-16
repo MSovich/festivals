@@ -987,9 +987,9 @@ nav .container {
     
     /* VK справа вверху */
     .social-btn.vk {
-        top: 0;
+        top: 50%; /* центрируем по вертикали */
         right: 0;
-        transform: translate(50%, -70%) !important;
+        transform: translate(40%, -50%)
     }
     
     /* TikTok под VK (справа внизу) */
