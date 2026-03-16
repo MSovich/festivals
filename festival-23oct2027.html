@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23–27 октября 2027 | Единство России</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Стили для логотипа с картинкой */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 35px;
+            }
+        }
+
+        /* Дополнительные стили для страницы фестиваля */
+        .festival-info-block {
+            background: #f8faff;
+            border-radius: 40px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(201,160,61,0.2);
+        }
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .direction-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+        }
+        .direction-card h3 {
+            font-size: 1.8rem;
+            color: #0b1c34;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .direction-card .btn-outline {
+            border: 2px solid #0b1c34;
+            color: #0b1c34;
+            background: transparent;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+        .direction-card .btn-outline:hover {
+            background: #0b1c34;
+            color: white;
+        }
+        .places-block {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid rgba(201,160,61,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .places-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        .places-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .places-slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+        .places-status {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .btn-big {
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #c9a03d, #b38b2f);
+            color: #0b1c34;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(201,160,61,0.3);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn-big:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201,160,61,0.5);
+        }
+        .support-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            margin: 30px 0;
+        }
+        .support-table th {
+            background: #0b1c34;
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+        }
+        .support-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .support-table tr:last-child td {
+            border-bottom: none;
+        }
+        .price-card {
+            background: linear-gradient(135deg, #0b1c34, #1e3a5f);
+            color: white;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .price-card .price {
+            font-size: 3rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: #c9a03d;
+            margin: 15px 0;
+        }
+        .price-card small {
+            opacity: 0.8;
+        }
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+        .benefits-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .benefits-list i {
+            color: #c9a03d;
+            width: 24px;
+        }
+        .nomination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+            gap: 10px 20px;
+            margin: 20px 0;
+        }
+        .nomination-item {
+            background: rgba(201,160,61,0.05);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+        }
+        /* Стиль кнопки назад */
+        .back-button {
+            display: inline-block;
+            margin: 20px 0 10px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #c9a03d, #b38b2f);
+            color: #0b1c34;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(201,160,61,0.3);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(201,160,61,0.5);
+        }
+        @media (max-width:768px) {
+            .two-columns { grid-template-columns: 1fr; }
+            .places-block { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
+                <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="mailto:edinstvorossii2010@mail.ru" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</a></span>
+            </div>
+            <button class="callback-btn" onclick="openModal()"><i class="fas fa-phone"></i> Перезвоните мне</button>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/newlogo23.png" alt="Единство России" class="logo-img">
+                Единство<span>России</span>
+            </a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="festivals.html" class="active">Фестивали</a></li>
+                <li><a href="how.html">Как участвовать</a></li>
+                <li><a href="reasons.html">Почему мы</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="contacts.html">Жюри и контакты</a></li>
+                <li><a href="application.html" class="btn-nav">Заявка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <!-- Кнопка назад -->
+                <div style="margin-bottom: 20px;">
+                    <a href="javascript:history.back()" class="back-button"><i class="fas fa-arrow-left"></i> Вернуться назад</a>
+                </div>
+
+                <div class="section-title">
+                    <h2>23–27 октября 2027, г. Москва</h2>
+                    <p style="font-size: 1.3rem; color: #c9a03d; font-weight: 600;">Международные конкурсы-фестивали «Единство России» и «Вдохновение»</p>
+                </div>
+
+                <!-- Два направления -->
+                <div class="two-columns">
+                    <div class="direction-card">
+                        <h3>ХОРЕОГРАФИЯ И ТЕАТРЫ МОДЫ</h3>
+                        <p style="font-size: 1.2rem; margin-bottom: 20px;"><strong>«Единство России» и «Вдохновение»</strong></p>
+                        <a href="#" class="btn-outline">Положение фестиваля (PDF)</a>
+                    </div>
+                    <div class="direction-card">
+                        <h3>ХОРЫ, ВОКАЛ, ИНСТРУМЕНТЫ</h3>
+                        <p style="font-size: 1.2rem; margin-bottom: 20px;"><strong>«Единство России» и «Вдохновение»</strong></p>
+                        <a href="#" class="btn-outline">Положение фестиваля (PDF)</a>
+                    </div>
+                </div>
+
+                <!-- Блок свободных мест + кнопка заявки -->
+                <div class="places-block">
+                    <div class="places-info">
+                        <h4>Свободных мест: <span id="placesCount">1800</span></h4>
+                        <input type="range" id="placesSlider" min="0" max="1800" value="1800" disabled class="places-slider">
+                        <div class="places-status" id="placesMessage" style="color: green;">Много мест</div>
+                    </div>
+                    <a href="application.html" class="btn-big">Отправить предварительную ОНЛАЙН-ЗАЯВКУ</a>
+                </div>
+
+                <!-- Основная информация -->
+                <div class="festival-info-block">
+                    <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; margin-bottom: 30px;">
+                        <div style="flex:2; min-width: 250px;">
+                            <h3 style="font-size: 2rem;">23–27 октября 2027</h3>
+                            <p style="font-size: 1.3rem; color: #0b1c34;">Москва, отель "Космос"</p>
+                            <p style="color: #666;"><i class="fas fa-calendar-alt" style="color:#c9a03d;"></i> возможен заезд на сутки/двое раньше или выезд позже дат фестиваля</p>
+                        </div>
+                        <div style="flex:1; background: #0b1c34; color: white; padding: 20px; border-radius: 30px; text-align: center;">
+                            <div style="font-size: 2.5rem; color: #c9a03d;">100 000 ₽</div>
+                            <div>Гран-При</div>
+                            <div style="font-size: 0.9rem; margin-top: 10px;">+ ещё два Гран-При 50 000 и 30 000 ₽</div>
+                        </div>
+                    </div>
+
+                    <!-- Призы и поддержка -->
+                    <div style="background: white; border-radius: 30px; padding: 30px; margin: 30px 0;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between;">
+                            <div>
+                                <h4>🎁 Каждому коллективу</h4>
+                                <p style="font-size: 1.4rem; color: #c9a03d;">сертификат от 15 000 до 80 000 ₽</p>
+                            </div>
+                            <div>
+                                <h4>🏆 Общий призовой фонд</h4>
+                                <p style="font-size: 1.4rem; color: #c9a03d;">1 000 000 ₽</p>
+                            </div>
+                            <div>
+                                <h4>🎯 2 фестиваля = 2 приза + 2 диплома</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Спонсорская поддержка больших коллективов -->
+                    <h3>Спонсорская поддержка больших коллективов</h3>
+                    <table class="support-table">
+                        <tr><th>Количество человек</th><th>Сумма поддержки</th></tr>
+                        <tr><td>от 51 до 60</td><td>15 000 руб.</td></tr>
+                        <tr><td>от 61 до 70</td><td>20 000 руб.</td></tr>
+                        <tr><td>от 71 до 80</td><td>25 000 руб.</td></tr>
+                        <tr><td>свыше 81</td><td>30 000 руб.</td></tr>
+                    </table>
+
+                    <!-- Фестивальный взнос -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 40px 0;">
+                        <div class="price-card" style="flex:1;">
+                            <h4>5 дней / 4 ночи</h4>
+                            <div class="price">21 700 ₽</div>
+                            <small>2-х местное размещение, отель "Космос"</small>
+                            <p style="margin-top: 15px;">ОРГ.ВЗНОС ВКЛЮЧЕН! Зал фестиваля прямо в отеле!</p>
+                        </div>
+                        <div class="price-card" style="flex:1; background: linear-gradient(135deg,#1a3a5f,#0b1c34);">
+                            <h4>4 дня / 3 ночи</h4>
+                            <div class="price">19 500 ₽</div>
+                            <small>если нет подходящих билетов</small>
+                        </div>
+                    </div>
+
+                    <!-- Льготы для руководителей -->
+                    <div style="background: #eef3ff; padding: 30px; border-radius: 30px;">
+                        <h4>Льготы для руководителей</h4>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> от 12 до 25 чел. → 1 руководитель бесплатно</li>
+                            <li><i class="fas fa-check-circle"></i> от 26 до 40 чел. → 2 руководителя бесплатно</li>
+                            <li><i class="fas fa-check-circle"></i> от 41 чел. → 3 руководителя бесплатно</li>
+                            <li><i class="fas fa-check-circle"></i> До 6 сопровождающих по льготе (*при наличии детей до 10 лет: на 8 детей – 1 взрослый по льготе)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Кнопка спецусловий -->
+                    <div style="text-align: center; margin: 40px 0;">
+                        <button class="btn-big" onclick="openSpecialModal()" style="background: transparent; border: 2px solid #c9a03d; color: #0b1c34;">Спец.условия (узнать)</button>
+                    </div>
+
+                    <!-- Принцип оценки, возрастные группы -->
+                    <div style="margin: 40px 0;">
+                        <h3>Квалификационный принцип оценки</h3>
+                        <p>На конкурсах-фестивалях применяется не соревновательный, а квалификационный принцип оценки конкурсной программы, с учетом возраста исполнителей. Конкурсы-фестивали проводятся без ограничения возраста участников.</p>
+                        <h4>Возрастные группы:</h4>
+                        <div class="nomination-grid">
+                            <span class="nomination-item">4-6 лет</span>
+                            <span class="nomination-item">7-9 лет</span>
+                            <span class="nomination-item">10-13 лет</span>
+                            <span class="nomination-item">14-16 лет</span>
+                            <span class="nomination-item">17-21 год</span>
+                            <span class="nomination-item">22 и старше</span>
+                            <span class="nomination-item">Смешанная группа</span>
+                            <span class="nomination-item">Категория: Профи</span>
+                        </div>
+                    </div>
+
+                    <!-- Конкурс "Стремление" (аналог) -->
+                    <div style="background: #fff5e6; padding: 30px; border-radius: 30px;">
+                        <h3>Международный конкурс-фестиваль «Вдохновение»</h3>
+                        <p>В рамках основных конкурсов-фестивалей проводится и Международный конкурс-фестиваль творческих коллективов «Вдохновение». Каждый коллектив, оплачивая один фестивальный взнос, принимает участие в обоих конкурсах-фестивалях и на каждом конкурсе получает две награды: приз + диплом. Каждый коллектив показывает одну конкурсную программу сразу двум жюри двух фестивалей.</p>
+                    </div>
+
+                    <!-- Гибкость проживания -->
+                    <p style="margin: 30px 0;"><i class="fas fa-hotel" style="color:#c9a03d;"></i> Вы можете выбрать любое количество дней проживания: можно как приехать на сутки, двое, трое раньше начала фестиваля, так и остаться после его проведения.</p>
+
+                    <!-- Номинации и жанры -->
+                    <div style="margin: 40px 0;">
+                        <h3>На конкурсы-фестивали хоров и музыкальных коллективов приглашаются:</h3>
+                        <div class="nomination-grid">
+                            <span class="nomination-item">Хоры</span>
+                            <span class="nomination-item">Вокальные ансамбли (эстрадный, джазовый, народный, академический)</span>
+                            <span class="nomination-item">Фольклорные и народные коллективы</span>
+                            <span class="nomination-item">Оркестры</span>
+                            <span class="nomination-item">Инструментальные ансамбли</span>
+                            <span class="nomination-item">Вокально-хореографические ансамбли</span>
+                            <span class="nomination-item">Ансамбли песни и пляски</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>На хореографические конкурсы-фестивали приглашаются коллективы, работающие во всех направлениях и жанрах хореографии и театры моды. Номинации:</h3>
+                        <div class="nomination-grid" style="grid-template-columns: repeat(auto-fill, minmax(180px,1fr));">
+                            <span class="nomination-item">Детский танец</span>
+                            <span class="nomination-item">Дебют</span>
+                            <span class="nomination-item">Классический танец</span>
+                            <span class="nomination-item">Деми-классика</span>
+                            <span class="nomination-item">Народный танец</span>
+                            <span class="nomination-item">Народно-стилизованный</span>
+                            <span class="nomination-item">Народно-сценический</span>
+                            <span class="nomination-item">Танцы народов мира</span>
+                            <span class="nomination-item">Танцы малых народов</span>
+                            <span class="nomination-item">Эстрадный танец</span>
+                            <span class="nomination-item">Спортивно-эстрадный</span>
+                            <span class="nomination-item">Степ</span>
+                            <span class="nomination-item">Contemporary</span>
+                            <span class="nomination-item">Джаз-модерн</span>
+                            <span class="nomination-item">Модерн</span>
+                            <span class="nomination-item">Неофолк</span>
+                            <span class="nomination-item">Афро-джаз</span>
+                            <span class="nomination-item">Джаз</span>
+                            <span class="nomination-item">Современная пластика</span>
+                            <span class="nomination-item">Hip-Hop</span>
+                            <span class="nomination-item">House</span>
+                            <span class="nomination-item">Break-dance</span>
+                            <span class="nomination-item">Locking</span>
+                            <span class="nomination-item">Popping</span>
+                            <span class="nomination-item">Crump</span>
+                            <span class="nomination-item">Vogue</span>
+                            <span class="nomination-item">Street Jazz</span>
+                            <span class="nomination-item">Dancehall</span>
+                            <span class="nomination-item">Electro</span>
+                            <span class="nomination-item">Экспериментальный танец</span>
+                            <span class="nomination-item">Стилизация</span>
+                            <span class="nomination-item">Танцевальное шоу</span>
+                            <span class="nomination-item">Балетмейстерская работа</span>
+                            <span class="nomination-item">Бальные ансамбли</span>
+                            <span class="nomination-item">Театр танца</span>
+                            <span class="nomination-item">Театры моды</span>
+                            <span class="nomination-item">Вокально-хореографические ансамбли</span>
+                            <span class="nomination-item">Ансамбли песни и пляски</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Повторная кнопка заявки внизу -->
+                <div style="text-align: center; margin: 50px 0 20px;">
+                    <a href="application.html" class="btn-big" style="font-size: 1.5rem; padding: 20px 60px;">Отправить онлайн-заявку</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <!-- Контакты для мобильной версии -->
+            <div class="footer-contacts-mobile">
+                <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
+                <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="mailto:edinstvoro@mail.ru" style="color: #c9a03d; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvoro@mail.ru</a></span>
+            </div>
+            <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
+        </div>
+    </footer>
+
+    <!-- Плавающие кнопки -->
+    <a href="javascript:void(0)" class="phone-button" title="Перезвоните мне" onclick="openModal()"><i class="fas fa-phone-alt"></i></a>
+    <a href="index.html" class="home-button" title="На главную"><i class="fas fa-home"></i></a>
+
+    <!-- Социальное меню -->
+    <div class="social-menu">
+        <button class="social-toggle" id="socialToggle"><i class="fas fa-ellipsis-h"></i></button>
+        <div class="social-buttons" id="socialButtons">
+            <a href="https://t.me/edinstvorossiifestival" class="social-btn telegram" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/edinstvorossii" class="social-btn vk" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
+            <a href="#" class="social-btn tiktok" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Перезвоните мне" -->
+    <div class="modal-overlay" id="callbackModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="modal-header">
+                <h2>Перезвоните мне</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
+            </div>
+            <div class="modal-phones">
+                <div class="modal-phones-title">Позвоните нам, если не хотите ждать</div>
+                <div class="modal-phones-numbers">
+                    <p><a href="tel:+79895687852" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></p>
+                    <p><a href="tel:+79037622229" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></p>
+                </div>
+            </div>
+            <div class="modal-form">
+                <form id="callbackForm" action="#" method="post">
+                    <div class="form-group"><label>Ваше имя*</label><input type="text" required></div>
+                    <div class="form-group"><label>Телефон для связи*</label><input type="tel" required></div>
+                    <div class="form-group"><label>Электронная почта</label><input type="email"></div>
+                    <div class="form-group"><label>Город, область</label><input type="text"></div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="callbackAgree" required>
+                        <label for="callbackAgree">Я принимаю <a href="policy.html">политику обработки персональных данных и правила пользования сайтом</a></label>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Спец.условия" -->
+    <div class="modal-overlay" id="specialModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeSpecialBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-gift"></i></div>
+            <div class="modal-header">
+                <h2>Специальные условия</h2>
+            </div>
+            <div class="modal-phones" style="text-align: left;">
+                <p>У нас действуют специальные условия: спонсорская помощь, гибкая система скидок и льгот.</p>
+                <p>Если на другом фестивале предложили более выгодные условия участия или мотивационные аспекты: вы можете уточнить возможности таких же условий в нашем оргкомитете!</p>
+                <p style="font-weight: 700; margin-top: 15px;"><a href="tel:+79895687852" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Функции открытия/закрытия модальных окон
+        function openModal() { document.getElementById('callbackModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('callbackModal').classList.remove('active'); document.body.style.overflow = ''; }
+        function openSpecialModal() { document.getElementById('specialModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeSpecialModal() { document.getElementById('specialModal').classList.remove('active'); document.body.style.overflow = ''; }
+
+        function updatePlaces() {
+            const festivalDate = new Date(2027, 9, 23); // 23 октября 2027
+            const today = new Date();
+            const diffTime = festivalDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const placesSlider = document.getElementById('placesSlider');
+            const placesCount = document.getElementById('placesCount');
+            const placesMessage = document.getElementById('placesMessage');
+            if (diffDays <= 10) {
+                placesSlider.value = 0;
+                placesCount.textContent = '0';
+                placesMessage.textContent = 'Мест нет';
+                placesMessage.style.color = 'red';
+            } else {
+                placesSlider.value = 1800;
+                placesCount.textContent = '1800';
+                placesMessage.textContent = 'Много мест';
+                placesMessage.style.color = 'green';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Модальные окна
+            const modal = document.getElementById('callbackModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const specialModal = document.getElementById('specialModal');
+            const closeSpecial = document.getElementById('closeSpecialBtn');
+
+            if (modal) {
+                modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            }
+            if (specialModal) {
+                specialModal.addEventListener('click', function(e) { if (e.target === specialModal) closeSpecialModal(); });
+                if (closeSpecial) closeSpecial.addEventListener('click', closeSpecialModal);
+            }
+
+            const form = document.getElementById('callbackForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Заявка отправлена! Скоро мы вам перезвоним.');
+                    closeModal();
+                });
+            }
+
+            // Социальное меню
+            const toggle = document.getElementById('socialToggle');
+            const buttons = document.getElementById('socialButtons');
+            if (toggle) {
+                toggle.addEventListener('click', function(e) { e.stopPropagation(); buttons.classList.toggle('active'); });
+                document.addEventListener('click', function(e) { if (!toggle.contains(e.target) && !buttons.contains(e.target)) buttons.classList.remove('active'); });
+            }
+
+            updatePlaces();
+        });
+    </script>
+</body>
+</html>
