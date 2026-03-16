@@ -10,7 +10,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Общие стили для карточек */
+        /* Стили для логотипа с картинкой */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 35px;
+            }
+        }
+
+        /* Общие стили для карточек (были ранее) */
         .festival-card {
             display: flex;
             flex-direction: column;
@@ -19,7 +36,6 @@
             padding: 30px 20px;
         }
         
-        /* Стили для надписи "2 фестиваля" (красивая как на ПК) */
         .festival-card .badge {
             background: rgba(201, 160, 61, 0.1);
             color: #0b1c34;
@@ -35,7 +51,6 @@
             box-shadow: 0 2px 8px rgba(201, 160, 61, 0.15);
         }
         
-        /* Группа кнопок - вертикальное расположение для всех устройств */
         .festival-card .button-group {
             display: flex;
             flex-direction: column;
@@ -65,55 +80,32 @@
             transform: scale(1.05);
         }
         
-        /* Мобильные стили (минимальные изменения) */
         @media (max-width: 768px) {
             .festival-card {
                 padding: 25px 15px;
             }
-            
             .festival-card .badge {
                 margin: 20px 0 25px 0;
                 padding: 8px 20px;
                 font-size: 1rem;
             }
-            
             .festival-card .btn-small {
                 width: 100%;
                 max-width: 250px;
             }
-            
             .festival-card .date {
                 font-size: 2.2rem;
                 margin: 5px 0;
             }
-            
             .festival-card .location {
                 margin-bottom: 5px;
             }
         }
         
-        /* Планшетные стили (при необходимости) */
         @media (min-width: 769px) and (max-width: 1024px) {
             .festival-card .btn-small {
                 min-width: 160px;
                 padding: 10px 20px;
-            }
-        }
-        
-        /* Стили для логотипа с картинкой */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
-        @media (max-width: 768px) {
-            .logo-img {
-                height: 35px;
             }
         }
     </style>
@@ -257,7 +249,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" -->
+    <!-- Модальное окно "Перезвоните мне" (форма) -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -289,6 +281,18 @@
         </div>
     </div>
 
+    <!-- Модальное окно "Спасибо за обращение" (появляется после отправки формы) -->
+    <div class="modal-overlay" id="callbackSuccessModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeCallbackSuccessBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-check-circle" style="color: #27ae60;"></i></div>
+            <div class="modal-header">
+                <h2>Спасибо, сообщение отправлено!</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Модальное окно "Спецусловия" -->
     <div class="modal-overlay" id="specialModal">
         <div class="modal-content">
@@ -307,6 +311,7 @@
 
     <script src="js/script.js"></script>
     <script>
+        // Функции для модального окна обратного звонка (форма)
         function openModal() {
             document.getElementById('callbackModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -317,6 +322,7 @@
             document.body.style.overflow = '';
         }
 
+        // Функции для модального окна спецусловий
         function openSpecialModal() {
             document.getElementById('specialModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -327,12 +333,32 @@
             document.body.style.overflow = '';
         }
 
+        // Таймер и функции для окна "Спасибо"
+        let callbackTimer = null;
+
+        function openCallbackSuccessModal() {
+            document.getElementById('callbackSuccessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Автоматически закрываем через 10 секунд и переходим на главную
+            callbackTimer = setTimeout(() => {
+                closeCallbackSuccessModalAndRedirect();
+            }, 10000);
+        }
+
+        function closeCallbackSuccessModalAndRedirect() {
+            if (callbackTimer) {
+                clearTimeout(callbackTimer);
+                callbackTimer = null;
+            }
+            document.getElementById('callbackSuccessModal').classList.remove('active');
+            document.body.style.overflow = '';
+            window.location.href = 'index.html';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Модальное окно обратного звонка (форма)
             const modal = document.getElementById('callbackModal');
             const closeBtn = document.getElementById('closeModalBtn');
-            const specialModal = document.getElementById('specialModal');
-            const closeSpecial = document.getElementById('closeSpecialBtn');
-
             if (modal) {
                 modal.addEventListener('click', function(e) {
                     if (e.target === modal) closeModal();
@@ -340,6 +366,9 @@
                 if (closeBtn) closeBtn.addEventListener('click', closeModal);
             }
 
+            // Модальное окно спецусловий
+            const specialModal = document.getElementById('specialModal');
+            const closeSpecial = document.getElementById('closeSpecialBtn');
             if (specialModal) {
                 specialModal.addEventListener('click', function(e) {
                     if (e.target === specialModal) closeSpecialModal();
@@ -347,12 +376,25 @@
                 if (closeSpecial) closeSpecial.addEventListener('click', closeSpecialModal);
             }
 
-            const form = document.getElementById('callbackForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
+            // Модальное окно успеха для обратного звонка
+            const callbackSuccessModal = document.getElementById('callbackSuccessModal');
+            const closeCallbackSuccessBtn = document.getElementById('closeCallbackSuccessBtn');
+            if (callbackSuccessModal) {
+                callbackSuccessModal.addEventListener('click', function(e) {
+                    if (e.target === callbackSuccessModal) closeCallbackSuccessModalAndRedirect();
+                });
+                if (closeCallbackSuccessBtn) {
+                    closeCallbackSuccessBtn.addEventListener('click', closeCallbackSuccessModalAndRedirect);
+                }
+            }
+
+            // Обработчик отправки формы обратного звонка
+            const callbackForm = document.getElementById('callbackForm');
+            if (callbackForm) {
+                callbackForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Заявка отправлена! Скоро мы вам перезвоним.');
-                    closeModal();
+                    closeModal(); // закрываем окно с формой
+                    openCallbackSuccessModal(); // показываем окно благодарности
                 });
             }
 
