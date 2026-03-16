@@ -520,7 +520,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" -->
+    <!-- Модальное окно "Перезвоните мне" (форма) -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -548,6 +548,18 @@
                     </div>
                     <button type="submit" class="submit-btn">Отправить</button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Спасибо за обращение" (появляется после отправки формы) -->
+    <div class="modal-overlay" id="callbackSuccessModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeCallbackSuccessBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-check-circle" style="color: #27ae60;"></i></div>
+            <div class="modal-header">
+                <h2>Спасибо, сообщение отправлено!</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
             </div>
         </div>
     </div>
@@ -597,6 +609,26 @@
             }
         }
 
+        // Таймер и функции для окна "Спасибо"
+        let callbackTimer = null;
+
+        function openCallbackSuccessModal() {
+            document.getElementById('callbackSuccessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            callbackTimer = setTimeout(() => {
+                closeCallbackSuccessModal();
+            }, 10000);
+        }
+
+        function closeCallbackSuccessModal() {
+            if (callbackTimer) {
+                clearTimeout(callbackTimer);
+                callbackTimer = null;
+            }
+            document.getElementById('callbackSuccessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Модальные окна
             const modal = document.getElementById('callbackModal');
@@ -613,12 +645,25 @@
                 if (closeSpecial) closeSpecial.addEventListener('click', closeSpecialModal);
             }
 
-            const form = document.getElementById('callbackForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
+            // Модальное окно успеха для обратного звонка
+            const callbackSuccessModal = document.getElementById('callbackSuccessModal');
+            const closeCallbackSuccessBtn = document.getElementById('closeCallbackSuccessBtn');
+            if (callbackSuccessModal) {
+                callbackSuccessModal.addEventListener('click', function(e) {
+                    if (e.target === callbackSuccessModal) closeCallbackSuccessModal();
+                });
+                if (closeCallbackSuccessBtn) {
+                    closeCallbackSuccessBtn.addEventListener('click', closeCallbackSuccessModal);
+                }
+            }
+
+            // Обработчик отправки формы обратного звонка
+            const callbackForm = document.getElementById('callbackForm');
+            if (callbackForm) {
+                callbackForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Заявка отправлена! Скоро мы вам перезвоним.');
-                    closeModal();
+                    closeModal(); // закрываем окно с формой
+                    openCallbackSuccessModal(); // показываем окно благодарности
                 });
             }
 
