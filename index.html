@@ -21,10 +21,27 @@
         .button-row .btn-reasons {
             margin: 0;
         }
+        
+        /* Стили для логотипа с картинкой */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Верхняя панель с контактами (исправлено) -->
+    <!-- Верхняя панель с контактами -->
     <div class="top-bar">
         <div class="container">
             <div class="contact-info">
@@ -39,7 +56,10 @@
     <!-- Навигация -->
     <nav>
         <div class="container">
-            <a href="index.html" class="logo">Единство<span>России</span></a>
+            <a href="index.html" class="logo">
+                <img src="images/newlogo23.png" alt="Единство России" class="logo-img">
+                Единство<span>России</span>
+            </a>
             <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">Главная</a></li>
@@ -149,10 +169,10 @@
         </section>
     </main>
 
-    <!-- Подвал (исправлено) -->
+    <!-- Подвал -->
     <footer class="footer">
         <div class="container">
-            <!-- Контакты для мобильной версии (исправлено) -->
+            <!-- Контакты для мобильной версии -->
             <div class="footer-contacts-mobile">
                 <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
                 <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
@@ -176,7 +196,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" (исправлено) -->
+    <!-- Модальное окно "Перезвоните мне" -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -208,7 +228,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Спец.условия" (без изменений) -->
+    <!-- Модальное окно "Спец.условия" -->
     <div class="modal-overlay" id="specialModal">
         <div class="modal-content">
             <button class="modal-close" id="closeSpecialBtn">&times;</button>
