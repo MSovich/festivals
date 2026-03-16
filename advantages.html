@@ -240,7 +240,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" -->
+    <!-- Модальное окно "Перезвоните мне" (форма) -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -272,30 +272,135 @@
         </div>
     </div>
 
+    <!-- Модальное окно "Спасибо за обращение" (появляется после отправки формы) -->
+    <div class="modal-overlay" id="callbackSuccessModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeCallbackSuccessBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-check-circle" style="color: #27ae60;"></i></div>
+            <div class="modal-header">
+                <h2>Спасибо, сообщение отправлено!</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Спец.условия" (для единообразия) -->
+    <div class="modal-overlay" id="specialModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeSpecialBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-gift"></i></div>
+            <div class="modal-header">
+                <h2>Специальные условия</h2>
+            </div>
+            <div class="modal-phones" style="text-align: left;">
+                <p>У нас действуют специальные условия: спонсорская помощь, гибкая система скидок и льгот.</p>
+                <p>Если на другом фестивале предложили более выгодные условия участия или мотивационные аспекты: вы можете уточнить возможности таких же условий в нашем оргкомитете!</p>
+                <p style="font-weight: 700; margin-top: 15px;"><a href="tel:+79895687852" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></p>
+            </div>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
     <script>
-        function openModal() { document.getElementById('callbackModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeModal() { document.getElementById('callbackModal').classList.remove('active'); document.body.style.overflow = ''; }
+        // Функции для модального окна обратного звонка (форма)
+        function openModal() {
+            document.getElementById('callbackModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('callbackModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Функции для модального окна спецусловий
+        function openSpecialModal() {
+            document.getElementById('specialModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSpecialModal() {
+            document.getElementById('specialModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Таймер и функции для окна "Спасибо"
+        let callbackTimer = null;
+
+        function openCallbackSuccessModal() {
+            document.getElementById('callbackSuccessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            callbackTimer = setTimeout(() => {
+                closeCallbackSuccessModal();
+            }, 10000);
+        }
+
+        function closeCallbackSuccessModal() {
+            if (callbackTimer) {
+                clearTimeout(callbackTimer);
+                callbackTimer = null;
+            }
+            document.getElementById('callbackSuccessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Модальное окно обратного звонка (форма)
             const modal = document.getElementById('callbackModal');
             const closeBtn = document.getElementById('closeModalBtn');
             if (modal) {
-                modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) closeModal();
+                });
                 if (closeBtn) closeBtn.addEventListener('click', closeModal);
             }
-            const form = document.getElementById('callbackForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
+
+            // Модальное окно спецусловий
+            const specialModal = document.getElementById('specialModal');
+            const closeSpecial = document.getElementById('closeSpecialBtn');
+            if (specialModal) {
+                specialModal.addEventListener('click', function(e) {
+                    if (e.target === specialModal) closeSpecialModal();
+                });
+                if (closeSpecial) closeSpecial.addEventListener('click', closeSpecialModal);
+            }
+
+            // Модальное окно успеха для обратного звонка
+            const callbackSuccessModal = document.getElementById('callbackSuccessModal');
+            const closeCallbackSuccessBtn = document.getElementById('closeCallbackSuccessBtn');
+            if (callbackSuccessModal) {
+                callbackSuccessModal.addEventListener('click', function(e) {
+                    if (e.target === callbackSuccessModal) closeCallbackSuccessModal();
+                });
+                if (closeCallbackSuccessBtn) {
+                    closeCallbackSuccessBtn.addEventListener('click', closeCallbackSuccessModal);
+                }
+            }
+
+            // Обработчик отправки формы обратного звонка
+            const callbackForm = document.getElementById('callbackForm');
+            if (callbackForm) {
+                callbackForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Заявка отправлена! Скоро мы вам перезвоним.');
-                    closeModal();
+                    closeModal(); // закрываем окно с формой
+                    openCallbackSuccessModal(); // показываем окно благодарности
                 });
             }
+
+            // Социальное меню
             const toggle = document.getElementById('socialToggle');
             const buttons = document.getElementById('socialButtons');
             if (toggle) {
-                toggle.addEventListener('click', function(e) { e.stopPropagation(); buttons.classList.toggle('active'); });
-                document.addEventListener('click', function(e) { if (!toggle.contains(e.target) && !buttons.contains(e.target)) buttons.classList.remove('active'); });
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    buttons.classList.toggle('active');
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!toggle.contains(event.target) && !buttons.contains(event.target)) {
+                        buttons.classList.remove('active');
+                    }
+                });
             }
         });
     </script>
