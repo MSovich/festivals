@@ -99,6 +99,23 @@
                 padding: 10px 20px;
             }
         }
+        
+        /* Стили для логотипа с картинкой */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -115,7 +132,10 @@
 
     <nav>
         <div class="container">
-            <a href="index.html" class="logo">Единство<span>России</span></a>
+            <a href="index.html" class="logo">
+                <img src="images/newlogo23.png" alt="Единство России" class="logo-img">
+                Единство<span>России</span>
+            </a>
             <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Главная</a></li>
