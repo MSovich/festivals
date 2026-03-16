@@ -66,7 +66,7 @@
                     <h2>Онлайн‑заявка на участие</h2>
                 </div>
                 <div class="application-form">
-                    <form action="#" method="post">
+                    <form id="applicationForm" method="post">
                         <div class="form-row">
                             <div class="form-group"><label>Название коллектива / ФИО солиста *</label><input type="text" required></div>
                             <div class="form-group"><label>Жанр</label><input type="text" placeholder="народный, современный..."></div>
@@ -125,7 +125,7 @@
 
     <footer class="footer">
         <div class="container">
-            <!-- Контакты для мобильной версии (исправлено) -->
+            <!-- Контакты для мобильной версии -->
             <div class="footer-contacts-mobile">
                 <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
                 <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
@@ -149,7 +149,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" (исправлено) -->
+    <!-- Модальное окно "Перезвоните мне" -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -181,8 +181,21 @@
         </div>
     </div>
 
+    <!-- Новое модальное окно "Спасибо за заявку" -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeSuccessBtn">&times;</button>
+            <div class="modal-icon"><i class="fas fa-check-circle" style="color: #27ae60;"></i></div>
+            <div class="modal-header">
+                <h2>Спасибо, заявка отправлена!</h2>
+                <p>Мы перезвоним, входящие будут бесплатно!</p>
+            </div>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
     <script>
+        // Функции для модального окна обратного звонка
         function openModal() {
             document.getElementById('callbackModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -192,19 +205,68 @@
             document.body.style.overflow = '';
         }
 
+        // Функции для нового модального окна успеха
+        let redirectTimer = null;
+
+        function openSuccessModal() {
+            document.getElementById('successModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Запускаем таймер на 10 секунд для автоматического закрытия и перехода
+            redirectTimer = setTimeout(function() {
+                closeSuccessModalAndRedirect();
+            }, 10000);
+        }
+
+        function closeSuccessModalAndRedirect() {
+            // Очищаем таймер, если он еще есть
+            if (redirectTimer) {
+                clearTimeout(redirectTimer);
+                redirectTimer = null;
+            }
+            // Закрываем модальное окно
+            document.getElementById('successModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // Переходим на главную
+            window.location.href = 'index.html';
+        }
+
+        // Обработчик отправки формы заявки
         document.addEventListener('DOMContentLoaded', function() {
+            // Модальное окно обратного звонка
             const modal = document.getElementById('callbackModal');
             const closeBtn = document.getElementById('closeModalBtn');
             if (modal) {
                 modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
                 if (closeBtn) closeBtn.addEventListener('click', closeModal);
             }
-            const form = document.getElementById('callbackForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
+
+            // Модальное окно успеха
+            const successModal = document.getElementById('successModal');
+            const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+            if (successModal) {
+                successModal.addEventListener('click', function(e) { 
+                    if (e.target === successModal) closeSuccessModalAndRedirect(); 
+                });
+                if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeSuccessModalAndRedirect);
+            }
+
+            // Форма обратного звонка
+            const callbackForm = document.getElementById('callbackForm');
+            if (callbackForm) {
+                callbackForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     alert('Заявка отправлена! Скоро мы вам перезвоним.');
                     closeModal();
+                });
+            }
+
+            // Форма заявки на участие
+            const appForm = document.getElementById('applicationForm');
+            if (appForm) {
+                appForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Здесь можно добавить реальную отправку данных, но пока просто показываем окно
+                    openSuccessModal();
                 });
             }
 
