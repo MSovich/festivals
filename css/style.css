@@ -189,6 +189,9 @@ nav .container {
     font-size: 3.5rem;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero h1 span {
@@ -833,28 +836,80 @@ nav .container {
         margin-left: 5px !important;
     }
     
-    .hero h1 { font-size: 3.2rem; }
-    .hero p { font-size: 1.2rem; }
-    .section-title h2 { font-size: 2.5rem; }
-    .section-title h2::after { width: 100px; }
-    .festival-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-    .festival-card { padding: 25px 15px; }
-    .date { font-size: 2rem; }
-    .reasons-preview { gap: 12px; }
-    .reason-link { padding: 6px 16px; font-size: 0.85rem; }
-    .reason-block { padding: 20px 30px; }
-    .reason-number { font-size: 3rem; min-width: 70px; }
-    .reason-block h3 { font-size: 1.3rem; }
-    .step { flex: 1 1 180px; padding: 25px 15px; }
-    .step-icon { width: 70px; height: 70px; font-size: 1.8rem; }
-    .step h4 { font-size: 1.2rem; }
-    .jury-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; }
-    .jury-item { padding: 25px 15px; }
-    .jury-item img { width: 120px; height: 120px; }
-    .application-form { padding: 40px; }
-    .contact-grid { padding: 40px; }
-    .cta h2 { font-size: 2.2rem; }
-    .section { padding: 60px 0; }
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+    }
+    .section-title h2 {
+        font-size: 2.5rem;
+    }
+    .section-title h2::after {
+        width: 100px;
+    }
+    .festival-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+    }
+    .festival-card {
+        padding: 25px 15px;
+    }
+    .date {
+        font-size: 2rem;
+    }
+    .reasons-preview {
+        gap: 12px;
+    }
+    .reason-link {
+        padding: 6px 16px;
+        font-size: 0.85rem;
+    }
+    .reason-block {
+        padding: 20px 30px;
+    }
+    .reason-number {
+        font-size: 3rem;
+        min-width: 70px;
+    }
+    .reason-block h3 {
+        font-size: 1.3rem;
+    }
+    .step {
+        flex: 1 1 180px;
+        padding: 25px 15px;
+    }
+    .step-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    .step h4 {
+        font-size: 1.2rem;
+    }
+    .jury-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 25px;
+    }
+    .jury-item {
+        padding: 25px 15px;
+    }
+    .jury-item img {
+        width: 120px;
+        height: 120px;
+    }
+    .application-form {
+        padding: 40px;
+    }
+    .contact-grid {
+        padding: 40px;
+    }
+    .cta h2 {
+        font-size: 2.2rem;
+    }
+    .section {
+        padding: 60px 0;
+    }
 }
 
 /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ (до 768px) ========== */
@@ -962,6 +1017,7 @@ nav .container {
         box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4) !important;
     }
 
+    /* Контейнер соцкнопок — сдвинут левее */
     .social-buttons {
         width: 48px;
         height: 48px;
@@ -969,7 +1025,7 @@ nav .container {
         left: 0 !important;
         bottom: 0 !important;
     }
-
+    
     .social-btn {
         width: 40px !important;
         height: 40px !important;
@@ -978,19 +1034,21 @@ nav .container {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
     }
 
+    /* Telegram слева вверху */
     .social-btn.telegram {
         top: 0;
         left: 0;
         transform: translate(-50%, -70%) !important;
     }
-
+    
+    /* VK справа вверху */
     .social-btn.vk {
         top: 0;
         right: 0;
         transform: translate(50%, -70%) !important;
     }
-
-    /* TikTok под VK */
+    
+    /* TikTok под VK (справа внизу) */
     .social-btn.tiktok {
         bottom: 0;
         right: 0;
