@@ -969,7 +969,7 @@ nav .container {
         left: 0 !important;
         bottom: 0 !important;
     }
-    
+
     .social-btn {
         width: 40px !important;
         height: 40px !important;
@@ -978,21 +978,19 @@ nav .container {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
     }
 
-    /* Telegram слева вверху */
     .social-btn.telegram {
         top: 0;
         left: 0;
         transform: translate(-50%, -70%) !important;
     }
-    
-    /* VK справа вверху */
+
     .social-btn.vk {
-        top: 50%; /* центрируем по вертикали */
+        top: 0;
         right: 0;
-        transform: translate(40%, -50%)
+        transform: translate(50%, -70%) !important;
     }
-    
-    /* TikTok под VK (справа внизу) */
+
+    /* TikTok под VK */
     .social-btn.tiktok {
         bottom: 0;
         right: 0;
