@@ -163,6 +163,36 @@
                 width: 100%;
             }
         }
+
+        /* Стили для блока партнёров */
+        .partners {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+            justify-items: center;
+            margin-top: 30px;
+        }
+        .partners img {
+            max-width: 100%;
+            height: auto;
+            max-height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(0.5);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .partners img:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(201,160,61,0.2);
+        }
     </style>
 </head>
 <body>
@@ -581,17 +611,18 @@
             </div>
         </section>
 
-        <!-- Партнёры -->
+        <!-- Партнёры (обновлено с реальными изображениями) -->
         <section class="section bg-light">
             <div class="container">
                 <div class="section-title">
                     <h2>Наши партнёры</h2>
                 </div>
                 <div class="partners">
-                    <img src="https://via.placeholder.com/150x60?text=Партнёр+1" alt="">
-                    <img src="https://via.placeholder.com/150x60?text=Партнёр+2" alt="">
-                    <img src="https://via.placeholder.com/150x60?text=Партнёр+3" alt="">
-                    <img src="https://via.placeholder.com/150x60?text=Партнёр+4" alt="">
+                    <img src="images/sber.jpg" alt="Сбер">
+                    <img src="images/partiya_logo.jpg" alt="Партия">
+                    <img src="images/mosigra.jpg" alt="Мосигра">
+                    <img src="images/mosgorduma_logo.jpg" alt="Мосгордума">
+                    <img src="images/korvoda.jpg" alt="Корвода">
                 </div>
             </div>
         </section>
