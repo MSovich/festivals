@@ -339,20 +339,20 @@
         function openCallbackSuccessModal() {
             document.getElementById('callbackSuccessModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            // Автоматически закрываем через 10 секунд и переходим на главную
+            // Автоматически закрываем через 10 секунд, оставаясь на странице
             callbackTimer = setTimeout(() => {
-                closeCallbackSuccessModalAndRedirect();
+                closeCallbackSuccessModal();
             }, 10000);
         }
 
-        function closeCallbackSuccessModalAndRedirect() {
+        function closeCallbackSuccessModal() {
             if (callbackTimer) {
                 clearTimeout(callbackTimer);
                 callbackTimer = null;
             }
             document.getElementById('callbackSuccessModal').classList.remove('active');
             document.body.style.overflow = '';
-            window.location.href = 'index.html';
+            // Остаемся на текущей странице, без перехода
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -381,10 +381,10 @@
             const closeCallbackSuccessBtn = document.getElementById('closeCallbackSuccessBtn');
             if (callbackSuccessModal) {
                 callbackSuccessModal.addEventListener('click', function(e) {
-                    if (e.target === callbackSuccessModal) closeCallbackSuccessModalAndRedirect();
+                    if (e.target === callbackSuccessModal) closeCallbackSuccessModal();
                 });
                 if (closeCallbackSuccessBtn) {
-                    closeCallbackSuccessBtn.addEventListener('click', closeCallbackSuccessModalAndRedirect);
+                    closeCallbackSuccessBtn.addEventListener('click', closeCallbackSuccessModal);
                 }
             }
 
