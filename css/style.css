@@ -1065,7 +1065,7 @@ nav .container {
     .social-btn.tiktok {
         top: 100%;             /* под троеточием */
         left: 0;
-        margin-top: 8px;        /* увеличили отступ, чтобы опустить ниже */
+        margin-top: 5px;        /* изменено с 8px на 5px, чтобы расстояние было как у Telegram */
     }
 
     .social-btn:hover {
