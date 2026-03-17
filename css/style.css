@@ -993,43 +993,36 @@ nav .container {
     .home-button { bottom: 15px; right: 20px; }
     .phone-button { bottom: 15px; right: 75px; }
 
-    /* ===== ИСПРАВЛЕННОЕ СОЦИАЛЬНОЕ МЕНЮ ДЛЯ МОБИЛЬНЫХ ===== */
+    /* ===== ИСПРАВЛЕННОЕ СОЦИАЛЬНОЕ МЕНЮ В МОБИЛЬНОЙ ВЕРСИИ ===== */
     .social-menu {
         position: fixed;
         bottom: 15px;
         left: 20px;
         z-index: 1000;
     }
+
     .social-toggle {
         background: linear-gradient(135deg, #c9a03d, #b38b2f) !important;
         color: #0b1c34 !important;
         border: none !important;
         border-radius: 50% !important;
         box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4) !important;
-        transition: none !important;
-        transform: none !important;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
     }
-    .social-toggle:hover {
-        background: linear-gradient(135deg, #b38b2f, #c9a03d) !important;
-        transform: none !important;
-        box-shadow: 0 6px 20px rgba(201, 160, 61, 0.4) !important;
-    }
 
-    /* Контейнер кнопок – вертикально над троеточием */
     .social-buttons {
         position: absolute;
-        bottom: 100%;            /* над кнопкой */
+        bottom: 100%;           /* над кнопкой */
         left: 0;
         right: auto;
-        transform: none !important;
+        transform: none !important;  /* сбрасываем старые трансформации */
         display: flex;
-        flex-direction: column;  /* одна над другой */
+        flex-direction: column;       /* вертикально */
         gap: 8px;
-        margin-bottom: 10px;     /* отступ от троеточия */
+        margin-bottom: 10px;          /* отступ от троеточия */
         width: auto;
         height: auto;
         background: transparent;
@@ -1038,30 +1031,34 @@ nav .container {
         transition: opacity 0.3s, visibility 0.3s;
         pointer-events: none;
     }
+
     .social-buttons.active {
         opacity: 1;
         visibility: visible;
         pointer-events: all;
     }
 
-    /* Кнопки соцсетей – убираем абсолютное позиционирование, используем flex */
     .social-btn {
-        position: relative;       /* отменяем absolute */
+        position: relative;           /* отменяем absolute */
         width: 40px !important;
         height: 40px !important;
         font-size: 1.2rem !important;
         background: linear-gradient(135deg, #0b1c34, #1e3a5f) !important;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-        transform: none !important; /* убираем старые transform */
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
+        transform: none !important;    /* убираем старые transform */
+        transition: 0.3s;
     }
+
     .social-btn:hover {
         transform: scale(1.1) !important;
     }
-    /* Индивидуальные цвета при наведении можно оставить */
+
     .social-btn.telegram:hover { background: #0088cc !important; }
     .social-btn.vk:hover { background: #4c75a3 !important; }
     .social-btn.tiktok:hover { background: #010101 !important; }
