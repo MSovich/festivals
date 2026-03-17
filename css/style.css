@@ -993,7 +993,7 @@ nav .container {
     .home-button { bottom: 15px; right: 20px; }
     .phone-button { bottom: 15px; right: 75px; }
 
-    /* ===== ИСПРАВЛЕННОЕ СОЦИАЛЬНОЕ МЕНЮ ДЛЯ МОБИЛЬНЫХ ===== */
+    /* ===== СОЦИАЛЬНОЕ МЕНЮ ДЛЯ МОБИЛЬНЫХ (ГОРИЗОНТАЛЬНО СЛЕВА) ===== */
     .social-menu {
         position: fixed;
         bottom: 15px;
@@ -1015,20 +1015,19 @@ nav .container {
 
     .social-buttons {
         position: absolute;
-        bottom: 100%;           /* над кнопкой */
-        left: 0;
+        bottom: 0;              /* выравниваем по нижнему краю троеточия */
+        left: 100%;              /* справа от троеточия (можно left: auto; right: 100% для слева) */
+        margin-left: 10px;       /* отступ от троеточия */
         display: flex;
-        flex-direction: column; /* одна над другой */
+        flex-direction: row;     /* горизонтально */
         gap: 8px;
-        margin-bottom: 10px;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s, visibility 0.3s;
         pointer-events: none;
         transform: none !important;
-        width: auto;
-        height: auto;
-        background: transparent;
+        white-space: nowrap;
+        align-items: center;
     }
 
     .social-buttons.active {
@@ -1050,12 +1049,8 @@ nav .container {
         justify-content: center;
         text-decoration: none;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-        transform: none !important;    /* убираем старые transform */
+        transform: none !important;
         transition: 0.3s;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
     }
 
     .social-btn:hover {
