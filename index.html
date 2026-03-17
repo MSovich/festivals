@@ -22,7 +22,7 @@
             margin: 0;
         }
         
-        /* Стили для логотипа с картинкой */
+        /* Стили для логотипа с картинкой (в навигации) */
         .logo {
             display: flex;
             align-items: center;
@@ -36,6 +36,96 @@
         @media (max-width: 768px) {
             .logo-img {
                 height: 35px;
+            }
+        }
+
+        /* Стили для социального меню (десктоп) */
+        .social-menu {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .social-toggle {
+            width: 50px;
+            height: 50px;
+            background: #c9a03d;
+            border: none;
+            border-radius: 50%;
+            color: #0b1c34;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .social-toggle:hover {
+            background: #b38b2f;
+            transform: scale(1.05);
+        }
+        .social-buttons {
+            position: absolute;
+            bottom: 60px; /* над кнопкой-троеточием */
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .social-buttons.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+        .telegram {
+            background: #0088cc;
+        }
+        .vk {
+            background: #4a76a8;
+        }
+        .tiktok {
+            background: #000;
+        }
+
+        /* Мобильная версия: кнопки соцсетей слева от троеточия в ряд */
+        @media (max-width: 768px) {
+            .social-menu {
+                bottom: 20px;
+                left: 20px;
+            }
+            .social-buttons {
+                flex-direction: row;       /* горизонтально */
+                bottom: auto;              /* сбрасываем позицию снизу */
+                left: auto;                /* сбрасываем left */
+                right: 100%;               /* правый край блока прижат к левому краю троеточия */
+                margin-right: 10px;        /* отступ между троеточием и кнопками */
+                top: 50%;                  /* выравниваем по вертикали */
+                transform: translateY(-50%); /* точное центрирование */
+                gap: 8px;
+            }
+            .social-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
             }
         }
     </style>
@@ -124,8 +214,9 @@
                     <a href="festivals.html" class="btn-reasons">Все фестивали</a>
                 </div>
 
-                <!-- НОВЫЙ РАЗДЕЛ: Фото/видео -->
+                <!-- Раздел Фото/видео с логотипом -->
                 <div style="text-align: center; margin-top: 60px;">
+                    <img src="images/newlogo23.png" alt="Единство России" style="height: 70px; width: auto; margin-bottom: 15px;">
                     <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: #0b1c34; margin-bottom: 20px;">
                         Яркие моменты наших фестивалей
                     </h2>
@@ -358,7 +449,7 @@
                 });
             }
 
-            // Социальное меню
+            // Социальное меню (троеточие)
             const toggle = document.getElementById('socialToggle');
             const buttons = document.getElementById('socialButtons');
             if (toggle) {
