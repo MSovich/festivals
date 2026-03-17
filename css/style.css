@@ -1053,18 +1053,18 @@ nav .container {
     }
 
     .social-btn.vk {
-        top: 0;
+        top: 10px;            /* опускаем ниже */
         left: 0;
     }
 
     .social-btn.telegram {
-        top: 0;
+        top: 10px;            /* опускаем ниже */
         right: 0;
     }
 
     .social-btn.tiktok {
-        bottom: 0;
-        right: 0;
+        bottom: 10px;         /* поднимаем чуть выше (ближе к троеточию) */
+        left: 0;              /* прижимаем к левому краю (ближе к троеточию) */
     }
 
     .social-btn:hover {
