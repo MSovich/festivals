@@ -1019,8 +1019,8 @@ nav .container {
         left: 0;
         display: flex;
         flex-direction: column; /* одна над другой */
-        gap: 8px;
-        margin-bottom: 10px;    /* отступ от троеточия */
+        gap: 5px;               /* расстояние между кнопками (уменьшено) */
+        margin-bottom: 5px;     /* отступ от троеточия (уменьшен) */
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.2s, visibility 0.2s;
