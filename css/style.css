@@ -1065,7 +1065,7 @@ nav .container {
     /* TikTok – справа сверху (над троеточием) */
     .social-btn.tiktok {
         bottom: 100%;           /* над троеточием */
-        right: 20px;            /* смещение влево */
+        right: 60px;            /* смещение влево */
         margin-bottom: 16px;     /* поднимаем выше (было 2px) */
     }
 
