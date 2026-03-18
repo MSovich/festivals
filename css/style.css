@@ -1062,10 +1062,11 @@ nav .container {
     }
 
     /* TikTok – справа, под Telegram (над троеточием, но ближе к нему) */
+    /* TikTok – справа сверху (над троеточием) */
     .social-btn.tiktok {
         bottom: 100%;           /* над троеточием */
-        right: 20px;            /* смещаем левее */
-        margin-bottom: 2px;     /* поднимаем выше (меньше отступ) */
+        right: 20px;            /* смещение влево */
+        margin-bottom: 8px;     /* поднимаем выше (было 2px) */
     }
 
     .social-btn:hover {
