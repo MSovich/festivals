@@ -1050,7 +1050,7 @@ nav .container {
     /* VK – слева сверху (над троеточием) */
     .social-btn.vk {
         bottom: 100%;           /* над троеточием */
-        left: 0;
+        left: 5px;
         margin-bottom: 5px;
     }
 
@@ -1065,7 +1065,7 @@ nav .container {
     /* TikTok – справа сверху (над троеточием) */
     .social-btn.tiktok {
         bottom: 100%;           /* над троеточием */
-        right: 60px;            /* смещение влево */
+        right: 90px;            /* смещение влево */
         margin-bottom: 16px;     /* поднимаем выше (было 2px) */
     }
 
