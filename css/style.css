@@ -1050,7 +1050,7 @@ nav .container {
     /* VK – слева сверху (над троеточием) */
     .social-btn.vk {
         bottom: 100%;           /* над троеточием */
-        left: 5px;
+        left: 0;
         margin-bottom: 5px;
     }
 
