@@ -1057,7 +1057,7 @@ nav .container {
     /* Telegram – справа сверху (над троеточием) */
     .social-btn.telegram {
         bottom: 100%;           /* над троеточием */
-        right: 0;
+        right: 5px;
         margin-bottom: 5px;
     }
 
@@ -1065,7 +1065,7 @@ nav .container {
     /* TikTok – справа сверху (над троеточием) */
     .social-btn.tiktok {
         bottom: 100%;           /* над троеточием */
-        right: 160px;            /* смещение влево */
+        right: 200px;            /* смещение влево */
         margin-bottom: 16px;     /* поднимаем выше (было 2px) */
     }
 
