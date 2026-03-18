@@ -1066,7 +1066,7 @@ nav .container {
     .social-btn.tiktok {
         bottom: 100%;           /* над троеточием */
         right: 20px;            /* смещение влево */
-        margin-bottom: 10px;     /* поднимаем выше (было 2px) */
+        margin-bottom: 8px;     /* поднимаем выше (было 2px) */
     }
 
     .social-btn:hover {
