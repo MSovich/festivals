@@ -999,14 +999,9 @@ nav .container {
         bottom: 15px;
         left: 20px;
         z-index: 1000;
-        width: 90px;          /* ширина квадрата */
-        height: 90px;         /* высота квадрата */
     }
 
     .social-toggle {
-        position: absolute;
-        bottom: 0;
-        left: 0;
         background: linear-gradient(135deg, #c9a03d, #b38b2f) !important;
         color: #0b1c34 !important;
         border: none !important;
@@ -1052,19 +1047,25 @@ nav .container {
         transition: 0.2s;
     }
 
+    /* VK – слева сверху (над троеточием) */
     .social-btn.vk {
-        top: 0;
+        bottom: 100%;           /* над троеточием */
         left: 0;
+        margin-bottom: 5px;
     }
 
+    /* Telegram – справа сверху (над троеточием) */
     .social-btn.telegram {
-        top: 0;
+        bottom: 100%;           /* над троеточием */
         right: 0;
+        margin-bottom: 5px;
     }
 
+    /* TikTok – справа снизу (под троеточием) */
     .social-btn.tiktok {
-        bottom: 0;
+        top: 100%;              /* под троеточием */
         right: 0;
+        margin-top: 5px;
     }
 
     .social-btn:hover {
