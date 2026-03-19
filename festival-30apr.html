@@ -267,8 +267,8 @@
                 <!-- Блок свободных мест + кнопка заявки -->
                 <div class="places-block">
                     <div class="places-info">
-                        <h4>Свободных мест: <span id="placesCount">1800</span></h4>
-                        <input type="range" id="placesSlider" min="0" max="1800" value="1800" disabled class="places-slider">
+                        <h4>Свободных мест: <span id="placesCount">1000</span></h4>
+                        <input type="range" id="placesSlider" min="0" max="1800" value="1000" disabled class="places-slider">
                         <div class="places-status" id="placesMessage" style="color: green;">Много мест</div>
                     </div>
                     <a href="application.html" class="btn-big">Отправить предварительную ОНЛАЙН-ЗАЯВКУ</a>
@@ -548,8 +548,9 @@
                 placesMessage.textContent = 'Мест нет';
                 placesMessage.style.color = 'red';
             } else {
-                placesSlider.value = 1800;
-                placesCount.textContent = '1800';
+                // Устанавливаем 1000 свободных мест (занято 800)
+                placesSlider.value = 1000;
+                placesCount.textContent = '1000';
                 placesMessage.textContent = 'Много мест';
                 placesMessage.style.color = 'green';
             }
