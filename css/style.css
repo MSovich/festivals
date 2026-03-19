@@ -1057,7 +1057,7 @@ nav .container {
     /* Telegram – справа сверху (над троеточием) */
     .social-btn.telegram {
         bottom: 100%;           /* над троеточием */
-        left: 0;
+        left: -10px;
         margin-bottom: 5px;
     }
 
