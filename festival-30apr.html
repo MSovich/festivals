@@ -86,50 +86,17 @@
             flex: 1;
             min-width: 250px;
         }
-        /* Стили для индикатора мест */
-        .places-info-header {
-            margin-bottom: 8px;
-        }
-        .places-info-header .title {
-            font-family: 'Cormorant Garamond', serif;
+        .places-info h4 {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: #0b1c34;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 10px;
         }
-        .places-info-header .title i {
-            color: #c9a03d;
-        }
-        .places-bar-container {
+        .places-slider {
             width: 100%;
-            height: 20px;
-            background: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 8px 0;
+            margin: 10px 0;
         }
-        .places-bar-free {
-            height: 100%;
-            background: linear-gradient(135deg, #c9a03d, #b38b2f);
-            border-radius: 10px;
-            transition: width 0.3s ease;
-        }
-        .places-status-wrapper {
-            text-align: left; /* изменено с right на left */
-            margin-top: 5px;
-        }
-        .places-status-wrapper #placesStatus {
-            font-family: 'Montserrat', sans-serif;
+        .places-status {
             font-weight: 600;
-            font-size: 1.1rem;
-            background: rgba(201,160,61,0.1);
-            padding: 5px 15px;
-            border-radius: 30px;
-            border: 1px solid #c9a03d;
-            color: #0b1c34;
-            display: inline-block;
+            font-size: 1.2rem;
         }
         .btn-big {
             padding: 16px 40px;
@@ -297,20 +264,12 @@
                     </div>
                 </div>
 
-                <!-- Блок свободных мест + кнопка заявки (обновлённый дизайн) -->
+                <!-- Блок свободных мест + кнопка заявки -->
                 <div class="places-block">
                     <div class="places-info">
-                        <div class="places-info-header">
-                            <span class="title">
-                                <i class="fas fa-users"></i> Свободно <span id="placesFree">1000</span> из <span id="placesTotal">1800</span>
-                            </span>
-                        </div>
-                        <div class="places-bar-container">
-                            <div class="places-bar-free" id="placesBarFree" style="width: 55.55%;"></div>
-                        </div>
-                        <div class="places-status-wrapper">
-                            <span id="placesStatus">Много мест</span>
-                        </div>
+                        <h4>Свободных мест: <span id="placesCount">1000</span></h4>
+                        <input type="range" id="placesSlider" min="0" max="1800" value="1000" disabled class="places-slider">
+                        <div class="places-status" id="placesMessage" style="color: green;">Много мест</div>
                     </div>
                     <a href="application.html" class="btn-big">Отправить предварительную ОНЛАЙН-ЗАЯВКУ</a>
                 </div>
@@ -575,39 +534,26 @@
         function openSpecialModal() { document.getElementById('specialModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeSpecialModal() { document.getElementById('specialModal').classList.remove('active'); document.body.style.overflow = ''; }
 
-        const TOTAL_PLACES = 1800; // всего мест
-
         function updatePlaces() {
             const festivalDate = new Date(2026, 3, 30); // 30 апреля 2026
             const today = new Date();
             const diffTime = festivalDate - today;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-            const placesFreeSpan = document.getElementById('placesFree');
-            const placesTotalSpan = document.getElementById('placesTotal');
-            const placesStatusSpan = document.getElementById('placesStatus');
-            const placesBar = document.getElementById('placesBarFree');
-
-            let freePlaces;
+            const placesSlider = document.getElementById('placesSlider');
+            const placesCount = document.getElementById('placesCount');
+            const placesMessage = document.getElementById('placesMessage');
             if (diffDays <= 10) {
-                freePlaces = 0;
-                placesStatusSpan.textContent = 'Мест нет';
-                placesStatusSpan.style.background = 'rgba(255,0,0,0.1)';
-                placesStatusSpan.style.borderColor = 'red';
-                placesStatusSpan.style.color = 'red';
+                placesSlider.value = 0;
+                placesCount.textContent = '0';
+                placesMessage.textContent = 'Мест нет';
+                placesMessage.style.color = 'red';
             } else {
-                freePlaces = 1000; // можно менять это значение
-                placesStatusSpan.textContent = 'Много мест';
-                placesStatusSpan.style.background = 'rgba(201,160,61,0.1)';
-                placesStatusSpan.style.borderColor = '#c9a03d';
-                placesStatusSpan.style.color = '#0b1c34';
+                // Устанавливаем 1000 свободных мест (занято 800)
+                placesSlider.value = 1000;
+                placesCount.textContent = '1000';
+                placesMessage.textContent = 'Много мест';
+                placesMessage.style.color = 'green';
             }
-
-            placesFreeSpan.textContent = freePlaces;
-            placesTotalSpan.textContent = TOTAL_PLACES;
-
-            const percentFree = (freePlaces / TOTAL_PLACES) * 100;
-            placesBar.style.width = percentFree + '%';
         }
 
         // Таймер и функции для окна "Спасибо"
