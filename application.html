@@ -66,36 +66,63 @@
                     <h2>Онлайн‑заявка на участие</h2>
                 </div>
                 <div class="application-form">
-                    <form id="applicationForm" method="post">
+                    <form id="applicationForm" action="send_application.php" method="post">
                         <div class="form-row">
-                            <div class="form-group"><label>Название коллектива / ФИО солиста *</label><input type="text" required></div>
-                            <div class="form-group"><label>Жанр</label><input type="text" placeholder="народный, современный..."></div>
+                            <div class="form-group">
+                                <label>Название коллектива / ФИО солиста *</label>
+                                <input type="text" name="collective_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Жанр</label>
+                                <input type="text" name="genre" placeholder="народный, современный...">
+                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group"><label>Город *</label><input type="text" required></div>
-                            <div class="form-group"><label>Телефон для связи *</label><input type="tel" required></div>
+                            <div class="form-group">
+                                <label>Город *</label>
+                                <input type="text" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Телефон для связи *</label>
+                                <input type="tel" name="phone" required>
+                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group"><label>Электронная почта</label><input type="email"></div>
-                            <div class="form-group"><label>ФИО руководителя</label><input type="text"></div>
+                            <div class="form-group">
+                                <label>Электронная почта</label>
+                                <input type="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label>ФИО руководителя</label>
+                                <input type="text" name="leader_name">
+                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group"><label>Возраст участников (от-до)</label><input type="text" placeholder="например, 12-17"></div>
-                            <div class="form-group"><label>Количество человек</label><input type="text" placeholder="участники + сопровождающие"></div>
+                            <div class="form-group">
+                                <label>Возраст участников (от-до)</label>
+                                <input type="text" name="age_range" placeholder="например, 12-17">
+                            </div>
+                            <div class="form-group">
+                                <label>Количество человек</label>
+                                <input type="text" name="participants_count" placeholder="участники + сопровождающие">
+                            </div>
                         </div>
-                        <div class="form-group"><label>Название направляющей организации</label><input type="text"></div>
-                        
+                        <div class="form-group">
+                            <label>Название направляющей организации</label>
+                            <input type="text" name="organization">
+                        </div>
+
                         <!-- Дата фестиваля + кнопка подробнее -->
                         <div class="form-group">
                             <label>Дата фестиваля</label>
                             <div style="display: flex; gap: 10px; align-items: center;">
-                                <select id="festivalSelect" style="flex: 1;">
-                                    <option>30 апреля – 4 мая 2026, Москва</option>
-                                    <option>25–29 октября 2026, Москва</option>
-                                    <option>15–19 ноября 2026, Сочи</option>
-                                    <option>4–8 января 2027, Москва</option>
-                                    <option>23–27 октября 2027, Москва</option>
-                                    <option>21–25 октября 2028, Москва</option>
+                                <select name="festival_date" style="flex: 1;">
+                                    <option value="30 апреля – 4 мая 2026, Москва">30 апреля – 4 мая 2026, Москва</option>
+                                    <option value="25–29 октября 2026, Москва">25–29 октября 2026, Москва</option>
+                                    <option value="15–19 ноября 2026, Сочи">15–19 ноября 2026, Сочи</option>
+                                    <option value="4–8 января 2027, Москва">4–8 января 2027, Москва</option>
+                                    <option value="23–27 октября 2027, Москва">23–27 октября 2027, Москва</option>
+                                    <option value="21–25 октября 2028, Москва">21–25 октября 2028, Москва</option>
                                 </select>
                                 <a href="festival-30apr.html" id="festivalDetailLink" class="btn-small" style="white-space: nowrap;">Подробнее</a>
                             </div>
@@ -103,19 +130,32 @@
 
                         <!-- Дата заезда и выезда -->
                         <div class="form-row">
-                            <div class="form-group"><label>Дата заезда</label><input type="date" placeholder="гггг-мм-дд"></div>
-                            <div class="form-group"><label>Дата выезда</label><input type="date" placeholder="гггг-мм-дд"></div>
+                            <div class="form-group">
+                                <label>Дата заезда</label>
+                                <input type="date" name="arrival_date" placeholder="гггг-мм-дд">
+                            </div>
+                            <div class="form-group">
+                                <label>Дата выезда</label>
+                                <input type="date" name="departure_date" placeholder="гггг-мм-дд">
+                            </div>
                         </div>
 
                         <!-- Поле с вопросами - теперь нельзя изменять размер -->
-                        <div class="form-group"><label>Ваши вопросы и пожелания</label><textarea rows="3" style="resize: none;"></textarea></div>
-                        <div class="form-group"><label>Как вы о нас узнали?</label><input type="text"></div>
-                        
+                        <div class="form-group">
+                            <label>Ваши вопросы и пожелания</label>
+                            <textarea name="questions" rows="3" style="resize: none;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Как вы о нас узнали?</label>
+                            <input type="text" name="how_found">
+                        </div>
+
                         <!-- Чекбокс без checked (изначально не отмечен) -->
                         <div class="checkbox-group">
-                            <input type="checkbox" id="agree" required>
+                            <input type="checkbox" id="agree" name="agree" value="1" required>
                             <label for="agree">Я принимаю <a href="policy.html">политику обработки персональных данных и правила пользования сайтом</a></label>
                         </div>
+                        <input type="hidden" name="form_type" value="application">
                         <button type="submit" class="submit-btn">Отправить заявку</button>
                     </form>
                 </div>
@@ -129,7 +169,7 @@
             <div class="footer-contacts-mobile">
                 <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
                 <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
-                <span><a href="mailto:edinstvorossii2010@mail.ru" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</a></span>
+                <span><a href="mailto:edinstvorossii2010@mail.ru" style="color: #c9a03d; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</a></span>
             </div>
             <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
         </div>
@@ -300,9 +340,7 @@
             const applicationForm = document.getElementById('applicationForm');
             if (applicationForm) {
                 applicationForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
-                    // Здесь можно добавить логику для успешного окна, если нужно
+                    // Не отменяем отправку, пусть форма уходит на PHP
                 });
             }
 
@@ -342,6 +380,20 @@
             if (select && detailLink) {
                 select.addEventListener('change', updateFestivalLink);
                 updateFestivalLink();
+            }
+        });
+    </script>
+    <script>
+        // Уведомления после отправки формы
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                alert('Спасибо! Ваша заявка успешно отправлена.');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+            if (urlParams.has('error')) {
+                alert('Произошла ошибка при отправке. Попробуйте позже или позвоните нам.');
+                window.history.replaceState({}, document.title, window.location.pathname);
             }
         });
     </script>
