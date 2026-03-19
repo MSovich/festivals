@@ -86,7 +86,7 @@
             flex: 1;
             min-width: 250px;
         }
-        /* Новые стили для индикатора мест */
+        /* Стили для индикатора мест */
         .places-info-header {
             display: flex;
             justify-content: space-between;
@@ -95,12 +95,27 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-        .places-info-header span:first-child {
-            font-weight: 600;
+        .places-info-header .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #0b1c34;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .places-info-header .title i {
+            color: #c9a03d;
         }
         .places-info-header #placesStatus {
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
+            font-size: 1.1rem;
+            background: rgba(201,160,61,0.1);
+            padding: 5px 15px;
+            border-radius: 30px;
+            border: 1px solid #c9a03d;
+            color: #0b1c34;
         }
         .places-bar-container {
             width: 100%;
@@ -282,12 +297,14 @@
                     </div>
                 </div>
 
-                <!-- Блок свободных мест + кнопка заявки (обновлён) -->
+                <!-- Блок свободных мест + кнопка заявки (обновлённый красивый дизайн) -->
                 <div class="places-block">
                     <div class="places-info">
                         <div class="places-info-header">
-                            <span>Свободно <span id="placesFree">1000</span> из <span id="placesTotal">1800</span> мест</span>
-                            <span id="placesStatus" style="color: green;">Много мест</span>
+                            <span class="title">
+                                <i class="fas fa-users"></i> Свободно <span id="placesFree">1000</span> из <span id="placesTotal">1800</span>
+                            </span>
+                            <span id="placesStatus">Много мест</span>
                         </div>
                         <div class="places-bar-container">
                             <div class="places-bar-free" id="placesBarFree" style="width: 55.55%;"></div>
@@ -573,19 +590,20 @@
             if (diffDays <= 10) {
                 freePlaces = 0;
                 placesStatusSpan.textContent = 'Мест нет';
+                placesStatusSpan.style.background = 'rgba(255,0,0,0.1)';
+                placesStatusSpan.style.borderColor = 'red';
                 placesStatusSpan.style.color = 'red';
             } else {
-                // Здесь можно установить любое желаемое количество свободных мест
-                freePlaces = 1000; // как просили: 1000 свободно, значит 800 занято
+                freePlaces = 1000; // можно менять это значение
                 placesStatusSpan.textContent = 'Много мест';
-                placesStatusSpan.style.color = 'green';
+                placesStatusSpan.style.background = 'rgba(201,160,61,0.1)';
+                placesStatusSpan.style.borderColor = '#c9a03d';
+                placesStatusSpan.style.color = '#0b1c34';
             }
 
-            // Обновляем текст
             placesFreeSpan.textContent = freePlaces;
             placesTotalSpan.textContent = TOTAL_PLACES;
 
-            // Обновляем ширину полосы (процент свободных мест)
             const percentFree = (freePlaces / TOTAL_PLACES) * 100;
             placesBar.style.width = percentFree + '%';
         }
