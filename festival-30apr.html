@@ -86,17 +86,35 @@
             flex: 1;
             min-width: 250px;
         }
-        .places-info h4 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        /* Новые стили для индикатора мест */
+        .places-info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .places-slider {
-            width: 100%;
-            margin: 10px 0;
-        }
-        .places-status {
+        .places-info-header span:first-child {
             font-weight: 600;
-            font-size: 1.2rem;
+            color: #0b1c34;
+        }
+        .places-info-header #placesStatus {
+            font-weight: 600;
+        }
+        .places-bar-container {
+            width: 100%;
+            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .places-bar-free {
+            height: 100%;
+            background: linear-gradient(135deg, #c9a03d, #b38b2f);
+            border-radius: 10px;
+            transition: width 0.3s ease;
         }
         .btn-big {
             padding: 16px 40px;
@@ -264,12 +282,16 @@
                     </div>
                 </div>
 
-                <!-- Блок свободных мест + кнопка заявки -->
+                <!-- Блок свободных мест + кнопка заявки (обновлён) -->
                 <div class="places-block">
                     <div class="places-info">
-                        <h4>Свободных мест: <span id="placesCount">1000</span></h4>
-                        <input type="range" id="placesSlider" min="0" max="1800" value="1000" disabled class="places-slider">
-                        <div class="places-status" id="placesMessage" style="color: green;">Много мест</div>
+                        <div class="places-info-header">
+                            <span>Свободно <span id="placesFree">1000</span> из <span id="placesTotal">1800</span> мест</span>
+                            <span id="placesStatus" style="color: green;">Много мест</span>
+                        </div>
+                        <div class="places-bar-container">
+                            <div class="places-bar-free" id="placesBarFree" style="width: 55.55%;"></div>
+                        </div>
                     </div>
                     <a href="application.html" class="btn-big">Отправить предварительную ОНЛАЙН-ЗАЯВКУ</a>
                 </div>
@@ -534,26 +556,38 @@
         function openSpecialModal() { document.getElementById('specialModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeSpecialModal() { document.getElementById('specialModal').classList.remove('active'); document.body.style.overflow = ''; }
 
+        const TOTAL_PLACES = 1800; // всего мест
+
         function updatePlaces() {
             const festivalDate = new Date(2026, 3, 30); // 30 апреля 2026
             const today = new Date();
             const diffTime = festivalDate - today;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            const placesSlider = document.getElementById('placesSlider');
-            const placesCount = document.getElementById('placesCount');
-            const placesMessage = document.getElementById('placesMessage');
+
+            const placesFreeSpan = document.getElementById('placesFree');
+            const placesTotalSpan = document.getElementById('placesTotal');
+            const placesStatusSpan = document.getElementById('placesStatus');
+            const placesBar = document.getElementById('placesBarFree');
+
+            let freePlaces;
             if (diffDays <= 10) {
-                placesSlider.value = 0;
-                placesCount.textContent = '0';
-                placesMessage.textContent = 'Мест нет';
-                placesMessage.style.color = 'red';
+                freePlaces = 0;
+                placesStatusSpan.textContent = 'Мест нет';
+                placesStatusSpan.style.color = 'red';
             } else {
-                // Устанавливаем 1000 свободных мест (занято 800)
-                placesSlider.value = 1000;
-                placesCount.textContent = '1000';
-                placesMessage.textContent = 'Много мест';
-                placesMessage.style.color = 'green';
+                // Здесь можно установить любое желаемое количество свободных мест
+                freePlaces = 1000; // как просили: 1000 свободно, значит 800 занято
+                placesStatusSpan.textContent = 'Много мест';
+                placesStatusSpan.style.color = 'green';
             }
+
+            // Обновляем текст
+            placesFreeSpan.textContent = freePlaces;
+            placesTotalSpan.textContent = TOTAL_PLACES;
+
+            // Обновляем ширину полосы (процент свободных мест)
+            const percentFree = (freePlaces / TOTAL_PLACES) * 100;
+            placesBar.style.width = percentFree + '%';
         }
 
         // Таймер и функции для окна "Спасибо"
