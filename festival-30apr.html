@@ -88,12 +88,7 @@
         }
         /* Стили для индикатора мест */
         .places-info-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
         }
         .places-info-header .title {
             font-family: 'Cormorant Garamond', serif;
@@ -107,7 +102,25 @@
         .places-info-header .title i {
             color: #c9a03d;
         }
-        .places-info-header #placesStatus {
+        .places-bar-container {
+            width: 100%;
+            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+        .places-bar-free {
+            height: 100%;
+            background: linear-gradient(135deg, #c9a03d, #b38b2f);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        .places-status-wrapper {
+            text-align: right;
+            margin-top: 5px;
+        }
+        .places-status-wrapper #placesStatus {
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 1.1rem;
@@ -116,20 +129,7 @@
             border-radius: 30px;
             border: 1px solid #c9a03d;
             color: #0b1c34;
-        }
-        .places-bar-container {
-            width: 100%;
-            height: 20px;
-            background: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-        .places-bar-free {
-            height: 100%;
-            background: linear-gradient(135deg, #c9a03d, #b38b2f);
-            border-radius: 10px;
-            transition: width 0.3s ease;
+            display: inline-block;
         }
         .btn-big {
             padding: 16px 40px;
@@ -297,17 +297,19 @@
                     </div>
                 </div>
 
-                <!-- Блок свободных мест + кнопка заявки (обновлённый красивый дизайн) -->
+                <!-- Блок свободных мест + кнопка заявки (обновлённый дизайн) -->
                 <div class="places-block">
                     <div class="places-info">
                         <div class="places-info-header">
                             <span class="title">
                                 <i class="fas fa-users"></i> Свободно <span id="placesFree">1000</span> из <span id="placesTotal">1800</span>
                             </span>
-                            <span id="placesStatus">Много мест</span>
                         </div>
                         <div class="places-bar-container">
                             <div class="places-bar-free" id="placesBarFree" style="width: 55.55%;"></div>
+                        </div>
+                        <div class="places-status-wrapper">
+                            <span id="placesStatus">Много мест</span>
                         </div>
                     </div>
                     <a href="application.html" class="btn-big">Отправить предварительную ОНЛАЙН-ЗАЯВКУ</a>
