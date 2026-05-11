@@ -110,6 +110,8 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(201,160,61,0.5);
         }
+
+        /* Мобильная версия */
         @media (max-width: 768px) {
             .advantages-content {
                 padding: 30px 20px;
@@ -119,10 +121,13 @@
                 word-break: normal;
                 overflow-wrap: normal;
                 hyphens: none;
-                transform: translateX(-5px);
             }
             .advantages-list {
                 columns: 1;
+            }
+            /* Сдвигаем только слово ФЕСТИВАЛЬНЫЕ левее */
+            .shift-word {
+                margin-left: -10px;
             }
         }
     </style>
@@ -167,7 +172,7 @@
                 </div>
 
                 <div class="advantages-content">
-                    <h1>ЕЖЕГОДНЫЕ ФЕСТИВАЛЬНЫЕ ВСТРЕЧИ<br>в Москве</h1>
+                    <h1>ЕЖЕГОДНЫЕ <span class="shift-word">ФЕСТИВАЛЬНЫЕ</span> ВСТРЕЧИ<br>в Москве</h1>
                     <div class="note">
                         <p><strong>Прочитайте обязательно!</strong><br>Наши плюсы – по сравнению с другими предложениями<br>или почему Вам стоит выбрать именно наши фестивали:</p>
                     </div>
