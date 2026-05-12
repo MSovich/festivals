@@ -81,6 +81,27 @@
             color: #2d2d3a;
             font-size: 0.95rem;
         }
+
+        /* Стилизация скроллбара для модального окна "Согласование" (callbackModal) */
+        #callbackModal .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        #callbackModal .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        #callbackModal .modal-content::-webkit-scrollbar-thumb {
+            background: #c9a03d;
+            border-radius: 10px;
+        }
+        #callbackModal .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #b38b2f;
+        }
+        /* Для Firefox */
+        #callbackModal .modal-content {
+            scrollbar-width: thin;
+            scrollbar-color: #c9a03d #f1f1f1;
+        }
     </style>
 </head>
 <body>
