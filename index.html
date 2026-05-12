@@ -427,18 +427,30 @@
                 });
             }
 
-            // Социальное меню
-            const toggle = document.getElementById('socialToggle');
-            const buttons = document.getElementById('socialButtons');
-            if (toggle) {
-                toggle.addEventListener('click', function(e) {
+            // Социальное меню – теперь закрывается при клике, скролле и тапе
+            const socialToggle = document.getElementById('socialToggle');
+            const socialButtons = document.getElementById('socialButtons');
+            if (socialToggle) {
+                socialToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    buttons.classList.toggle('active');
+                    socialButtons.classList.toggle('active');
                 });
 
                 document.addEventListener('click', function(event) {
-                    if (!toggle.contains(event.target) && !buttons.contains(event.target)) {
-                        buttons.classList.remove('active');
+                    if (!socialToggle.contains(event.target) && !socialButtons.contains(event.target)) {
+                        socialButtons.classList.remove('active');
+                    }
+                });
+
+                window.addEventListener('scroll', function() {
+                    if (socialButtons.classList.contains('active')) {
+                        socialButtons.classList.remove('active');
+                    }
+                });
+
+                document.addEventListener('touchstart', function(event) {
+                    if (!socialToggle.contains(event.target) && !socialButtons.contains(event.target)) {
+                        socialButtons.classList.remove('active');
                     }
                 });
             }
