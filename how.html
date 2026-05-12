@@ -27,7 +27,7 @@
             }
         }
 
-        /* Кликабельные шаги */
+        /* Делаем кликабельные шаги визуально отзывчивыми */
         .step-clickable {
             text-decoration: none;
             color: inherit;
@@ -39,6 +39,7 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(201,160,61,0.15);
         }
+        /* Сохраняем оригинальные стили шага */
         .step {
             background: white;
             border-radius: 30px;
@@ -81,7 +82,7 @@
             font-size: 0.95rem;
         }
 
-        /* Модальные окна – контейнер с прокруткой */
+        /* Модальное окно – контейнер с прокруткой */
         .modal-content {
             padding: 30px 15px 30px 30px;
             overflow: hidden;
@@ -89,7 +90,7 @@
         .modal-scroll {
             overflow-y: auto;
             max-height: calc(90vh - 80px);
-            padding-right: 20px; /* увеличено, чтобы скроллбар был правее */
+            padding-right: 20px;
             scrollbar-width: thin;
             scrollbar-color: #c9a03d #f1f1f1;
         }
@@ -108,7 +109,6 @@
         .modal-scroll::-webkit-scrollbar-thumb:hover {
             background: #b38b2f;
         }
-        /* Крестик закрытия – теперь right: 30px (чуть правее) */
         .modal-close {
             position: absolute;
             top: 20px;
@@ -121,8 +121,8 @@
     <div class="top-bar">
         <div class="container">
             <div class="contact-info">
-                <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
-                <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="tel:+79296374947" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (929) 637-49-47</a></span>
+                <span><a href="tel:+79262563308" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (926) 256-33-08</a></span>
                 <span><a href="mailto:edinstvorossii2010@mail.ru" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</a></span>
             </div>
             <button class="callback-btn" onclick="openModal()"><i class="fas fa-phone"></i> Перезвоните мне</button>
@@ -157,21 +157,28 @@
                 </div>
 
                 <div class="steps">
+                    <!-- Шаг 1 – ссылка на заявку -->
                     <a href="application.html" class="step-clickable step">
                         <div class="step-icon"><i class="fas fa-file-signature"></i></div>
                         <h4>1. Оставьте заявку</h4>
                         <p>Заполните форму на сайте или позвоните нам. Мы забронируем места.</p>
                     </a>
+
+                    <!-- Шаг 2 – открывает модальное окно "Перезвоните мне" -->
                     <a href="javascript:void(0)" onclick="openModal()" class="step-clickable step">
                         <div class="step-icon"><i class="fas fa-handshake"></i></div>
                         <h4>2. Согласование</h4>
                         <p>Обсуждаем детали, программу, количество участников и даты.</p>
                     </a>
+
+                    <!-- Шаг 3 – открывает модальное окно "Оплата и участие" -->
                     <a href="javascript:void(0)" onclick="openPaymentModal()" class="step-clickable step">
                         <div class="step-icon"><i class="fas fa-credit-card"></i></div>
                         <h4>3. Оплата</h4>
                         <p>Вносите предоплату или полную стоимость – удобным для вас способом.</p>
                     </a>
+
+                    <!-- Шаг 4 – открывает модальное окно "Оплата и участие" -->
                     <a href="javascript:void(0)" onclick="openPaymentModal()" class="step-clickable step">
                         <div class="step-icon"><i class="fas fa-star"></i></div>
                         <h4>4. Участие</h4>
@@ -179,6 +186,7 @@
                     </a>
                 </div>
 
+                <!-- Кнопка "Даты наших фестивалей" над блоком "Что входит в организацию?" -->
                 <div style="text-align: center; margin: 40px 0 20px;">
                     <a href="festivals.html" class="btn-reasons">Даты наших фестивалей</a>
                 </div>
@@ -202,20 +210,21 @@
 
     <footer class="footer">
         <div class="container">
+            <!-- Контакты для мобильной версии -->
             <div class="footer-contacts-mobile">
-                <span><a href="tel:+79895687852" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></span>
-                <span><a href="tel:+79037622229" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></span>
+                <span><a href="tel:+79296374947" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (929) 637-49-47</a></span>
+                <span><a href="tel:+79262563308" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (926) 256-33-08</a></span>
                 <span><a href="mailto:edinstvorossii2010@mail.ru" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> edinstvorossii2010@mail.ru</a></span>
             </div>
             <p>© 2026 Фестивальные встречи «Единство России» | Фонд «Возрождение» ИНН 7716197223</p>
         </div>
     </footer>
 
-    <!-- Плавающие кнопки -->
+    <!-- Плавающие кнопки (правая сторона) -->
     <a href="javascript:void(0)" class="phone-button" title="Перезвоните мне" onclick="openModal()"><i class="fas fa-phone-alt"></i></a>
     <a href="index.html" class="home-button" title="На главную"><i class="fas fa-home"></i></a>
 
-    <!-- Социальное меню -->
+    <!-- Социальное меню (кнопка с троеточием слева снизу) -->
     <div class="social-menu">
         <button class="social-toggle" id="socialToggle"><i class="fas fa-ellipsis-h"></i></button>
         <div class="social-buttons" id="socialButtons">
@@ -225,7 +234,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Перезвоните мне" (Согласование) -->
+    <!-- Модальное окно "Перезвоните мне" (форма) -->
     <div class="modal-overlay" id="callbackModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -238,8 +247,8 @@
                 <div class="modal-phones">
                     <div class="modal-phones-title">Позвоните нам, если не хотите ждать</div>
                     <div class="modal-phones-numbers">
-                        <p><a href="tel:+79895687852" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></p>
-                        <p><a href="tel:+79037622229" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></p>
+                        <p><a href="tel:+79296374947" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (929) 637-49-47</a></p>
+                        <p><a href="tel:+79262563308" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (926) 256-33-08</a></p>
                     </div>
                 </div>
                 <div class="modal-form">
@@ -259,7 +268,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Спасибо за обращение" -->
+    <!-- Модальное окно "Спасибо за обращение" (появляется после отправки формы) -->
     <div class="modal-overlay" id="callbackSuccessModal">
         <div class="modal-content">
             <button class="modal-close" id="closeCallbackSuccessBtn">&times;</button>
@@ -273,7 +282,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Оплата и участие" -->
+    <!-- Модальное окно "Оплата и участие" (с кликабельным телефоном) -->
     <div class="modal-overlay" id="paymentModal">
         <div class="modal-content">
             <button class="modal-close" id="closePaymentBtn">&times;</button>
@@ -293,8 +302,8 @@
                     <p><strong>Документы:</strong> После оплаты вы получите все закрывающие документы на электронную почту.</p>
                     <p><strong>Возврат:</strong> При отмене участия возврат средств осуществляется согласно договору.</p>
                     <p style="font-weight: 700; margin-top: 15px;">По вопросам оплаты звоните:</p>
-                    <p><a href="tel:+79895687852" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (989) 568-78-52</a></p>
-                    <p><a href="tel:+79037622229" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (903) 762-22-29</a></p>
+                    <p><a href="tel:+79296374947" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (929) 637-49-47</a></p>
+                    <p><a href="tel:+79262563308" style="color: #0b1c34; text-decoration: none;"><i class="fas fa-phone-alt"></i> +7 (926) 256-33-08</a></p>
                 </div>
             </div>
         </div>
@@ -302,72 +311,102 @@
 
     <script src="js/script.js"></script>
     <script>
+        // Функции для модального окна обратного звонка (форма)
         function openModal() {
             document.getElementById('callbackModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+
         function closeModal() {
             document.getElementById('callbackModal').classList.remove('active');
             document.body.style.overflow = '';
         }
+
         function openPaymentModal() {
             document.getElementById('paymentModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+
         function closePaymentModal() {
             document.getElementById('paymentModal').classList.remove('active');
             document.body.style.overflow = '';
         }
 
+        // Таймер и функции для окна "Спасибо"
         let callbackTimer = null;
+
         function openCallbackSuccessModal() {
             document.getElementById('callbackSuccessModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            callbackTimer = setTimeout(() => closeCallbackSuccessModal(), 10000);
+            callbackTimer = setTimeout(() => {
+                closeCallbackSuccessModal();
+            }, 10000);
         }
+
         function closeCallbackSuccessModal() {
-            if (callbackTimer) clearTimeout(callbackTimer);
+            if (callbackTimer) {
+                clearTimeout(callbackTimer);
+                callbackTimer = null;
+            }
             document.getElementById('callbackSuccessModal').classList.remove('active');
             document.body.style.overflow = '';
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Модальное окно обратного звонка (форма)
             const modal = document.getElementById('callbackModal');
             const closeBtn = document.getElementById('closeModalBtn');
             if (modal) {
-                modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) closeModal();
+                });
                 if (closeBtn) closeBtn.addEventListener('click', closeModal);
             }
+
+            // Модальное окно оплаты
             const paymentModal = document.getElementById('paymentModal');
             const closePayment = document.getElementById('closePaymentBtn');
             if (paymentModal) {
-                paymentModal.addEventListener('click', e => { if (e.target === paymentModal) closePaymentModal(); });
+                paymentModal.addEventListener('click', function(e) {
+                    if (e.target === paymentModal) closePaymentModal();
+                });
                 if (closePayment) closePayment.addEventListener('click', closePaymentModal);
             }
-            const successModal = document.getElementById('callbackSuccessModal');
-            const closeSuccessBtn = document.getElementById('closeCallbackSuccessBtn');
-            if (successModal) {
-                successModal.addEventListener('click', e => { if (e.target === successModal) closeCallbackSuccessModal(); });
-                if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeCallbackSuccessModal);
+
+            // Модальное окно успеха для обратного звонка
+            const callbackSuccessModal = document.getElementById('callbackSuccessModal');
+            const closeCallbackSuccessBtn = document.getElementById('closeCallbackSuccessBtn');
+            if (callbackSuccessModal) {
+                callbackSuccessModal.addEventListener('click', function(e) {
+                    if (e.target === callbackSuccessModal) closeCallbackSuccessModal();
+                });
+                if (closeCallbackSuccessBtn) {
+                    closeCallbackSuccessBtn.addEventListener('click', closeCallbackSuccessModal);
+                }
             }
+
+            // Обработчик отправки формы обратного звонка
             const callbackForm = document.getElementById('callbackForm');
             if (callbackForm) {
-                callbackForm.addEventListener('submit', e => {
+                callbackForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    closeModal();
-                    openCallbackSuccessModal();
+                    closeModal(); // закрываем окно с формой
+                    openCallbackSuccessModal(); // показываем окно благодарности
                 });
             }
-            const socialToggle = document.getElementById('socialToggle');
-            const socialButtons = document.getElementById('socialButtons');
-            if (socialToggle) {
-                socialToggle.addEventListener('click', e => {
+
+            // Социальное меню
+            const toggle = document.getElementById('socialToggle');
+            const buttons = document.getElementById('socialButtons');
+            if (toggle) {
+                toggle.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    socialButtons.classList.toggle('active');
+                    buttons.classList.toggle('active');
                 });
-                document.addEventListener('click', e => {
-                    if (!socialToggle.contains(e.target) && !socialButtons.contains(e.target)) {
-                        socialButtons.classList.remove('active');
+
+                document.addEventListener('click', function(event) {
+                    if (!toggle.contains(event.target) && !buttons.contains(event.target)) {
+                        buttons.classList.remove('active');
                     }
                 });
             }
