@@ -82,13 +82,19 @@
             font-size: 0.95rem;
         }
 
-        /* Стилизация скроллбара для модального окна "Согласование" (callbackModal) */
+        /* Стилизация скроллбара для модального окна "Перезвоните мне" (callbackModal) */
+        #callbackModal .modal-content {
+            scrollbar-width: thin;
+            scrollbar-color: #c9a03d #f1f1f1;
+            padding-right: 12px; /* отступ, чтобы скроллбар не прилипал к краю */
+        }
         #callbackModal .modal-content::-webkit-scrollbar {
             width: 8px;
         }
         #callbackModal .modal-content::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
+            margin: 4px 0; /* небольшой отступ от верха и низа */
         }
         #callbackModal .modal-content::-webkit-scrollbar-thumb {
             background: #c9a03d;
@@ -96,11 +102,6 @@
         }
         #callbackModal .modal-content::-webkit-scrollbar-thumb:hover {
             background: #b38b2f;
-        }
-        /* Для Firefox */
-        #callbackModal .modal-content {
-            scrollbar-width: thin;
-            scrollbar-color: #c9a03d #f1f1f1;
         }
     </style>
 </head>
