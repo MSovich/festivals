@@ -83,13 +83,13 @@
 
         /* Модальные окна – контейнер с прокруткой */
         .modal-content {
-            padding: 30px 15px 30px 30px; /* правый отступ уменьшен для скроллбара */
-            overflow: hidden; /* убираем нативную прокрутку */
+            padding: 30px 15px 30px 30px;
+            overflow: hidden;
         }
         .modal-scroll {
             overflow-y: auto;
             max-height: calc(90vh - 80px);
-            padding-right: 15px;
+            padding-right: 20px; /* увеличено, чтобы скроллбар был правее */
             scrollbar-width: thin;
             scrollbar-color: #c9a03d #f1f1f1;
         }
@@ -108,11 +108,11 @@
         .modal-scroll::-webkit-scrollbar-thumb:hover {
             background: #b38b2f;
         }
-        /* Кнопка закрытия – сдвинута левее */
+        /* Крестик закрытия – теперь right: 30px (чуть правее) */
         .modal-close {
             position: absolute;
             top: 20px;
-            right: 40px; /* было 20px, сдвинули влево */
+            right: 30px;
             z-index: 10;
         }
     </style>
