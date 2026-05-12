@@ -193,6 +193,13 @@
             transform: scale(1.05);
             box-shadow: 0 10px 25px rgba(201,160,61,0.2);
         }
+
+        /* Убираем точки под каруселью только на ПК (ширина > 768px) */
+        @media (min-width: 769px) {
+            #juryDots {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
