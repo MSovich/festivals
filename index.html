@@ -18,10 +18,7 @@
             margin-top: 30px;
             flex-wrap: wrap;
         }
-        .button-row .btn-reasons {
-            margin: 0;
-        }
-        
+
         /* Стили для логотипа с картинкой */
         .logo {
             display: flex;
@@ -37,6 +34,38 @@
             .logo-img {
                 height: 35px;
             }
+        }
+
+        /* Переопределяем стили для кнопок-причин – золотой контур */
+        .reason-link {
+            background: transparent !important;
+            border: 2px solid #c9a03d !important;
+            box-shadow: none !important;
+            color: #0b1c34 !important;
+        }
+        .reason-link:hover {
+            background: rgba(201,160,61,0.1) !important;
+            border-color: #b38b2f !important;
+            color: #0b1c34 !important;
+        }
+
+        /* Кнопки "Все причины" и "Все наши плюсы" – золотая заливка */
+        .btn-reasons {
+            background: linear-gradient(135deg, #c9a03d, #b38b2f) !important;
+            color: #0b1c34 !important;
+            border: none !important;
+            background-image: linear-gradient(135deg, #c9a03d, #b38b2f) !important;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(201,160,61,0.3);
+            transition: 0.3s;
+        }
+        .btn-reasons:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201,160,61,0.5);
         }
 
         /* Модальное окно – контейнер с прокруткой */
@@ -201,7 +230,7 @@
                 </div>
                 <!-- Кнопки под преимуществами -->
                 <div class="button-row">
-                    <a href="reasons.html" class="btn-reasons">Все 10 причин</a>
+                    <a href="reasons.html" class="btn-reasons">Все причины</a>
                     <a href="advantages.html" class="btn-reasons">Все наши плюсы</a>
                 </div>
             </div>
