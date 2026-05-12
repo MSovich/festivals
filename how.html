@@ -88,8 +88,8 @@
         }
         .modal-scroll {
             overflow-y: auto;
-            max-height: calc(90vh - 80px); /* высота с учётом отступов */
-            padding-right: 15px; /* компенсируем место под скроллбар */
+            max-height: calc(90vh - 80px);
+            padding-right: 15px;
             scrollbar-width: thin;
             scrollbar-color: #c9a03d #f1f1f1;
         }
@@ -108,11 +108,11 @@
         .modal-scroll::-webkit-scrollbar-thumb:hover {
             background: #b38b2f;
         }
-        /* Кнопка закрытия не должна попадать в область скролла */
+        /* Кнопка закрытия – сдвинута левее */
         .modal-close {
             position: absolute;
             top: 20px;
-            right: 20px;
+            right: 40px; /* было 20px, сдвинули влево */
             z-index: 10;
         }
     </style>
