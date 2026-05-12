@@ -90,6 +90,7 @@
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
+                align-items: center; /* Центрируем элементы по горизонтали */
             }
             .reason-number {
                 min-width: auto;
@@ -256,7 +257,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно "Спец.условия" (оставлено для единообразия, но на этой странице не вызывается) -->
+    <!-- Модальное окно "Спец.условия" (оставлено для единообразия) -->
     <div class="modal-overlay" id="specialModal">
         <div class="modal-content">
             <button class="modal-close" id="closeSpecialBtn">&times;</button>
@@ -315,7 +316,6 @@
             }
             document.getElementById('callbackSuccessModal').classList.remove('active');
             document.body.style.overflow = '';
-            // Остаемся на текущей странице, без перехода
         }
 
         document.addEventListener('DOMContentLoaded', function() {
