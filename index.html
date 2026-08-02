@@ -105,6 +105,9 @@
     </style>
 </head>
 <body>
+    <!-- Подсветка за мышью (добавлена) -->
+    <div id="mouseLight"></div>
+
     <!-- Верхняя панель с контактами -->
     <div class="top-bar">
         <div class="container">
@@ -138,16 +141,65 @@
     </nav>
 
     <main>
-        <!-- Герой (Hero) -->
-        <section class="hero">
-            <div class="container">
+        <!-- Герой (Hero) – полностью заменён на новый с Canvas и декоративными элементами -->
+        <section class="hero" id="hero">
+
+            <!-- Canvas -->
+            <canvas id="heroCanvas"></canvas>
+
+            <!-- Silk -->
+            <div class="silk silk1"></div>
+            <div class="silk silk2"></div>
+            <div class="silk silk3"></div>
+
+            <!-- Light -->
+            <div class="gold-light"></div>
+
+            <!-- Noise -->
+            <div class="hero-noise"></div>
+
+            <!-- Gradient Overlay -->
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <span class="hero-subtitle">
+                    Международный фестивальный проект
+                </span>
+
                 <h1>Фестивальные встречи <span>«Единство России»</span></h1>
-                <p>Вместе со Страной! Вместе с Президентом!</p>
+
+                <p>
+
+                    Вместе со Страной.
+                    Вместе с Президентом.
+
+                </p>
+
                 <div class="hero-buttons">
-                    <a href="application.html" class="btn btn-primary">Оставить заявку</a>
-                    <a href="festivals.html" class="btn btn-outline">Все даты</a>
+
+                    <a href="application.html" class="btn btn-primary">
+
+                        Подать заявку
+
+                    </a>
+
+                    <a href="#about" class="btn btn-outline">
+
+                        Подробнее
+
+                    </a>
+
                 </div>
+
             </div>
+
+            <div class="hero-scroll">
+
+                <span></span>
+
+            </div>
+
         </section>
 
         <!-- Ближайшие фестивали -->
@@ -340,6 +392,8 @@
     </div>
 
     <script src="js/script.js"></script>
+    <!-- Подключение нового скрипта для эффектов Hero -->
+    <script src="js/hero-effects.js"></script>
     <script>
         // Функции для модального окна обратного звонка (форма)
         function openModal() {
