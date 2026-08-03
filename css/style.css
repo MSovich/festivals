@@ -196,6 +196,7 @@ nav .container {
 
 .hero h1 span {
     color: #c9a03d;
+    white-space: nowrap; /* запрещаем перенос на новую строку */
 }
 
 .hero p {
