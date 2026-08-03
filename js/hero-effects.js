@@ -172,18 +172,26 @@ floatSilk();
 
 
 /* ===========================
-    HERO FADE
+    HERO FADE (UPDATED)
 =========================== */
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
-    const hero=document.querySelector(".hero");
+    const hero = document.querySelector(".hero");
 
-    const opacity=Math.max(
-        0,
-        1-window.scrollY/700
-    );
+    // Через сколько пикселей начать исчезновение
+    const startFade = 500;
 
-    hero.style.opacity=opacity;
+    // На протяжении какого расстояния исчезать
+    const fadeDistance = 2200;
+
+    let opacity = 1;
+
+    if (window.scrollY > startFade) {
+        opacity = 1 - ((window.scrollY - startFade) / fadeDistance);
+    }
+
+    // Никогда не исчезает полностью
+    hero.style.opacity = Math.max(0.2, opacity);
 
 });
